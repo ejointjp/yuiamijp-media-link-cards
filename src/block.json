@@ -3,10 +3,10 @@
 	"apiVersion": 3,
 	"name": "su/applink",
 	"version": "0.1.0",
-	"title": "SU Applink",
+	"title": "Applink",
 	"category": "su-blocks",
 	"icon": "instagram",
-	"description": "",
+	"description": "Create promotional links for iPhone / iPad / Mac apps, music tracks, Apple Books, and more.",
 	"example": {},
 	"supports": {
 		"html": false
@@ -16,11 +16,10 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"keywords": [
-		"リンク",
-		"埋め込み",
-		"アプリ",
-		"apple",
+		"link",
+		"embed",
 		"app",
+		"apple",
 		"embed",
 		"link",
 		"itunes",

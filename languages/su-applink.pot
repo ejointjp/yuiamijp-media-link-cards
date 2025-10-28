@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SU Applink 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: applink-for-wp.php:13
+msgid "SU Blocks"
+msgstr ""
+
+#: inc/define.php:9
+msgid "10 items"
+msgstr ""
+
+#: inc/define.php:13
+msgid "25 items"
+msgstr ""
+
+#: inc/define.php:17
+msgid "50 items"
+msgstr ""
+
+#: inc/define.php:21
+msgid "100 items"
+msgstr ""
+
+#: inc/define.php:25
+msgid "200 items"
+msgstr ""
+
+#: inc/define.php:36
+msgid "Auto"
+msgstr ""
+
+#: inc/define.php:40
+msgid "English"
+msgstr ""
+
+#: inc/define.php:74
+msgid "Japan"
+msgstr ""
+
+#: inc/define.php:78
+msgid "South Korea"
+msgstr ""
+
+#: inc/define.php:82
+msgid "China"
+msgstr ""
+
+#: inc/define.php:86
+msgid "Taiwan"
+msgstr ""
+
+#: inc/define.php:90
+msgid "Hong Kong"
+msgstr ""
+
+#: inc/define.php:95
+msgid "United States"
+msgstr ""
+
+#: inc/define.php:99
+msgid "United Kingdom"
+msgstr ""
+
+#: inc/define.php:103
+msgid "Canada"
+msgstr ""
+
+#: inc/define.php:107
+msgid "Australia"
+msgstr ""
+
+#: inc/define.php:112
+msgid "Singapore"
+msgstr ""
+
+#: inc/define.php:116
+msgid "Thailand"
+msgstr ""
+
+#: inc/define.php:120
+msgid "India"
+msgstr ""
+
+#: inc/define.php:124
+msgid "Germany"
+msgstr ""
+
+#: inc/define.php:128
+msgid "France"
+msgstr ""
+
+#: inc/define.php:132
+msgid "Brazil"
+msgstr ""
+
+#: inc/admin-page.php:6
+msgid "Applink for WP"
+msgstr ""
+
+#: inc/admin-page.php:86
+msgid "PHG Token"
+msgstr ""
+
+#: inc/admin-page.php:87
+msgid "Default Search Results"
+msgstr ""
+
+#: inc/admin-page.php:88
+msgid "Default Store Country"
+msgstr ""
+
+#: inc/admin-page.php:89
+msgid "Default Language"
+msgstr ""
+
+#: inc/admin-page.php:123
+msgid "Select the country of the App Store to search."
+msgstr ""
+
+#: inc/admin-page.php:136
+msgid "Select the display language for Applink."
+msgstr ""
+
+# React strings (these will be picked up by wp i18n make-pot)
+msgid "Search Settings"
+msgstr ""
+
+msgid "Number of Results"
+msgstr ""
+
+msgid "Store Country"
+msgstr ""
+
+msgid "Display Language"
+msgstr ""
+
+msgid "Set default values on settings page"
+msgstr ""
+
+msgid "Enter search term and press Enter"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Search Results"
+msgstr ""
+
+msgid "Failed to retrieve data"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+

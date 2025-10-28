@@ -1,0 +1,137 @@
+# Japanese translation for SU Applink plugin
+# Copyright (C) 2024 Takashi Fujiskai
+# This file is distributed under the same license as the SU Applink plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: SU Applink 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: 2024-01-01 12:00+0000\n"
+"Last-Translator: Takashi Fujiskai\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "SU Blocks"
+msgstr "SU Blocks"
+
+msgid "10 items"
+msgstr "10件"
+
+msgid "25 items"
+msgstr "25件"
+
+msgid "50 items"
+msgstr "50件"
+
+msgid "100 items"
+msgstr "100件"
+
+msgid "200 items"
+msgstr "200件"
+
+msgid "Auto"
+msgstr "自動"
+
+msgid "English"
+msgstr "英語"
+
+msgid "Japan"
+msgstr "日本"
+
+msgid "South Korea"
+msgstr "韓国"
+
+msgid "China"
+msgstr "中国"
+
+msgid "Taiwan"
+msgstr "台湾"
+
+msgid "Hong Kong"
+msgstr "香港"
+
+msgid "United States"
+msgstr "米国"
+
+msgid "United Kingdom"
+msgstr "英国"
+
+msgid "Canada"
+msgstr "カナダ"
+
+msgid "Australia"
+msgstr "オーストラリア"
+
+msgid "Singapore"
+msgstr "シンガポール"
+
+msgid "Thailand"
+msgstr "タイ"
+
+msgid "India"
+msgstr "インド"
+
+msgid "Germany"
+msgstr "ドイツ"
+
+msgid "France"
+msgstr "フランス"
+
+msgid "Brazil"
+msgstr "ブラジル"
+
+msgid "Applink for WP"
+msgstr "Applink for WP"
+
+msgid "PHG Token"
+msgstr "PHGトークン"
+
+msgid "Default Search Results"
+msgstr "デフォルトの検索結果数"
+
+msgid "Default Store Country"
+msgstr "デフォルトの検索対象ストア"
+
+msgid "Default Language"
+msgstr "デフォルトの表示言語"
+
+msgid "Select the country of the App Store to search."
+msgstr "検索するApp Storeの国を選択します。"
+
+msgid "Select the display language for Applink."
+msgstr "Applinkの表示言語を選択します。"
+
+msgid "Search Settings"
+msgstr "検索条件設定"
+
+msgid "Number of Results"
+msgstr "検索結果数"
+
+msgid "Store Country"
+msgstr "検索対象ストア"
+
+msgid "Display Language"
+msgstr "表示言語"
+
+msgid "Set default values on settings page"
+msgstr "設定ページでデフォルト値を設定する"
+
+msgid "Enter search term and press Enter"
+msgstr "検索ワードを入力してEnter"
+
+msgid "Select"
+msgstr "選択"
+
+msgid "Search Results"
+msgstr "検索結果"
+
+msgid "Failed to retrieve data"
+msgstr "データの取得に失敗しました"
+
+msgid "Preview"
+msgstr "試聴"
+

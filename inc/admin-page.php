@@ -3,8 +3,8 @@
 // 管理画面に設定画面を追加
 function sual_add_admin_page() {
 	add_options_page(
-		'Applink for WP',
-		'Applink for WP',
+		__( 'Applink for WP', 'su-applink' ),
+		__( 'Applink for WP', 'su-applink' ),
 		'manage_options',
 		'su-applink',
 		'sual_options_page_html'
@@ -16,7 +16,7 @@ add_action( 'admin_menu', 'sual_add_admin_page' );
 function sual_options_page_html() {
 	?>
 	<div class="wrap">
-	<h2>Applink for WP</h2>
+	<h2><?php echo esc_html__( 'Applink for WP', 'su-applink' ); ?></h2>
 
 	<?php
 	global $parent_file;
@@ -83,10 +83,10 @@ function sual_page_init() {
 	);
 	add_settings_section( 'sual-setting-section-id', '', '', 'sual-setting' );
 
-	add_settings_field( 'token', 'PHGトークン', 'sual_token_callback', 'sual-setting', 'sual-setting-section-id' );
-	add_settings_field( 'limit', 'デフォルトの検索結果数', 'sual_limit_callback', 'sual-setting', 'sual-setting-section-id' );
-	add_settings_field( 'country', 'デフォルトの検索対象ストア', 'sual_country_callback', 'sual-setting', 'sual-setting-section-id' );
-	add_settings_field( 'lang', 'デフォルトの表示言語', 'sual_lang_callback', 'sual-setting', 'sual-setting-section-id' );
+	add_settings_field( 'token', __( 'PHG Token', 'su-applink' ), 'sual_token_callback', 'sual-setting', 'sual-setting-section-id' );
+	add_settings_field( 'limit', __( 'Default Search Results', 'su-applink' ), 'sual_limit_callback', 'sual-setting', 'sual-setting-section-id' );
+	add_settings_field( 'country', __( 'Default Store Country', 'su-applink' ), 'sual_country_callback', 'sual-setting', 'sual-setting-section-id' );
+	add_settings_field( 'lang', __( 'Default Language', 'su-applink' ), 'sual_lang_callback', 'sual-setting', 'sual-setting-section-id' );
 }
 add_action( 'admin_init', 'sual_page_init' );
 
@@ -120,7 +120,7 @@ function sual_country_callback() {
 		printf( '<option value="%s" %s>%s</option>', $item['value'], selected( $option_val, $item['value'], false ), $item['label'] );
 	}
 	echo '</select>';
-	echo '<p class="description">検索するApp Storeの国を選択します。</p>';
+	echo '<p class="description">' . esc_html__( 'Select the country of the App Store to search.', 'su-applink' ) . '</p>';
 }
 
 // 言語の設定セクション
@@ -133,5 +133,5 @@ function sual_lang_callback() {
 		printf( '<option value="%s" %s>%s</option>', $item['value'], selected( $option_val, $item['value'], false ), $item['label'] );
 	}
 	echo '</select>';
-	echo '<p class="description">Applinkの表示言語を選択します。</p>';
+	echo '<p class="description">' . esc_html__( 'Select the display language for Applink.', 'su-applink' ) . '</p>';
 }

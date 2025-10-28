@@ -10,6 +10,7 @@ import {
 	BaseControl,
 	Button,
 } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 import ReactLoading from 'react-loading';
 import Applink from './components/Applink';
@@ -166,7 +167,7 @@ const edit = (props) => {
 							setAttributes({ app: app });
 						}}
 					>
-						選択
+						{__('Select', 'su-applink')}
 					</Button>
 				</div>
 			);
@@ -175,7 +176,7 @@ const edit = (props) => {
 		return (
 			<>
 				<div className='sual-editor-result-num'>
-					検索結果{result.resultCount} 件
+					{__('Search Results', 'su-applink')} {result.resultCount}
 				</div>
 				{result.resultCount > 0 && (
 					<div className='sual-editor-list'>{list}</div>
@@ -202,7 +203,9 @@ const edit = (props) => {
 				);
 
 			case 'result-error':
-				return <InfoText>データの取得に失敗しました</InfoText>;
+				return (
+					<InfoText>{__('Failed to retrieve data', 'su-applink')}</InfoText>
+				);
 
 			default:
 				return '';
@@ -225,10 +228,10 @@ const edit = (props) => {
 	return (
 		<div {...blockProps}>
 			<InspectorControls>
-				<PanelBody title='検索条件設定'>
+				<PanelBody title={__('Search Settings', 'su-applink')}>
 					<BaseControl label=''>
 						<SelectControl
-							label='検索結果数'
+							label={__('Number of Results', 'su-applink')}
 							value={limit}
 							onChange={(value) => setLimit(value)}
 							options={limitValues}
@@ -237,7 +240,7 @@ const edit = (props) => {
 						/>
 
 						<SelectControl
-							label='検索対象ストア'
+							label={__('Store Country', 'su-applink')}
 							value={country}
 							onChange={(value) => setCountry(value)}
 							options={countryValues}
@@ -246,7 +249,7 @@ const edit = (props) => {
 						/>
 
 						<SelectControl
-							label='表示言語'
+							label={__('Display Language', 'su-applink')}
 							value={lang}
 							onChange={(value) => setLang(value)}
 							options={langValues}
@@ -261,7 +264,7 @@ const edit = (props) => {
 								rel='nofollow noreferrer noopener'
 								variant='tertiary'
 							>
-								設定ページでデフォルト値を設定する
+								{__('Set default values on settings page', 'su-applink')}
 							</Button>
 						</p>
 					</BaseControl>
@@ -286,7 +289,7 @@ const edit = (props) => {
 					<PlainText
 						className='sual-editor-input'
 						tagName='input'
-						placeholder='検索ワードを入力してEnter'
+						placeholder={__('Enter search term and press Enter', 'su-applink')}
 						value={tempTerm}
 						onChange={(value) => setTempTerm(value)}
 						onKeyPress={onKeyPress}

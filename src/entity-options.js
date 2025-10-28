@@ -13,15 +13,15 @@ export default [
 	},
 	// {
 	//   value: 'movie',
-	//   label: 'ムービー'
+	//   label: 'Movie'
 	// },
 	{
 		value: 'ebook',
-		label: 'ブック',
+		label: 'Book',
 	},
 	{
 		value: 'audiobook',
-		label: 'オーディオブック',
+		label: 'Audiobook',
 	},
 	{
 		value: 'podcast',
@@ -29,14 +29,14 @@ export default [
 	},
 	{
 		value: 'musicTrack',
-		label: '音楽トラック',
+		label: 'Music Track',
 	},
 	{
 		value: 'album',
-		label: '音楽アルバム',
+		label: 'Music Album',
 	},
 	{
 		value: 'musicVideo',
-		label: 'ミュージックビデオ',
+		label: 'Music Video',
 	},
 ];

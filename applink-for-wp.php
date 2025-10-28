@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name:       SU Applink
- * Description:       iPhone / iPad / Macアプリや音楽トラック、Apple Booksなどの紹介リンクを簡単に作成できます。
- * Requires at least: 6.8
+ * Plugin Name:       SU Blocks - Applink
+ * Description:       Easily create promotional links for iPhone / iPad / Mac apps, music tracks, Apple Books, and more.
+ * Requires at least: 6.8.3
  * Requires PHP:      7.4
  * Version:           1.0.0
  * Author:            Takashi Fujiskai
@@ -24,6 +24,9 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/admin-page.php';
 
 function sual_init() {
 	register_block_type( __DIR__ . '/build' );
+
+	// Load plugin text domain
+	load_plugin_textdomain( 'su-applink', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 add_action( 'init', 'sual_init' );
 
@@ -38,9 +41,8 @@ function sual_categories( $categories, $post ) {
 		$categories,
 		array(
 			array(
-				'slug'  => 'su-blocks', // ブロックカテゴリーのスラッグ.
-				'title' => 'SU Blocks', // ブロックカテゴリーの表示名.
-				// 'icon'  => 'wordpress',    //アイコンの指定（Dashicons名）.
+				'slug'  => 'su-blocks',
+				'title' => __( 'SU Blocks', 'su-applink' ),
 			),
 		)
 	);

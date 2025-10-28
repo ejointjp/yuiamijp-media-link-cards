@@ -1,5 +1,6 @@
 import { HiPlay } from 'react-icons/hi';
 import { StoreIcon } from './StoreIcon';
+import { __ } from '@wordpress/i18n';
 
 const Applink = ({ app, isEditor = false }) => {
 	const LinkWrapper = ({ href, children, className, ...props }) => {
@@ -45,7 +46,9 @@ const Applink = ({ app, isEditor = false }) => {
 							rel='noopener nofollow noreferrer'
 						>
 							<HiPlay />
-							<span className='sual-btn-label'>試聴</span>
+							<span className='sual-btn-label'>
+								{__('Preview', 'su-applink')}
+							</span>
 						</LinkWrapper>
 					)}
 					<LinkWrapper

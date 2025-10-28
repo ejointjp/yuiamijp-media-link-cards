@@ -6,23 +6,23 @@ define(
 	array(
 		array(
 			'value' => 10,
-			'label' => '10件',
+			'label' => __( '10 items', 'su-applink' ),
 		),
 		array(
 			'value' => 25,
-			'label' => '25件',
+			'label' => __( '25 items', 'su-applink' ),
 		),
 		array(
 			'value' => 50,
-			'label' => '50件',
+			'label' => __( '50 items', 'su-applink' ),
 		),
 		array(
 			'value' => 100,
-			'label' => '100件',
+			'label' => __( '100 items', 'su-applink' ),
 		),
 		array(
 			'value' => 200,
-			'label' => '200件',
+			'label' => __( '200 items', 'su-applink' ),
 		),
 	)
 );
@@ -33,11 +33,11 @@ define(
 	array(
 		array(
 			'value' => 'auto',
-			'label' => '自動',
+			'label' => __( 'Auto', 'su-applink' ),
 		),
 		array(
 			'value' => 'en_us',
-			'label' => '英語',
+			'label' => __( 'English', 'su-applink' ),
 		),
 	)
 );
@@ -71,65 +71,65 @@ define(
 		// アジア主要国
 		array(
 			'value' => 'JP',
-			'label' => '日本',
+			'label' => __( 'Japan', 'su-applink' ),
 		),
 		array(
 			'value' => 'KR',
-			'label' => '韓国',
+			'label' => __( 'South Korea', 'su-applink' ),
 		),
 		array(
 			'value' => 'CN',
-			'label' => '中国',
+			'label' => __( 'China', 'su-applink' ),
 		),
 		array(
 			'value' => 'TW',
-			'label' => '台湾',
+			'label' => __( 'Taiwan', 'su-applink' ),
 		),
 		array(
 			'value' => 'HK',
-			'label' => '香港',
+			'label' => __( 'Hong Kong', 'su-applink' ),
 		),
 		// 英語圏主要国
 		array(
 			'value' => 'US',
-			'label' => '米国',
+			'label' => __( 'United States', 'su-applink' ),
 		),
 		array(
 			'value' => 'GB',
-			'label' => '英国',
+			'label' => __( 'United Kingdom', 'su-applink' ),
 		),
 		array(
 			'value' => 'CA',
-			'label' => 'カナダ',
+			'label' => __( 'Canada', 'su-applink' ),
 		),
 		array(
 			'value' => 'AU',
-			'label' => 'オーストラリア',
+			'label' => __( 'Australia', 'su-applink' ),
 		),
 		// その他主要国
 		array(
 			'value' => 'SG',
-			'label' => 'シンガポール',
+			'label' => __( 'Singapore', 'su-applink' ),
 		),
 		array(
 			'value' => 'TH',
-			'label' => 'タイ',
+			'label' => __( 'Thailand', 'su-applink' ),
 		),
 		array(
 			'value' => 'IN',
-			'label' => 'インド',
+			'label' => __( 'India', 'su-applink' ),
 		),
 		array(
 			'value' => 'DE',
-			'label' => 'ドイツ',
+			'label' => __( 'Germany', 'su-applink' ),
 		),
 		array(
 			'value' => 'FR',
-			'label' => 'フランス',
+			'label' => __( 'France', 'su-applink' ),
 		),
 		array(
 			'value' => 'BR',
-			'label' => 'ブラジル',
+			'label' => __( 'Brazil', 'su-applink' ),
 		),
 	)
 );
