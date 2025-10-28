@@ -72,7 +72,7 @@ const edit = (props) => {
 			// iTunes Search APIを直接呼び出し
 			const res = await fetch(url);
 			const result = await res.json();
-			await setResult(result);
+			setResult(result);
 			setState('result-success');
 		} catch (e) {
 			setState('result-error');
@@ -94,7 +94,7 @@ const edit = (props) => {
 		setTerm(tempTerm);
 	};
 
-	const onKeyPress = (e) => {
+	const onKeyDown = (e) => {
 		// URL入力してEnterを押したら
 		if (e.key === 'Enter') {
 			e.preventDefault();
@@ -292,7 +292,7 @@ const edit = (props) => {
 						placeholder={__('Enter search term and press Enter', 'su-applink')}
 						value={tempTerm}
 						onChange={(value) => setTempTerm(value)}
-						onKeyPress={onKeyPress}
+						onKeyDown={onKeyDown}
 					/>
 				</div>
 			)}
