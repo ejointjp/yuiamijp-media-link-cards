@@ -3,7 +3,7 @@ import {
 	PlainText,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { useState, useEffect, useCallback } from '@wordpress/element';
+import { useState, useEffect, useCallback, useRef } from '@wordpress/element';
 import {
 	PanelBody,
 	SelectControl,
@@ -51,6 +51,8 @@ const edit = (props) => {
 	const [limit, setLimit] = useState(options.limit || 10);
 	const [lang, setLang] = useState(options.lang || 'auto');
 	const [country, setCountry] = useState(options.country || 'JP');
+	const inputRef = useRef(null);
+	const hasAutoFocusedRef = useRef(false);
 
 	const fetchData = useCallback(async () => {
 		const searchParams = new URLSearchParams();
@@ -225,6 +227,19 @@ const edit = (props) => {
 		if (hasApp) setResult({});
 	}, [app]);
 
+	// ブロック新規作成直後に入力欄へ自動フォーカス
+	useEffect(() => {
+		if (
+			isSelected &&
+			!hasAutoFocusedRef.current &&
+			!hasApp &&
+			tempTerm === ''
+		) {
+			inputRef.current && inputRef.current.focus && inputRef.current.focus();
+			hasAutoFocusedRef.current = true;
+		}
+	}, [isSelected, hasApp, tempTerm]);
+
 	return (
 		<div {...blockProps}>
 			<InspectorControls>
@@ -289,6 +304,7 @@ const edit = (props) => {
 					<PlainText
 						className='sual-editor-input'
 						tagName='input'
+						ref={inputRef}
 						placeholder={__('Enter search term and press Enter', 'su-applink')}
 						value={tempTerm}
 						onChange={(value) => setTempTerm(value)}
