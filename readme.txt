@@ -1,9 +1,9 @@
-=== Applink Block for WP ===
+=== SU Blocks - Applink ===
 Contributors: ejointjp
 Donate link:
-Tags: Apple, App, iPhone, iPad, Mac, iTunes, App Store, Affiliate
+Tags: Apple, iTunes
 Requires at least: 5.0
-Tested up to: 6.8.3
+Tested up to: 6.8
 Stable tag: 1.0.0
 Requires PHP: 7.4
 License: GPLv2 or later

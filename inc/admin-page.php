@@ -3,8 +3,8 @@
 // 管理画面に設定画面を追加
 function sual_add_admin_page() {
 	add_options_page(
-		__( 'Applink for WP', 'su-applink' ),
-		__( 'Applink for WP', 'su-applink' ),
+		'SU Applink',
+		'SU Applink',
 		'manage_options',
 		'su-applink',
 		'sual_options_page_html'
@@ -16,7 +16,7 @@ add_action( 'admin_menu', 'sual_add_admin_page' );
 function sual_options_page_html() {
 	?>
 	<div class="wrap">
-	<h2><?php echo esc_html__( 'Applink for WP', 'su-applink' ); ?></h2>
+	<h2>SU Blocks - Applink</h2>
 
 	<?php
 	global $parent_file;
@@ -105,7 +105,7 @@ function sual_limit_callback() {
 
 	echo '<select name="sual-setting[limit]">';
 	foreach ( $values as $val ) {
-		printf( '<option value="%1$d" %2$s>%1$d</option>', $val, selected( $option_val, $val, false ) );
+		printf( '<option value="%1$d" %2$s>%1$d</option>', esc_attr( $val ), selected( $option_val, $val, false ) );
 	}
 	echo '</select>';
 }
@@ -117,7 +117,7 @@ function sual_country_callback() {
 
 	echo '<select name="sual-setting[country]">';
 	foreach ( SUAL_COUNTRY_VALUES as $item ) {
-		printf( '<option value="%s" %s>%s</option>', $item['value'], selected( $option_val, $item['value'], false ), $item['label'] );
+		printf( '<option value="%s" %s>%s</option>', esc_attr( $item['value'] ), selected( $option_val, $item['value'], false ), esc_html( $item['label'] ) );
 	}
 	echo '</select>';
 	echo '<p class="description">' . esc_html__( 'Select the country of the App Store to search.', 'su-applink' ) . '</p>';
@@ -130,7 +130,7 @@ function sual_lang_callback() {
 
 	echo '<select name="sual-setting[lang]">';
 	foreach ( SUAL_LANG_VALUES as $item ) {
-		printf( '<option value="%s" %s>%s</option>', $item['value'], selected( $option_val, $item['value'], false ), $item['label'] );
+		printf( '<option value="%s" %s>%s</option>', esc_attr( $item['value'] ), selected( $option_val, $item['value'], false ), esc_html( $item['label'] ) );
 	}
 	echo '</select>';
 	echo '<p class="description">' . esc_html__( 'Select the display language for Applink.', 'su-applink' ) . '</p>';
