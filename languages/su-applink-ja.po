@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SU Applink 1.0.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/su-applink\n"
+"POT-Creation-Date: 2025-10-29T02:02:15+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
 "Last-Translator: Takashi Fujiskai\n"
 "Language-Team: Japanese\n"
@@ -14,94 +14,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: su-applink\n"
 
-#: inc/define.php:9
-msgid "10 items"
-msgstr "10件"
+#. Plugin Name of the plugin
+#: su-applink.php
+#, fuzzy
+msgid "SU Blocks - Applink"
+msgstr "SU Blocks"
 
-#: inc/define.php:13
-msgid "25 items"
-msgstr "25件"
+#. Description of the plugin
+#: su-applink.php
+msgid ""
+"Easily create promotional links for iPhone / iPad / Mac apps, music tracks, "
+"Apple Books, and more."
+msgstr ""
 
-#: inc/define.php:17
-msgid "50 items"
-msgstr "50件"
-
-#: inc/define.php:21
-msgid "100 items"
-msgstr "100件"
-
-#: inc/define.php:25
-msgid "200 items"
-msgstr "200件"
-
-#: inc/define.php:36
-msgid "Auto"
-msgstr "自動"
-
-#: inc/define.php:40
-msgid "English"
-msgstr "英語"
-
-#: inc/define.php:74
-msgid "Japan"
-msgstr "日本"
-
-#: inc/define.php:78
-msgid "South Korea"
-msgstr "韓国"
-
-#: inc/define.php:82
-msgid "China"
-msgstr "中国"
-
-#: inc/define.php:86
-msgid "Taiwan"
-msgstr "台湾"
-
-#: inc/define.php:90
-msgid "Hong Kong"
-msgstr "香港"
-
-#: inc/define.php:95
-msgid "United States"
-msgstr "米国"
-
-#: inc/define.php:99
-msgid "United Kingdom"
-msgstr "英国"
-
-#: inc/define.php:103
-msgid "Canada"
-msgstr "カナダ"
-
-#: inc/define.php:107
-msgid "Australia"
-msgstr "オーストラリア"
-
-#: inc/define.php:112
-msgid "Singapore"
-msgstr "シンガポール"
-
-#: inc/define.php:116
-msgid "Thailand"
-msgstr "タイ"
-
-#: inc/define.php:120
-msgid "India"
-msgstr "インド"
-
-#: inc/define.php:124
-msgid "Germany"
-msgstr "ドイツ"
-
-#: inc/define.php:128
-msgid "France"
-msgstr "フランス"
-
-#: inc/define.php:132
-msgid "Brazil"
-msgstr "ブラジル"
+#. Author of the plugin
+#: su-applink.php
+msgid "Takashi Fujiskai"
+msgstr ""
 
 #: inc/admin-page.php:86
 msgid "PHG Token"
@@ -119,45 +50,195 @@ msgstr "デフォルトの検索対象ストア"
 msgid "Default Language"
 msgstr "デフォルトの表示言語"
 
-#: inc/admin-page.php:123
+#: inc/admin-page.php:129
 msgid "Select the country of the App Store to search."
 msgstr "検索するApp Storeの国を選択します。"
 
-#: inc/admin-page.php:136
+#: inc/admin-page.php:143
 msgid "Select the display language for Applink."
 msgstr "Applinkの表示言語を選択します。"
 
-#: su-applink.php:42
-msgid "SU Blocks"
-msgstr "SU Blocks"
+#: inc/define.php:144
+msgid "10 items"
+msgstr "10件"
 
-msgid "Search Settings"
-msgstr "検索条件設定"
+#: inc/define.php:145
+msgid "25 items"
+msgstr "25件"
 
-msgid "Number of Results"
-msgstr "検索結果数"
+#: inc/define.php:146
+msgid "50 items"
+msgstr "50件"
 
-msgid "Store Country"
-msgstr "検索対象ストア"
+#: inc/define.php:147
+msgid "100 items"
+msgstr "100件"
 
-msgid "Display Language"
-msgstr "表示言語"
+#: inc/define.php:148
+msgid "200 items"
+msgstr "200件"
 
-msgid "Set default values on settings page"
-msgstr "設定ページでデフォルト値を設定する"
+#: inc/define.php:170
+msgid "Auto"
+msgstr "自動"
 
-msgid "Enter search term and press Enter"
-msgstr "検索ワードを入力してEnter"
+#: inc/define.php:171
+msgid "English"
+msgstr "英語"
 
-msgid "Select"
-msgstr "選択"
+#: inc/define.php:193
+msgid "Japan"
+msgstr "日本"
 
-msgid "Search Results"
-msgstr "検索結果"
+#: inc/define.php:194
+msgid "South Korea"
+msgstr "韓国"
 
-msgid "Failed to retrieve data"
-msgstr "データの取得に失敗しました"
+#: inc/define.php:195
+msgid "China"
+msgstr "中国"
 
+#: inc/define.php:196
+msgid "Taiwan"
+msgstr "台湾"
+
+#: inc/define.php:197
+msgid "Hong Kong"
+msgstr "香港"
+
+#: inc/define.php:198
+msgid "United States"
+msgstr "米国"
+
+#: inc/define.php:199
+msgid "United Kingdom"
+msgstr "英国"
+
+#: inc/define.php:200
+msgid "Canada"
+msgstr "カナダ"
+
+#: inc/define.php:201
+msgid "Australia"
+msgstr "オーストラリア"
+
+#: inc/define.php:202
+msgid "Singapore"
+msgstr "シンガポール"
+
+#: inc/define.php:203
+msgid "Thailand"
+msgstr "タイ"
+
+#: inc/define.php:204
+msgid "India"
+msgstr "インド"
+
+#: inc/define.php:205
+msgid "Germany"
+msgstr "ドイツ"
+
+#: inc/define.php:206
+msgid "France"
+msgstr "フランス"
+
+#: inc/define.php:207
+msgid "Brazil"
+msgstr "ブラジル"
+
+#: build/index.js:1 src/components/Applink.jsx:50
 msgid "Preview"
 msgstr "試聴"
 
+#: build/index.js:1 src/edit.jsx:246
+msgid "Search Settings"
+msgstr "検索条件設定"
+
+#: build/index.js:1 src/edit.jsx:249
+msgid "Number of Results"
+msgstr "検索結果数"
+
+#: build/index.js:1 src/edit.jsx:258
+msgid "Store Country"
+msgstr "検索対象ストア"
+
+#: build/index.js:1 src/edit.jsx:267
+msgid "Display Language"
+msgstr "表示言語"
+
+#: build/index.js:1 src/edit.jsx:282
+msgid "Set default values on settings page"
+msgstr "設定ページでデフォルト値を設定する"
+
+#: build/index.js:1 src/edit.jsx:308
+msgid "Enter search term and press Enter"
+msgstr "検索ワードを入力してEnter"
+
+#: build/index.js:1 src/edit.jsx:209
+msgid "Failed to retrieve data"
+msgstr "データの取得に失敗しました"
+
+#: build/index.js:1 src/edit.jsx:172
+msgid "Select"
+msgstr "選択"
+
+#: build/index.js:1 src/edit.jsx:181
+msgid "Search Results"
+msgstr "検索結果"
+
+#: build/block.json src/block.json
+msgctxt "block title"
+msgid "Applink"
+msgstr ""
+
+#: build/block.json src/block.json
+msgctxt "block description"
+msgid ""
+"Create promotional links for iPhone / iPad / Mac apps, music tracks, Apple "
+"Books, and more."
+msgstr ""
+
+#: build/block.json src/block.json
+msgctxt "block keyword"
+msgid "link"
+msgstr ""
+
+#: build/block.json src/block.json
+msgctxt "block keyword"
+msgid "embed"
+msgstr ""
+
+#: build/block.json src/block.json
+msgctxt "block keyword"
+msgid "app"
+msgstr ""
+
+#: build/block.json src/block.json
+msgctxt "block keyword"
+msgid "apple"
+msgstr ""
+
+#: build/block.json src/block.json
+msgctxt "block keyword"
+msgid "itunes"
+msgstr ""
+
+#: build/block.json src/block.json
+msgctxt "block keyword"
+msgid "iphone"
+msgstr ""
+
+#: build/block.json src/block.json
+msgctxt "block keyword"
+msgid "ipad"
+msgstr ""
+
+#: build/block.json src/block.json
+msgctxt "block keyword"
+msgid "mac"
+msgstr ""
+
+#: build/block.json src/block.json
+msgctxt "block keyword"
+msgid "book"
+msgstr ""

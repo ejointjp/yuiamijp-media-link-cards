@@ -101,11 +101,16 @@ function sual_token_callback() {
 function sual_limit_callback() {
 	$options    = get_option( 'sual-setting' );
 	$option_val = isset( $options['limit'] ) ? $options['limit'] : 10;
-	$values     = array( 10, 25, 50, 100, 200 );
+	$values     = sual_get_limit_values();
 
 	echo '<select name="sual-setting[limit]">';
 	foreach ( $values as $val ) {
-		printf( '<option value="%1$d" %2$s>%1$d</option>', esc_attr( $val ), selected( $option_val, $val, false ) );
+		printf(
+			'<option value="%1$s" %2$s>%3$s</option>',
+			esc_attr( $val['value'] ),
+			selected( (string) $option_val, (string) $val['value'], false ),
+			esc_html( $val['label'] )
+		);
 	}
 	echo '</select>';
 }
@@ -114,9 +119,10 @@ function sual_limit_callback() {
 function sual_country_callback() {
 	$options    = get_option( 'sual-setting' );
 	$option_val = isset( $options['country'] ) ? $options['country'] : 'JP';
+	$values     = sual_get_country_values();
 
 	echo '<select name="sual-setting[country]">';
-	foreach ( SUAL_COUNTRY_VALUES as $item ) {
+	foreach ( $values as $item ) {
 		printf( '<option value="%s" %s>%s</option>', esc_attr( $item['value'] ), selected( $option_val, $item['value'], false ), esc_html( $item['label'] ) );
 	}
 	echo '</select>';
@@ -127,9 +133,10 @@ function sual_country_callback() {
 function sual_lang_callback() {
 	$options    = get_option( 'sual-setting' );
 	$option_val = isset( $options['lang'] ) ? $options['lang'] : 'auto';
+	$values     = sual_get_lang_values();
 
 	echo '<select name="sual-setting[lang]">';
-	foreach ( SUAL_LANG_VALUES as $item ) {
+	foreach ( $values as $item ) {
 		printf( '<option value="%s" %s>%s</option>', esc_attr( $item['value'] ), selected( $option_val, $item['value'], false ), esc_html( $item['label'] ) );
 	}
 	echo '</select>';

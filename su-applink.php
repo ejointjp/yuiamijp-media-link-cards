@@ -30,7 +30,18 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/define.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/admin-page.php';
 
 function sual_init() {
-	register_block_type( __DIR__ . '/build' );
+	$block_type = register_block_type( __DIR__ . '/build' );
+
+	if ( ! is_wp_error( $block_type ) && function_exists( 'wp_set_script_translations' ) ) {
+		$script_handles = array_merge(
+			(array) $block_type->editor_script_handles,
+			(array) $block_type->script_handles
+		);
+
+		foreach ( $script_handles as $handle ) {
+			wp_set_script_translations( $handle, 'su-applink', plugin_dir_path( __FILE__ ) . 'languages' );
+		}
+	}
 }
 add_action( 'init', 'sual_init' );
 
@@ -73,6 +84,10 @@ function sual_register_activation() {
 register_activation_hook( __FILE__, 'sual_register_activation' );
 
 function sual_admin_enqueue_scripts() {
+	$limit_values   = sual_get_limit_values();
+	$country_values = sual_get_country_values();
+	$lang_values    = sual_get_lang_values();
+
 	// PHPからJavaScriptに値を渡す
 	wp_add_inline_script(
 		'wp-block-editor',
@@ -80,9 +95,9 @@ function sual_admin_enqueue_scripts() {
 			array(
 				'optionsPageUrl'   => admin_url( 'options-general.php?page=su-applink' ),
 				'options'          => get_option( 'sual-setting' ),
-				'limitValues'      => SUAL_LIMIT_VALUES,
-				'countryValues'    => SUAL_COUNTRY_VALUES,
-				'langValues'       => SUAL_LANG_VALUES,
+				'limitValues'      => $limit_values,
+				'countryValues'    => $country_values,
+				'langValues'       => $lang_values,
 				'countryToLangMap' => SUAL_COUNTRY_TO_LANG_MAP,
 			)
 		) . ';',
