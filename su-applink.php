@@ -105,3 +105,21 @@ function sual_admin_enqueue_scripts() {
 	);
 }
 add_action( 'admin_enqueue_scripts', 'sual_admin_enqueue_scripts' );
+
+/**
+ * Add settings link to plugins page
+ *
+ * @param array $links Existing links.
+ * @return array
+ */
+function sual_add_action_links( $links ) {
+	$settings_link = sprintf(
+		'<a href="%s">%s</a>',
+		admin_url( 'options-general.php?page=su-applink' ),
+		__( 'Settings', 'su-applink' )
+	);
+	array_unshift( $links, $settings_link );
+
+	return $links;
+}
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'sual_add_action_links' );
