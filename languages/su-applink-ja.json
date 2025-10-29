@@ -10,7 +10,11 @@
 			"Search Settings": ["検索条件設定"],
 			"Number of Results": ["検索結果数"],
 			"Store Country": ["検索対象ストア"],
+			"Display Applink in English": ["Applinkを英語表記にする"],
 			"Display Language": ["表示言語"],
+			"If turned off, the language will be determined automatically.": [
+				"オフにすると、言語が自動的に決定されます。"
+			],
 			"Set default values on settings page": [
 				"設定ページでデフォルト値を設定する"
 			],

@@ -55,6 +55,7 @@ msgid "Select the country of the App Store to search."
 msgstr "検索するApp Storeの国を選択します。"
 
 #: inc/admin-page.php:141
+#: build/index.js:1 src/edit.jsx:267
 msgid "Display Applink in English"
 msgstr "Applinkを英語表記にする"
 
@@ -165,10 +166,6 @@ msgstr "検索結果数"
 #: build/index.js:1 src/edit.jsx:258
 msgid "Store Country"
 msgstr "検索対象ストア"
-
-#: build/index.js:1 src/edit.jsx:267
-msgid "Display Applink in English"
-msgstr "Applinkを英語表記にする"
 
 #: build/index.js:1 src/edit.jsx:271
 msgid "If turned off, the language will be determined automatically."

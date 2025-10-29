@@ -53,6 +53,14 @@ msgstr ""
 msgid "Select the display language for Applink."
 msgstr ""
 
+#: inc/admin-page.php:141
+msgid "Display Applink in English"
+msgstr ""
+
+#: inc/admin-page.php:143
+msgid "If unchecked, the language will be determined automatically."
+msgstr ""
+
 #: inc/define.php:144
 msgid "10 items"
 msgstr ""
@@ -163,7 +171,12 @@ msgstr ""
 
 #: build/index.js:1
 #: src/edit.jsx:267
-msgid "Display Language"
+msgid "Display Applink in English"
+msgstr ""
+
+#: build/index.js:1
+#: src/edit.jsx:271
+msgid "If turned off, the language will be determined automatically."
 msgstr ""
 
 #: build/index.js:1
