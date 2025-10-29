@@ -7,6 +7,7 @@ import { useState, useEffect, useCallback, useRef } from '@wordpress/element';
 import {
 	PanelBody,
 	SelectControl,
+	ToggleControl,
 	BaseControl,
 	Button,
 } from '@wordpress/components';
@@ -244,7 +245,7 @@ const edit = (props) => {
 		<div {...blockProps}>
 			<InspectorControls>
 				<PanelBody title={__('Search Settings', 'su-applink')}>
-					<BaseControl label=''>
+					<BaseControl label='' __nextHasNoMarginBottom>
 						<SelectControl
 							label={__('Number of Results', 'su-applink')}
 							value={limit}
@@ -263,12 +264,14 @@ const edit = (props) => {
 							__nextHasNoMarginBottom
 						/>
 
-						<SelectControl
-							label={__('Display Language', 'su-applink')}
-							value={lang}
-							onChange={(value) => setLang(value)}
-							options={langValues}
-							__next40pxDefaultSize
+						<ToggleControl
+							label={__('Display Applink in English', 'su-applink')}
+							checked={lang === 'en_us'}
+							onChange={(checked) => setLang(checked ? 'en_us' : 'auto')}
+							help={__(
+								'If turned off, the language will be determined automatically.',
+								'su-applink',
+							)}
 							__nextHasNoMarginBottom
 						/>
 

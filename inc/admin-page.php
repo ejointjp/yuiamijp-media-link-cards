@@ -62,11 +62,11 @@ function sual_sanitize_options( $input ) {
 	}
 
 	// langのサニタイズ（許可された値のみ）
-	$allowed_langs = array( 'auto', 'en_us' );
-	if ( isset( $input['lang'] ) && in_array( $input['lang'], $allowed_langs, true ) ) {
-		$sanitized['lang'] = sanitize_text_field( $input['lang'] );
+	// チェックボックスがチェックされている場合はen_us、チェックされていない場合はauto
+	if ( isset( $input['lang'] ) && 'en_us' === $input['lang'] ) {
+		$sanitized['lang'] = 'en_us';
 	} else {
-		$sanitized['lang'] = 'auto'; // デフォルト値
+		$sanitized['lang'] = 'auto'; // デフォルト値（チェックボックスがチェックされていない場合）
 	}
 
 	return $sanitized;
@@ -133,12 +133,12 @@ function sual_country_callback() {
 function sual_lang_callback() {
 	$options    = get_option( 'sual-setting' );
 	$option_val = isset( $options['lang'] ) ? $options['lang'] : 'auto';
-	$values     = sual_get_lang_values();
+	$checked    = ( 'en_us' === $option_val ) ? 'checked' : '';
 
-	echo '<select name="sual-setting[lang]">';
-	foreach ( $values as $item ) {
-		printf( '<option value="%s" %s>%s</option>', esc_attr( $item['value'] ), selected( $option_val, $item['value'], false ), esc_html( $item['label'] ) );
-	}
-	echo '</select>';
-	echo '<p class="description">' . esc_html__( 'Select the display language for Applink.', 'su-applink' ) . '</p>';
+	printf(
+		'<label><input type="checkbox" id="lang-checkbox" name="sual-setting[lang]" value="en_us" %1$s> %2$s</label>',
+		$checked,
+		esc_html__( 'Display Applink in English', 'su-applink' )
+	);
+	echo '<p class="description">' . esc_html__( 'If unchecked, the language will be determined automatically.', 'su-applink' ) . '</p>';
 }
