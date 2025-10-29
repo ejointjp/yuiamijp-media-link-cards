@@ -1,47 +1,5 @@
 <?php
 
-// 検索結果数オプション
-define(
-	'SUAL_LIMIT_VALUES',
-	array(
-		array(
-			'value' => 10,
-			'label' => '10 items',
-		),
-		array(
-			'value' => 25,
-			'label' => '25 items',
-		),
-		array(
-			'value' => 50,
-			'label' => '50 items',
-		),
-		array(
-			'value' => 100,
-			'label' => '100 items',
-		),
-		array(
-			'value' => 200,
-			'label' => '200 items',
-		),
-	)
-);
-
-// 言語設定オプション（自動と英語のみ）
-define(
-	'SUAL_LANG_VALUES',
-	array(
-		array(
-			'value' => 'auto',
-			'label' => 'Auto',
-		),
-		array(
-			'value' => 'en_us',
-			'label' => 'English',
-		),
-	)
-);
-
 // 国コードから言語コードへのマッピング
 define(
 	'SUAL_COUNTRY_TO_LANG_MAP',
@@ -64,100 +22,36 @@ define(
 	)
 );
 
-// 国設定オプション（主要15カ国、使用頻度順）
-define(
-	'SUAL_COUNTRY_VALUES',
-	array(
-		// アジア主要国
-		array(
-			'value' => 'JP',
-			'label' => 'Japan',
-		),
-		array(
-			'value' => 'KR',
-			'label' => 'South Korea',
-		),
-		array(
-			'value' => 'CN',
-			'label' => 'China',
-		),
-		array(
-			'value' => 'TW',
-			'label' => 'Taiwan',
-		),
-		array(
-			'value' => 'HK',
-			'label' => 'Hong Kong',
-		),
-		// 英語圏主要国
-		array(
-			'value' => 'US',
-			'label' => 'United States',
-		),
-		array(
-			'value' => 'GB',
-			'label' => 'United Kingdom',
-		),
-		array(
-			'value' => 'CA',
-			'label' => 'Canada',
-		),
-		array(
-			'value' => 'AU',
-			'label' => 'Australia',
-		),
-		// その他主要国
-		array(
-			'value' => 'SG',
-			'label' => 'Singapore',
-		),
-		array(
-			'value' => 'TH',
-			'label' => 'Thailand',
-		),
-		array(
-			'value' => 'IN',
-			'label' => 'India',
-		),
-		array(
-			'value' => 'DE',
-			'label' => 'Germany',
-		),
-		array(
-			'value' => 'FR',
-			'label' => 'France',
-		),
-		array(
-			'value' => 'BR',
-			'label' => 'Brazil',
-		),
-	)
-);
-
 /**
  * Get limit select options with translated labels.
  *
  * @return array
  */
 function sual_get_limit_values() {
-	$label_map = array(
-		'10 items'  => __( '10 items', 'su-applink' ),
-		'25 items'  => __( '25 items', 'su-applink' ),
-		'50 items'  => __( '50 items', 'su-applink' ),
-		'100 items' => __( '100 items', 'su-applink' ),
-		'200 items' => __( '200 items', 'su-applink' ),
+	$values = array(
+		array(
+			'value' => 10,
+			'label' => __( '10 items', 'su-applink' ),
+		),
+		array(
+			'value' => 25,
+			'label' => __( '25 items', 'su-applink' ),
+		),
+		array(
+			'value' => 50,
+			'label' => __( '50 items', 'su-applink' ),
+		),
+		array(
+			'value' => 100,
+			'label' => __( '100 items', 'su-applink' ),
+		),
+		array(
+			'value' => 200,
+			'label' => __( '200 items', 'su-applink' ),
+		),
 	);
 
-	return array_map(
-		static function ( $item ) use ( $label_map ) {
-			if ( isset( $label_map[ $item['label'] ] ) ) {
-				$item['label'] = $label_map[ $item['label'] ];
-			}
-
-			return $item;
-		},
-		SUAL_LIMIT_VALUES
-	);
+	return $values;
 }
 
 /**
@@ -166,20 +60,15 @@ function sual_get_limit_values() {
  * @return array
  */
 function sual_get_lang_values() {
-	$label_map = array(
-		'Auto'    => __( 'Auto', 'su-applink' ),
-		'English' => __( 'English', 'su-applink' ),
-	);
-
-	return array_map(
-		static function ( $item ) use ( $label_map ) {
-			if ( isset( $label_map[ $item['label'] ] ) ) {
-				$item['label'] = $label_map[ $item['label'] ];
-			}
-
-			return $item;
-		},
-		SUAL_LANG_VALUES
+	return array(
+		array(
+			'value' => 'auto',
+			'label' => __( 'Auto', 'su-applink' ),
+		),
+		array(
+			'value' => 'en_us',
+			'label' => __( 'English', 'su-applink' ),
+		),
 	);
 }
 
@@ -189,32 +78,69 @@ function sual_get_lang_values() {
  * @return array
  */
 function sual_get_country_values() {
-	$label_map = array(
-		'Japan'          => __( 'Japan', 'su-applink' ),
-		'South Korea'    => __( 'South Korea', 'su-applink' ),
-		'China'          => __( 'China', 'su-applink' ),
-		'Taiwan'         => __( 'Taiwan', 'su-applink' ),
-		'Hong Kong'      => __( 'Hong Kong', 'su-applink' ),
-		'United States'  => __( 'United States', 'su-applink' ),
-		'United Kingdom' => __( 'United Kingdom', 'su-applink' ),
-		'Canada'         => __( 'Canada', 'su-applink' ),
-		'Australia'      => __( 'Australia', 'su-applink' ),
-		'Singapore'      => __( 'Singapore', 'su-applink' ),
-		'Thailand'       => __( 'Thailand', 'su-applink' ),
-		'India'          => __( 'India', 'su-applink' ),
-		'Germany'        => __( 'Germany', 'su-applink' ),
-		'France'         => __( 'France', 'su-applink' ),
-		'Brazil'         => __( 'Brazil', 'su-applink' ),
-	);
-
-	return array_map(
-		static function ( $item ) use ( $label_map ) {
-			if ( isset( $label_map[ $item['label'] ] ) ) {
-				$item['label'] = $label_map[ $item['label'] ];
-			}
-
-			return $item;
-		},
-		SUAL_COUNTRY_VALUES
+	return array(
+		// アジア主要国
+		array(
+			'value' => 'JP',
+			'label' => __( 'Japan', 'su-applink' ),
+		),
+		array(
+			'value' => 'KR',
+			'label' => __( 'South Korea', 'su-applink' ),
+		),
+		array(
+			'value' => 'CN',
+			'label' => __( 'China', 'su-applink' ),
+		),
+		array(
+			'value' => 'TW',
+			'label' => __( 'Taiwan', 'su-applink' ),
+		),
+		array(
+			'value' => 'HK',
+			'label' => __( 'Hong Kong', 'su-applink' ),
+		),
+		// 英語圏主要国
+		array(
+			'value' => 'US',
+			'label' => __( 'United States', 'su-applink' ),
+		),
+		array(
+			'value' => 'GB',
+			'label' => __( 'United Kingdom', 'su-applink' ),
+		),
+		array(
+			'value' => 'CA',
+			'label' => __( 'Canada', 'su-applink' ),
+		),
+		array(
+			'value' => 'AU',
+			'label' => __( 'Australia', 'su-applink' ),
+		),
+		// その他主要国
+		array(
+			'value' => 'SG',
+			'label' => __( 'Singapore', 'su-applink' ),
+		),
+		array(
+			'value' => 'TH',
+			'label' => __( 'Thailand', 'su-applink' ),
+		),
+		array(
+			'value' => 'IN',
+			'label' => __( 'India', 'su-applink' ),
+		),
+		array(
+			'value' => 'DE',
+			'label' => __( 'Germany', 'su-applink' ),
+		),
+		array(
+			'value' => 'FR',
+			'label' => __( 'France', 'su-applink' ),
+		),
+		array(
+			'value' => 'BR',
+			'label' => __( 'Brazil', 'su-applink' ),
+		),
 	);
 }
