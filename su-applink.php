@@ -50,19 +50,25 @@ add_action( 'init', 'sual_init' );
  *
  * @param array $categories Categories.
  * @param array $post Post.
+ *
  */
-function sual_categories( $categories, $post ) {
-	return array_merge(
-		$categories,
-		array(
-			array(
-				'slug'  => 'su-blocks',
-				'title' => 'SU Blocks',
-			),
-		)
-	);
+function sual_block_categories( $categories, $editor_context ) {
+	if ( ! empty( $editor_context->post ) ) {
+		// 既存のカテゴリーが存在するかチェック
+		$exists = wp_list_pluck( $categories, 'slug' );
+		if ( ! in_array( 'su-blocks', $exists, true ) ) {
+			array_push(
+				$categories,
+				array(
+					'slug'  => 'su-blocks',
+					'title' => 'SU Blocks',
+				)
+			);
+		}
+	}
+	return $categories;
 }
-add_filter( 'block_categories_all', 'sual_categories', 10, 2 );
+add_filter( 'block_categories_all', 'sual_block_categories', 10, 2 );
 
 
 
