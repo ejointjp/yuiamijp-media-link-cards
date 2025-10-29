@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: SU Applink 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-01 12:00+0000\n"
-"PO-Revision-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: 2024-10-29 12:00+0000\n"
 "Last-Translator: Takashi Fujiskai\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -15,95 +15,121 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "SU Blocks"
-msgstr "SU Blocks"
-
+#: inc/define.php:9
 msgid "10 items"
 msgstr "10件"
 
+#: inc/define.php:13
 msgid "25 items"
 msgstr "25件"
 
+#: inc/define.php:17
 msgid "50 items"
 msgstr "50件"
 
+#: inc/define.php:21
 msgid "100 items"
 msgstr "100件"
 
+#: inc/define.php:25
 msgid "200 items"
 msgstr "200件"
 
+#: inc/define.php:36
 msgid "Auto"
 msgstr "自動"
 
+#: inc/define.php:40
 msgid "English"
 msgstr "英語"
 
+#: inc/define.php:74
 msgid "Japan"
 msgstr "日本"
 
+#: inc/define.php:78
 msgid "South Korea"
 msgstr "韓国"
 
+#: inc/define.php:82
 msgid "China"
 msgstr "中国"
 
+#: inc/define.php:86
 msgid "Taiwan"
 msgstr "台湾"
 
+#: inc/define.php:90
 msgid "Hong Kong"
 msgstr "香港"
 
+#: inc/define.php:95
 msgid "United States"
 msgstr "米国"
 
+#: inc/define.php:99
 msgid "United Kingdom"
 msgstr "英国"
 
+#: inc/define.php:103
 msgid "Canada"
 msgstr "カナダ"
 
+#: inc/define.php:107
 msgid "Australia"
 msgstr "オーストラリア"
 
+#: inc/define.php:112
 msgid "Singapore"
 msgstr "シンガポール"
 
+#: inc/define.php:116
 msgid "Thailand"
 msgstr "タイ"
 
+#: inc/define.php:120
 msgid "India"
 msgstr "インド"
 
+#: inc/define.php:124
 msgid "Germany"
 msgstr "ドイツ"
 
+#: inc/define.php:128
 msgid "France"
 msgstr "フランス"
 
+#: inc/define.php:132
 msgid "Brazil"
 msgstr "ブラジル"
 
-msgid "Applink for WP"
-msgstr "Applink for WP"
-
+#: inc/admin-page.php:86
 msgid "PHG Token"
 msgstr "PHGトークン"
 
+#: inc/admin-page.php:87
 msgid "Default Search Results"
 msgstr "デフォルトの検索結果数"
 
+#: inc/admin-page.php:88
 msgid "Default Store Country"
 msgstr "デフォルトの検索対象ストア"
 
+#: inc/admin-page.php:89
 msgid "Default Language"
 msgstr "デフォルトの表示言語"
 
+#: inc/admin-page.php:123
 msgid "Select the country of the App Store to search."
 msgstr "検索するApp Storeの国を選択します。"
 
+#: inc/admin-page.php:136
 msgid "Select the display language for Applink."
 msgstr "Applinkの表示言語を選択します。"
+
+#: su-applink.php:42
+msgid "SU Blocks"
+msgstr "SU Blocks"
 
 msgid "Search Settings"
 msgstr "検索条件設定"

@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: SU Applink 1.0.0\n"
@@ -17,10 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-
-#: applink-for-wp.php:13
-msgid "SU Blocks"
-msgstr ""
 
 #: inc/define.php:9
 msgid "10 items"
@@ -110,10 +105,6 @@ msgstr ""
 msgid "Brazil"
 msgstr ""
 
-#: inc/admin-page.php:6
-msgid "Applink for WP"
-msgstr ""
-
 #: inc/admin-page.php:86
 msgid "PHG Token"
 msgstr ""
@@ -136,6 +127,10 @@ msgstr ""
 
 #: inc/admin-page.php:136
 msgid "Select the display language for Applink."
+msgstr ""
+
+#: su-applink.php:42
+msgid "SU Blocks"
 msgstr ""
 
 # React strings (these will be picked up by wp i18n make-pot)

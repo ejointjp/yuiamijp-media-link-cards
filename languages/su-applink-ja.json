@@ -1,0 +1,24 @@
+{
+	"domain": "su-applink",
+	"locale_data": {
+		"su-applink": {
+			"": {
+				"domain": "su-applink",
+				"lang": "ja",
+				"plural-forms": "nplurals=1; plural=0;"
+			},
+			"Search Settings": ["検索条件設定"],
+			"Number of Results": ["検索結果数"],
+			"Store Country": ["検索対象ストア"],
+			"Display Language": ["表示言語"],
+			"Set default values on settings page": [
+				"設定ページでデフォルト値を設定する"
+			],
+			"Enter search term and press Enter": ["検索ワードを入力してEnter"],
+			"Select": ["選択"],
+			"Search Results": ["検索結果"],
+			"Failed to retrieve data": ["データの取得に失敗しました"],
+			"Preview": ["試聴"]
+		}
+	}
+}
