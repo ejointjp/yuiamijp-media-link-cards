@@ -1,25 +1,26 @@
 .wp-block-su-applink,
 .sual-editor-wrapper {
-	--color-dark-gray: #18181b;
-	--color-gray: #52525c;
-	--color-light-gray: #e4e4e7;
-	--color-base-gray: #f4f4f5;
+	--color-text: #18181b;
+	--color-text-light: #71717b;
+	--color-ui: #e4e4e7;
+	--color-surface: #f4f4f5;
 	--color-background: #fff;
-	--border-radius: 1rem;
+	--border-radius: 0.1875rem;
 	--padding: 1rem;
+	--gap: 1rem;
 	--image-width: 5rem;
 	--image-height: 5rem;
-	--bg-color: #ffc0cb;
 
 	container-type: inline-size;
 }
 
-.dark .wp-blogcard-item {
-	--color-background: #18181b;
-	--color-dark-gray: #f4f4f5;
-	--color-gray: #9f9fa9;
-	--color-light-gray: #52525c;
-	--color-base-gray: #27272a;
+.dark .wp-block-su-applink {
+	--color-text: #f4f4f5;
+	--color-text-light: #9f9fa9;
+	--color-ui: #27272a;
+	--color-surface: #18181b;
+	--color-background: #09090b;
+	--color-white: #09090b;
 }
 
 .sual {
@@ -30,16 +31,17 @@
 
 	padding: var(--padding);
 
+	line-height: 1.5;
 	text-decoration: none;
 
 	background-color: var(--color-background);
-	border: 1px solid var(--color-light-gray);
+	border: 1px solid var(--color-ui);
 	border-radius: var(--border-radius);
 
 	transition: background-color 0.2s;
 
 	&:has(a:hover) {
-		background-color: var(--color-base-gray);
+		background-color: var(--color-surface);
 	}
 }
 
@@ -48,7 +50,7 @@
 }
 
 .sual-img {
-	width: 4rem;
+	width: 5rem;
 	border-radius: 0.5rem;
 
 	.sual-app & {
@@ -83,14 +85,14 @@
 
 	font-size: 0.875rem;
 	font-weight: 600;
-	color: var(--color-dark-gray) !important;
+	color: var(--color-text) !important;
 	text-decoration: none !important;
 }
 
 .sual-artist {
 	margin-top: 0.25rem;
 	font-size: 0.75rem;
-	color: var(--color-gray);
+	color: var(--color-text-light);
 }
 
 .sual-btns {
@@ -113,7 +115,7 @@
 	line-height: 1.5;
 	text-decoration: none !important;
 
-	background-color: var(--color-base-gray);
+	background-color: var(--color-surface);
 	border-radius: 999px;
 
 	transition: background-color 0.2s;
@@ -149,6 +151,8 @@
 
 @container (min-width: 32rem) {
 	.sual {
+		--padding: 1.25rem;
+
 		flex-direction: row;
 		align-items: center;
 	}
