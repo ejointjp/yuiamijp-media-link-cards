@@ -5,15 +5,15 @@
  * @package su-applink
  */
 
-$app         = isset( $attributes['app'] ) ? $attributes['app'] : array();
-$type        = isset( $app['type'] ) ? $app['type'] : '';
-$url         = isset( $app['url'] ) ? esc_url( $app['url'] ) : '';
-$title       = isset( $app['title'] ) ? esc_html( $app['title'] ) : '';
-$artist      = isset( $app['artist'] ) ? esc_html( $app['artist'] ) : '';
-$icon        = isset( $app['iconUrl'] ) ? esc_url( $app['iconUrl'] ) : '';
-$preview_url = isset( $app['previewUrl'] ) ? esc_url( $app['previewUrl'] ) : '';
+$sual_app         = isset( $attributes['app'] ) ? $attributes['app'] : array();
+$sual_type        = isset( $sual_app['type'] ) ? $sual_app['type'] : '';
+$sual_url         = isset( $sual_app['url'] ) ? esc_url( $sual_app['url'] ) : '';
+$sual_title       = isset( $sual_app['title'] ) ? esc_html( $sual_app['title'] ) : '';
+$sual_artist      = isset( $sual_app['artist'] ) ? esc_html( $sual_app['artist'] ) : '';
+$sual_icon        = isset( $sual_app['iconUrl'] ) ? esc_url( $sual_app['iconUrl'] ) : '';
+$sual_preview_url = isset( $sual_app['previewUrl'] ) ? esc_url( $sual_app['previewUrl'] ) : '';
 
-if ( empty( $url ) || empty( $title ) ) {
+if ( empty( $sual_url ) || empty( $sual_title ) ) {
 	return;
 }
 
@@ -63,34 +63,34 @@ if ( ! function_exists( 'sual_get_store_icon_svg' ) ) {
 	}
 }
 
-$store_info         = sual_get_store_icon_svg( $type );
-$wrapper_attributes = get_block_wrapper_attributes();
+$sual_store_info         = sual_get_store_icon_svg( $sual_type );
+$sual_wrapper_attributes = get_block_wrapper_attributes();
 
 ?>
 
-<div <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-	<div class="sual sual-<?php echo esc_attr( $type ); ?>">
-		<a class="sual-figure" href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
-			<img class="sual-img" src="<?php echo esc_url( $icon ); ?>" alt="<?php echo esc_attr( $title ); ?>" />
+<div <?php echo $sual_wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<div class="sual sual-<?php echo esc_attr( $sual_type ); ?>">
+		<a class="sual-figure" href="<?php echo esc_url( $sual_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+			<img class="sual-img" src="<?php echo esc_url( $sual_icon ); ?>" alt="<?php echo esc_attr( $sual_title ); ?>" />
 		</a>
 		<div class="sual-content">
 			<div class="sual-info">
-				<a class="sual-title" href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
-					<?php echo esc_html( $title ); ?>
+				<a class="sual-title" href="<?php echo esc_url( $sual_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+					<?php echo esc_html( $sual_title ); ?>
 				</a>
-				<div class="sual-artist"><?php echo esc_html( $artist ); ?></div>
+				<div class="sual-artist"><?php echo esc_html( $sual_artist ); ?></div>
 			</div>
 
 			<div class="sual-btns">
-				<?php if ( ! empty( $preview_url ) ) : ?>
-					<a class="sual-audition sual-btn" href="<?php echo esc_url( $preview_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+				<?php if ( ! empty( $sual_preview_url ) ) : ?>
+					<a class="sual-audition sual-btn" href="<?php echo esc_url( $sual_preview_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
 						<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
 						<span class="sual-btn-label"><?php echo esc_html__( 'Preview', 'su-applink' ); ?></span>
 					</a>
 				<?php endif; ?>
-				<a class="sual-store sual-btn" href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
-					<?php echo $store_info['svg']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					<span class="sual-btn-label"><?php echo esc_html( $store_info['label'] ); ?></span>
+				<a class="sual-store sual-btn" href="<?php echo esc_url( $sual_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+					<?php echo $sual_store_info['svg']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span class="sual-btn-label"><?php echo esc_html( $sual_store_info['label'] ); ?></span>
 				</a>
 			</div>
 		</div>
