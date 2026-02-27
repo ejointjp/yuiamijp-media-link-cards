@@ -18,13 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-/**
- * Load plugin textdomain
- */
-function sual_load_textdomain() {
-	load_plugin_textdomain( 'su-applink', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-}
-add_action( 'plugins_loaded', 'sual_load_textdomain', 1 );
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/define.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/admin-page.php';
