@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 /**
  * Render Applink block
  *
@@ -7,11 +10,11 @@
 
 $sual_app         = isset( $attributes['app'] ) ? $attributes['app'] : array();
 $sual_type        = isset( $sual_app['type'] ) ? $sual_app['type'] : '';
-$sual_url         = isset( $sual_app['url'] ) ? esc_url( $sual_app['url'] ) : '';
-$sual_title       = isset( $sual_app['title'] ) ? esc_html( $sual_app['title'] ) : '';
-$sual_artist      = isset( $sual_app['artist'] ) ? esc_html( $sual_app['artist'] ) : '';
-$sual_icon        = isset( $sual_app['iconUrl'] ) ? esc_url( $sual_app['iconUrl'] ) : '';
-$sual_preview_url = isset( $sual_app['previewUrl'] ) ? esc_url( $sual_app['previewUrl'] ) : '';
+$sual_url         = isset( $sual_app['url'] ) ? $sual_app['url'] : '';
+$sual_title       = isset( $sual_app['title'] ) ? $sual_app['title'] : '';
+$sual_artist      = isset( $sual_app['artist'] ) ? $sual_app['artist'] : '';
+$sual_icon        = isset( $sual_app['iconUrl'] ) ? $sual_app['iconUrl'] : '';
+$sual_preview_url = isset( $sual_app['previewUrl'] ) ? $sual_app['previewUrl'] : '';
 
 if ( empty( $sual_url ) || empty( $sual_title ) ) {
 	return;
