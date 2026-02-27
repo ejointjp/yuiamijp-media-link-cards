@@ -68,28 +68,28 @@ $wrapper_attributes = get_block_wrapper_attributes();
 
 ?>
 
-<div <?php echo $wrapper_attributes; ?>>
+<div <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<div class="sual sual-<?php echo esc_attr( $type ); ?>">
-		<a class="sual-figure" href="<?php echo $url; ?>" target="_blank" rel="noopener nofollow noreferrer">
-			<img class="sual-img" src="<?php echo $icon; ?>" alt="<?php echo $title; ?>" />
+		<a class="sual-figure" href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+			<img class="sual-img" src="<?php echo esc_url( $icon ); ?>" alt="<?php echo esc_attr( $title ); ?>" />
 		</a>
 		<div class="sual-content">
 			<div class="sual-info">
-				<a class="sual-title" href="<?php echo $url; ?>" target="_blank" rel="noopener nofollow noreferrer">
-					<?php echo $title; ?>
+				<a class="sual-title" href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+					<?php echo esc_html( $title ); ?>
 				</a>
-				<div class="sual-artist"><?php echo $artist; ?></div>
+				<div class="sual-artist"><?php echo esc_html( $artist ); ?></div>
 			</div>
 
 			<div class="sual-btns">
 				<?php if ( ! empty( $preview_url ) ) : ?>
-					<a class="sual-audition sual-btn" href="<?php echo $preview_url; ?>" target="_blank" rel="noopener nofollow noreferrer">
+					<a class="sual-audition sual-btn" href="<?php echo esc_url( $preview_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
 						<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
 						<span class="sual-btn-label"><?php echo esc_html__( 'Preview', 'su-applink' ); ?></span>
 					</a>
 				<?php endif; ?>
-				<a class="sual-store sual-btn" href="<?php echo $url; ?>" target="_blank" rel="noopener nofollow noreferrer">
-					<?php echo $store_info['svg']; ?>
+				<a class="sual-store sual-btn" href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+					<?php echo $store_info['svg']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<span class="sual-btn-label"><?php echo esc_html( $store_info['label'] ); ?></span>
 				</a>
 			</div>

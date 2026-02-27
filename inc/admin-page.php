@@ -133,11 +133,10 @@ function sual_country_callback() {
 function sual_lang_callback() {
 	$options    = get_option( 'sual-setting' );
 	$option_val = isset( $options['lang'] ) ? $options['lang'] : 'auto';
-	$checked    = ( 'en_us' === $option_val ) ? 'checked' : '';
 
 	printf(
 		'<label><input type="checkbox" id="lang-checkbox" name="sual-setting[lang]" value="en_us" %1$s> %2$s</label>',
-		$checked,
+		checked( 'en_us', $option_val, false ),
 		esc_html__( 'Display Applink in English', 'su-applink' )
 	);
 	echo '<p class="description">' . esc_html__( 'If unchecked, the language will be determined automatically.', 'su-applink' ) . '</p>';
