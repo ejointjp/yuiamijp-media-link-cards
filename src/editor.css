@@ -1,121 +1,124 @@
+/* =============================================================================
+   SU Applink - Block editor styles
+   -----------------------------------------------------------------------------
+   style.css の --_ エイリアスを継承する(.sual-editor-wrapper はエディタでも
+   style.css が読み込まれるため --_ が利用可能)。
+   ---------------------------------------------------------------------------- */
+
 .sual-editor-wrapper {
-	container-type: inline-size;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: var(--_space-16);
 
-	/* padding: 1rem; */
+  /* padding: var(--_space-16); */
 
-	border-radius: 0.5rem;
+  border-radius: var(--_radius-md);
 
-	&.is-selected {
-		padding: 1rem;
-	}
+  &.is-selected {
+    padding: var(--_space-16);
+  }
 }
 
 .sual-editor-type {
-	border: none;
-	border-radius: 0.375rem;
+  border: none;
+  border-radius: 0.375rem;
 }
 
 .sual-editor-input {
-	box-sizing: border-box;
-	width: 100%;
-	margin-top: 0.5rem;
-	padding: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: var(--_space-8);
+  padding: var(--_space-8);
 
-	border: 1px solid #e4e4e7;
-	border-radius: 0.375rem;
+  border: var(--_border-thin) solid var(--_color-border);
+  border-radius: 0.375rem;
 }
 
 .sual-editor-list {
-	overflow-y: scroll;
-	display: flex;
-	flex-direction: column;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 
-	/* gap: 0.5rem; */
+  /* gap: var(--_space-8); */
 
-	max-height: 48rem;
-	padding: 1rem;
+  max-height: 48rem;
+  padding: var(--_space-16);
 
-	background-color: var(--color-background);
-	border: 1px solid var(--color-ui);
-	border-radius: var(--border-radius);
+  background-color: var(--_color-bg);
+  border: var(--_border-thin) solid var(--_color-border);
+  border-radius: var(--border-radius);
 }
 
 .sual-editor-result-num {
-	font-size: 0.875rem;
-	font-weight: 700;
+  font-size: var(--_text-sm);
+  font-weight: var(--_weight-bold);
 }
 
 .sual-editor-item {
-	cursor: pointer;
+  cursor: pointer;
 
-	display: flex;
-	gap: 1rem;
-	align-items: center;
+  display: flex;
+  gap: var(--_space-16);
+  align-items: center;
 
-	padding: 0.675rem;
+  padding: 0.675rem;
 
-	background-color: var(--color-background);
-	border-radius: 0.5rem;
+  background-color: var(--_color-bg);
+  border-radius: var(--_radius-md);
 
-	transition: background-color 0.3s;
+  transition: background-color var(--_duration-base) var(--_ease-out);
 
-	&:hover {
-		background-color: var(--color-surface);
-	}
+  &:hover {
+    background-color: var(--_color-bg-subtle);
+  }
 }
 
 .sual-editor-img {
-	display: block;
+  display: block;
 }
 
 .sual-editor-figure {
-	& > img {
-		width: 3rem;
-		border-radius: 0.7rem;
-	}
+  & > img {
+    width: 3rem;
+    border-radius: 0.7rem;
+  }
 }
 
 .sual-editor-music-video .sual-editor-img {
-	aspect-ratio: 16 / 9;
-	width: 4rem;
-	object-fit: cover;
-	object-position: center center;
+  aspect-ratio: 16 / 9;
+  width: 4rem;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .sual-editor-content {
-	margin-right: auto;
+  margin-right: auto;
 }
 
 .sual-editor-title {
-	width: 100%;
+  width: 100%;
 
-	font-size: 0.875rem;
-	font-weight: 700;
-	line-height: 1.375;
-	text-decoration: none;
+  font-size: var(--_text-sm);
+  font-weight: var(--_weight-bold);
+  line-height: 1.375;
+  text-decoration: none;
 }
 
 .sual-editor-artist {
-	width: 100%;
-	font-size: 0.75rem;
+  width: 100%;
+  font-size: var(--_text-xs);
 }
 
-/* .sual-editor-software .sual-editor-img {
-	border-radius: 24%;
-} */
+@container (width >= 768px) {
+  .sual-editor-control {
+    display: flex;
+    gap: var(--_space-16);
+    align-items: center;
+  }
 
-@container (768px <= width) {
-	.sual-editor-control {
-		display: flex;
-		gap: 1rem;
-		align-items: center;
-	}
-
-	.sual-editor-input {
-		margin-top: 0;
-		margin-left: 0.75rem;
-	}
+  .sual-editor-input {
+    margin-top: 0;
+    margin-left: var(--_space-12);
+  }
 }

@@ -1,181 +1,199 @@
-.wp-block-su-applink,
-.sual-editor-wrapper {
-	--color-text: #18181b;
-	--color-text-light: #71717b;
-	--color-ui: #e4e4e7;
-	--color-surface: #f4f4f5;
-	--color-background: #fff;
-	--border-radius: 0.75rem;
-	--padding: 1rem 1.25rem;
-	--gap: 1rem;
-	--image-width: 5rem;
-	--image-height: 5rem;
+/* =============================================================================
+   SU Applink - Front-end styles
+   -----------------------------------------------------------------------------
+   haku2 の design-system tokens.css のセマンティックトークンに準拠。
+   --_ プレフィックスはコンポーネント内部エイリアス。
+   :where() で fallback 付きで解決し、以降は --_ を参照するだけ。
+   dark モードは theme 側 (:root[data-theme='dark']) で切り替わるため
+   本ファイルでは個別に上書きしない。
+   ---------------------------------------------------------------------------- */
 
-	container-type: inline-size;
-}
+:where(.wp-block-su-applink),
+:where(.sual-editor-wrapper) {
+  --_color-text:       var(--color-text,       oklch(21%    0.006  285.885));
+  --_color-text-muted: var(--color-text-muted, oklch(46%    0.01   232));
+  --_color-bg:         var(--color-bg,         oklch(100%   0      0deg));
+  --_color-bg-subtle:  var(--color-bg-subtle,  oklch(98.5%  0.003  232));
+  --_color-border:     var(--color-border,     oklch(92%    0.006  232));
+  --_border-thin:      var(--border-thin,      1px);
+  --_radius-md:        var(--radius-md,        0.5rem);
+  --_radius-lg:        var(--radius-lg,        0.75rem);
+  --_radius-full:      var(--radius-full,      9999px);
+  --_space-4:          var(--space-4,          0.25rem);
+  --_space-8:          var(--space-8,          0.5rem);
+  --_space-12:         var(--space-12,         0.75rem);
+  --_space-16:         var(--space-16,         1rem);
+  --_space-20:         var(--space-20,         1.25rem);
+  --_space-24:         var(--space-24,         1.5rem);
+  --_text-xs:          var(--text-xs,          0.75rem);
+  --_text-sm:          var(--text-sm,          0.875rem);
+  --_text-base:        var(--text-base,        1rem);
+  --_leading-snug:     var(--leading-snug,     1.5);
+  --_weight-medium:    var(--weight-medium,    500);
+  --_weight-semibold:  var(--weight-semibold,  600);
+  --_weight-bold:      var(--weight-bold,      700);
+  --_duration-base:    var(--duration-base,    250ms);
+  --_ease-out:         var(--ease-out,         cubic-bezier(0.22, 1, 0.36, 1));
 
-.dark .wp-block-su-applink {
-	--color-text: #f4f4f5;
-	--color-text-light: #9f9fa9;
-	--color-ui: #27272a;
-	--color-surface: #18181b;
-	--color-background: #09090b;
-	--color-white: #09090b;
+  /* component-scoped (haku2 トークンにない applink 固有の値) */
+  --border-radius: var(--_radius-lg);
+  --padding:       var(--_space-16) var(--_space-20);
+  --gap:           var(--_space-16);
+  --image-width:   5rem;
+  --image-height:  5rem;
+
+  container-type: inline-size;
 }
 
 .sual {
-	overflow: hidden;
-	display: flex;
-	gap: 1.5rem;
-	align-items: flex-start;
+  overflow: hidden;
+  display: flex;
+  gap: var(--_space-24);
+  align-items: flex-start;
 
-	padding: var(--padding);
+  padding: var(--padding);
 
-	line-height: 1.5;
-	text-decoration: none;
+  line-height: var(--_leading-snug);
+  text-decoration: none;
 
-	background-color: var(--color-background);
-	border: 1px solid var(--color-ui);
-	border-radius: var(--border-radius);
+  background-color: var(--_color-bg);
+  border: var(--_border-thin) solid var(--_color-border);
+  border-radius: var(--border-radius);
 
-	transition: background-color 0.2s;
+  transition: background-color var(--_duration-base) var(--_ease-out);
 
-	&:has(a:hover) {
-		background-color: var(--color-surface);
-	}
+  &:has(a:hover) {
+    background-color: var(--_color-bg-subtle);
+  }
 }
 
 .sual-figure {
-	line-height: 1;
+  line-height: 1;
 }
 
 .sual-img {
-	width: 5rem;
-	border-radius: 0.5rem;
+  width: 5rem;
+  border-radius: var(--_radius-md);
 
-	.sual-app & {
-		border-radius: 25%;
-	}
+  .sual-app & {
+    border-radius: 25%;
+  }
 
-	.sual-music-video & {
-		aspect-ratio: 16 / 9;
-		width: 5.33rem;
-		object-fit: cover;
-		object-position: center center;
-	}
+  .sual-music-video & {
+    aspect-ratio: 16 / 9;
+    width: 5.33rem;
+    object-fit: cover;
+    object-position: center center;
+  }
 
-	.sual-ebook & {
-		width: 3.5rem;
-	}
+  .sual-ebook & {
+    width: 3.5rem;
+  }
 }
 
 .sual-content {
-	display: flex;
-	flex-basis: 100%;
-	flex-direction: column;
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
 }
 
-/* 
-.sual-info {
-	align-self: center;
-} */
-
 .sual-title {
-	display: block;
+  display: block;
 
-	font-size: 0.875rem;
-	font-weight: 600;
-	color: var(--color-text) !important;
-	text-decoration: none !important;
+  font-size: var(--_text-sm);
+  font-weight: var(--_weight-semibold);
+  color: var(--_color-text) !important;
+  text-decoration: none !important;
 }
 
 .sual-artist {
-	margin-top: 0.25rem;
-	font-size: 0.75rem;
-	color: var(--color-text-light);
+  margin-top: var(--_space-4);
+  font-size: var(--_text-xs);
+  color: var(--_color-text-muted);
 }
 
 .sual-btns {
-	display: flex;
-	gap: 0.5rem;
-	align-items: center;
-	margin-top: 0.75rem;
+  display: flex;
+  gap: var(--_space-8);
+  align-items: center;
+  margin-top: var(--_space-12);
 }
 
 .sual-btn {
-	display: flex;
-	flex-shrink: 0;
-	gap: 0.25rem;
-	align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--_space-4);
+  align-items: center;
 
-	padding: 0.25rem 0.75rem;
+  padding: var(--_space-4) var(--_space-12);
 
-	font-size: 0.75rem;
-	font-weight: 500;
-	line-height: 1.5;
-	text-decoration: none !important;
+  font-size: var(--_text-xs);
+  font-weight: var(--_weight-medium);
+  line-height: var(--_leading-snug);
+  text-decoration: none !important;
 
-	background-color: var(--color-surface);
-	border-radius: 999px;
+  background-color: var(--_color-bg-subtle);
+  border-radius: var(--_radius-full);
 
-	transition: background-color 0.2s;
+  transition: background-color var(--_duration-base) var(--_ease-out);
 
-	&:hover {
-		background-color: var(--color-background);
-	}
+  &:hover {
+    background-color: var(--_color-bg);
+  }
 }
 
 .sual-audition svg {
-	color: #3f3f46 !important;
+  color: #3f3f46 !important;
 }
 
 :is(.sual-app, .sual-mac-app) .sual-btn svg {
-	color: #3b82f6; /* blue-500 */
+  color: #3b82f6; /* blue-500 */
 }
 
 .sual-movie .sual-btn svg {
-	color: #18181b; /* zinc-900 */
+  color: #18181b; /* zinc-900 */
 }
 
 :is(.sual-ebook, .sual-audiobook) .sual-btn svg {
-	color: #f59e0b; /* amber-500 */
+  color: #f59e0b; /* amber-500 */
 }
 
 .sual-podcast .sual-btn svg {
-	color: #8b5cf6; /* violet-500 */
+  color: #8b5cf6; /* violet-500 */
 }
 
 :is(.sual-music-track, .sual-music-album, .sual-music-video) .sual-btn svg {
-	color: #f43f5e; /* rose-500 */
+  color: #f43f5e; /* rose-500 */
 }
 
-@container (min-width: 32rem) {
-	.sual {
-		--padding: 1.25rem;
+@container (width >= 32rem) {
+  .sual {
+    --padding: var(--_space-20);
 
-		flex-direction: row;
-		align-items: center;
-	}
+    flex-direction: row;
+    align-items: center;
+  }
 
-	.sual-content {
-		display: flex;
-		flex-basis: 100%;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-between;
-	}
-	.sual-info {
-		.sual-title {
-			font-size: 1rem;
-		}
-	}
+  .sual-content {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-	.sual-btns {
-		margin-top: 0;
-		margin-right: 1rem;
-	}
+  .sual-info {
+    .sual-title {
+      font-size: var(--_text-base);
+    }
+  }
 
-	.sual-btn {
-		font-size: 0.875rem;
-	}
+  .sual-btns {
+    margin-top: 0;
+    margin-right: var(--_space-16);
+  }
+
+  .sual-btn {
+    font-size: var(--_text-sm);
+  }
 }
