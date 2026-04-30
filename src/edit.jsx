@@ -37,6 +37,8 @@ const {
 	countryValues,
 	langValues,
 	countryToLangMap,
+	restUrl,
+	nonce,
 } =
 	// eslint-disable-next-line no-undef
 	sualAjaxValues;
@@ -67,13 +69,17 @@ const edit = (props) => {
 		searchParams.append('limit', limit);
 		searchParams.append('at', options.token || '11l64V');
 
-		const url = 'https://itunes.apple.com/search?' + searchParams.toString();
+		const url = restUrl + 'search?' + searchParams.toString();
 
 		setAttributes({ app: {} });
 
 		try {
-			// iTunes Search APIを直接呼び出し
-			const res = await fetch(url);
+			// WordPress REST APIを経由してiTunes Search APIを呼び出し
+			const res = await fetch(url, {
+				headers: {
+					'X-WP-Nonce': nonce,
+				},
+			});
 			const result = await res.json();
 			setResult(result);
 			setState('result-success');
@@ -180,6 +186,22 @@ const edit = (props) => {
 			<>
 				<div className='sual-editor-result-num'>
 					{__('Search Results', 'su-applink')} {result.resultCount}
+					{result.cached && (
+						<span
+							className='sual-editor-cached-badge'
+							style={{
+								marginLeft: '10px',
+								fontSize: '0.8em',
+								backgroundColor: 'rgba(253, 210, 59, 0.2)',
+								border: '1px solid #fdd23b',
+								padding: '2px 6px',
+								borderRadius: '4px',
+								color: '#8b7012',
+							}}
+						>
+							⚡️ {__('Cached', 'su-applink')}
+						</span>
+					)}
 				</div>
 				{result.resultCount > 0 && (
 					<div className='sual-editor-list'>{list}</div>

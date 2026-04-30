@@ -21,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/define.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/admin-page.php';
+require_once plugin_dir_path( __FILE__ ) . 'inc/api.php';
 
 function sual_init() {
 	$block_type = register_block_type( __DIR__ . '/build' );
@@ -98,6 +99,8 @@ function sual_admin_enqueue_scripts() {
 				'countryValues'    => $country_values,
 				'langValues'       => $lang_values,
 				'countryToLangMap' => SUAL_COUNTRY_TO_LANG_MAP,
+				'restUrl'          => esc_url_raw( rest_url( 'su-applink/v1/' ) ),
+				'nonce'            => wp_create_nonce( 'wp_rest' ),
 			)
 		) . ';',
 		'before'
