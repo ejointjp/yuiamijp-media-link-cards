@@ -1,4 +1,10 @@
 <?php
+/**
+ * iTunes Search API を中継する REST API
+ *
+ * @package su-applink
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -30,7 +36,7 @@ function sual_rest_api_search_permission_check() {
 /**
  * Callback function for SU Applink search API
  *
- * @param WP_REST_Request $request
+ * @param WP_REST_Request $request リクエスト。
  * @return WP_REST_Response
  */
 function sual_rest_api_search_callback( $request ) {
@@ -68,7 +74,7 @@ function sual_rest_api_search_callback( $request ) {
 	// キャッシュがない場合、iTunes API にリクエストを投げる
 	$api_url = add_query_arg(
 		array(
-			'term'    => urlencode( $term ),
+			'term'    => rawurlencode( $term ),
 			'entity'  => $entity,
 			'limit'   => $limit,
 			'country' => $country,

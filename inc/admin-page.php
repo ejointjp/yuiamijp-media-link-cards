@@ -1,9 +1,17 @@
 <?php
+/**
+ * 管理画面の設定ページ
+ *
+ * @package su-applink
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-// 管理画面に設定画面を追加
+/**
+ * 設定画面を「設定」メニューに追加する
+ */
 function sual_add_admin_page() {
 	add_options_page(
 		'SU Applink',
@@ -15,7 +23,9 @@ function sual_add_admin_page() {
 }
 add_action( 'admin_menu', 'sual_add_admin_page' );
 
-// ページの内容
+/**
+ * 設定ページの HTML を出力する
+ */
 function sual_options_page_html() {
 	?>
 	<div class="wrap">
@@ -39,7 +49,12 @@ function sual_options_page_html() {
 	<?php
 }
 
-// オプション値のサニタイズ
+/**
+ * 設定値をサニタイズする
+ *
+ * @param array $input 送信された設定値。
+ * @return array サニタイズ済みの設定値。
+ */
 function sual_sanitize_options( $input ) {
 	$sanitized = array();
 
@@ -75,7 +90,9 @@ function sual_sanitize_options( $input ) {
 	return $sanitized;
 }
 
-// ページの初期化
+/**
+ * 設定項目とセクションを登録する
+ */
 function sual_page_init() {
 	register_setting(
 		'sual-setting',
@@ -93,14 +110,18 @@ function sual_page_init() {
 }
 add_action( 'admin_init', 'sual_page_init' );
 
-// トークンの設定セクション
+/**
+ * PHG トークンの入力欄を出力する
+ */
 function sual_token_callback() {
 	$options = get_option( 'sual-setting' );
 	$token   = isset( $options['token'] ) ? $options['token'] : '';
 	printf( '<input type="text" name="sual-setting[token]" size="30" value="%s">', esc_attr( $token ) );
 }
 
-// 検索結果数の設定セクション
+/**
+ * 検索結果数の選択欄を出力する
+ */
 function sual_limit_callback() {
 	$options    = get_option( 'sual-setting' );
 	$option_val = isset( $options['limit'] ) ? $options['limit'] : 10;
@@ -118,7 +139,9 @@ function sual_limit_callback() {
 	echo '</select>';
 }
 
-// 国の設定セクション
+/**
+ * 検索対象ストアの国の選択欄を出力する
+ */
 function sual_country_callback() {
 	$options    = get_option( 'sual-setting' );
 	$option_val = isset( $options['country'] ) ? $options['country'] : 'JP';
@@ -132,7 +155,9 @@ function sual_country_callback() {
 	echo '<p class="description">' . esc_html__( 'Select the country of the App Store to search.', 'su-applink' ) . '</p>';
 }
 
-// 言語の設定セクション
+/**
+ * 表示言語のチェックボックスを出力する
+ */
 function sual_lang_callback() {
 	$options    = get_option( 'sual-setting' );
 	$option_val = isset( $options['lang'] ) ? $options['lang'] : 'auto';

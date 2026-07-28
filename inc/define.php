@@ -1,4 +1,10 @@
 <?php
+/**
+ * 定数と選択肢の定義
+ *
+ * @package su-applink
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }

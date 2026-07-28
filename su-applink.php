@@ -23,6 +23,9 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/define.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/admin-page.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/api.php';
 
+/**
+ * ブロックを登録し、エディター用スクリプトに翻訳を紐付ける
+ */
 function sual_init() {
 	$block_type = register_block_type( __DIR__ . '/build' );
 
@@ -40,11 +43,11 @@ function sual_init() {
 add_action( 'init', 'sual_init' );
 
 /**
- * Categories
+ * ブロックカテゴリーに SU Blocks を追加する
  *
- * @param array $categories Categories.
- * @param array $post Post.
- *
+ * @param array                   $categories 既存のブロックカテゴリー。
+ * @param WP_Block_Editor_Context $editor_context ブロックエディターのコンテキスト。
+ * @return array
  */
 function sual_block_categories( $categories, $editor_context ) {
 	if ( ! empty( $editor_context->post ) ) {
@@ -66,7 +69,9 @@ add_filter( 'block_categories_all', 'sual_block_categories', 10, 2 );
 
 
 
-// オプション値の初期化
+/**
+ * プラグイン有効化時にオプション値を初期化する
+ */
 function sual_register_activation() {
 	$options = get_option( 'sual-setting' );
 
@@ -83,6 +88,9 @@ function sual_register_activation() {
 // プラグイン有効時に実行
 register_activation_hook( __FILE__, 'sual_register_activation' );
 
+/**
+ * 管理画面のブロックエディターへ設定値を JavaScript のグローバル変数として渡す
+ */
 function sual_admin_enqueue_scripts() {
 	$limit_values   = sual_get_limit_values();
 	$country_values = sual_get_country_values();

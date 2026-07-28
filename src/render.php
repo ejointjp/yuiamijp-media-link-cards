@@ -1,12 +1,13 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
 /**
- * Render Applink block
+ * Applink ブロックのフロント側の出力
  *
  * @package su-applink
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 $sual_app         = isset( $attributes['app'] ) ? $attributes['app'] : array();
 $sual_type        = isset( $sual_app['type'] ) ? $sual_app['type'] : '';
@@ -22,6 +23,12 @@ if ( empty( $sual_url ) || empty( $sual_title ) ) {
 
 // アイコンSVGの出力関数
 if ( ! function_exists( 'sual_get_store_icon_svg' ) ) {
+	/**
+	 * ストア種別に対応するアイコン SVG とラベルを返す
+	 *
+	 * @param string $type ストア種別。
+	 * @return array svg と label を持つ配列。
+	 */
 	function sual_get_store_icon_svg( $type ) {
 		$svg   = '';
 		$label = '';
