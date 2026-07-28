@@ -91,7 +91,9 @@
 	display: block;
 }
 
+/* button の中身のため span で組んでいる。以降 display の指定が要る */
 .sual-editor-figure {
+	display: block;
 
 	> img {
 		width: 3rem;
@@ -107,10 +109,12 @@
 }
 
 .sual-editor-content {
+	display: block;
 	margin-right: auto;
 }
 
 .sual-editor-title {
+	display: block;
 	width: 100%;
 
 	font-size: var(--_text-sm);
@@ -120,6 +124,7 @@
 }
 
 .sual-editor-artist {
+	display: block;
 	width: 100%;
 	font-size: var(--_text-xs);
 }

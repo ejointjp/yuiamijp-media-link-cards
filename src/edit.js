@@ -164,21 +164,21 @@ const Edit = ( props ) => {
 						setAttributes( { app: itemApp } );
 					} }
 				>
-					<div className="sual-editor-figure">
+					<span className="sual-editor-figure">
 						<img
 							className="sual-editor-img"
 							src={ itemApp.iconUrl }
 							alt={ itemApp.title }
 						/>
-					</div>
-					<div className="sual-editor-content">
-						<div className="sual-editor-title">
+					</span>
+					<span className="sual-editor-content">
+						<span className="sual-editor-title">
 							{ itemApp.title }
-						</div>
-						<div className="sual-editor-artist">
+						</span>
+						<span className="sual-editor-artist">
 							{ itemApp.artist }
-						</div>
-					</div>
+						</span>
+					</span>
 				</button>
 			);
 		} );
