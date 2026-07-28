@@ -1,0 +1,6 @@
+# プリビルド配布または案内表示のみのため、ビルドスクリプトの実行は不要
+allowBuilds:
+  '@parcel/watcher': false
+  core-js: false
+  core-js-pure: false
+  unrs-resolver: false

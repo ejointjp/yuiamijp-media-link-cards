@@ -1,4 +1,4 @@
-export const appAtts = (item) => {
+export const appAtts = ( item ) => {
 	return {
 		id: item.trackId,
 		type: 'app',
@@ -13,7 +13,7 @@ export const appAtts = (item) => {
 	};
 };
 
-export const macAppAtts = (item) => {
+export const macAppAtts = ( item ) => {
 	return {
 		id: item.trackId,
 		type: 'mac-app',
@@ -28,7 +28,7 @@ export const macAppAtts = (item) => {
 	};
 };
 
-export const movieAtts = (item) => {
+export const movieAtts = ( item ) => {
 	return {
 		id: item.trackId,
 		type: 'movie',
@@ -44,7 +44,7 @@ export const movieAtts = (item) => {
 	};
 };
 
-export const ebookAtts = (item) => {
+export const ebookAtts = ( item ) => {
 	return {
 		id: item.trackId,
 		type: 'ebook',
@@ -60,7 +60,7 @@ export const ebookAtts = (item) => {
 	};
 };
 
-export const podcastAtts = (item) => {
+export const podcastAtts = ( item ) => {
 	return {
 		id: item.trackId,
 		type: 'podcast',
@@ -76,7 +76,7 @@ export const podcastAtts = (item) => {
 	};
 };
 
-export const audiobookAtts = (item) => {
+export const audiobookAtts = ( item ) => {
 	return {
 		id: item.collectionId,
 		type: 'audiobook',
@@ -92,7 +92,7 @@ export const audiobookAtts = (item) => {
 	};
 };
 
-export const musicTrackAtts = (item) => {
+export const musicTrackAtts = ( item ) => {
 	return {
 		id: item.trackId,
 		type: 'music-track',
@@ -108,7 +108,7 @@ export const musicTrackAtts = (item) => {
 	};
 };
 
-export const musicAlbumAtts = (item) => {
+export const musicAlbumAtts = ( item ) => {
 	return {
 		id: item.collectionId,
 		type: 'music-album',
@@ -123,7 +123,7 @@ export const musicAlbumAtts = (item) => {
 	};
 };
 
-export const musicVideoAtts = (item) => {
+export const musicVideoAtts = ( item ) => {
 	return {
 		id: item.trackId,
 		type: 'music-video',

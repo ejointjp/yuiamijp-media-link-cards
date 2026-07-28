@@ -3,20 +3,20 @@ import { HiOutlineBookOpen } from 'react-icons/hi';
 import { SiApple, SiAppstore } from 'react-icons/si';
 import { BiPodcast } from 'react-icons/bi';
 
-export const StoreIcon = (props) => {
-	switch (props.type) {
+export const StoreIcon = ( props ) => {
+	switch ( props.type ) {
 		case 'app':
 			return (
 				<>
 					<SiAppstore />
-					<span className='sual-btn-label'>App Store</span>
+					<span className="sual-btn-label">App Store</span>
 				</>
 			);
 		case 'mac-app':
 			return (
 				<>
 					<SiAppstore />
-					<span className='sual-btn-label'>Mac App Store</span>
+					<span className="sual-btn-label">Mac App Store</span>
 				</>
 			);
 
@@ -24,7 +24,7 @@ export const StoreIcon = (props) => {
 			return (
 				<>
 					<SiApple />
-					<span className='sual-btn-label'>TV</span>
+					<span className="sual-btn-label">TV</span>
 				</>
 			);
 
@@ -33,7 +33,7 @@ export const StoreIcon = (props) => {
 			return (
 				<>
 					<HiOutlineBookOpen />
-					<span className='sual-btn-label'>Apple Books</span>
+					<span className="sual-btn-label">Apple Books</span>
 				</>
 			);
 
@@ -41,7 +41,7 @@ export const StoreIcon = (props) => {
 			return (
 				<>
 					<BiPodcast />
-					<span className='sual-btn-label'>Apple Podcast</span>
+					<span className="sual-btn-label">Apple Podcast</span>
 				</>
 			);
 
@@ -51,7 +51,7 @@ export const StoreIcon = (props) => {
 			return (
 				<>
 					<SiApple />
-					<span className='sual-btn-label'>Music</span>
+					<span className="sual-btn-label">Music</span>
 				</>
 			);
 
@@ -59,7 +59,7 @@ export const StoreIcon = (props) => {
 			return (
 				<>
 					<GrAppleAppStore />
-					<span className='sual-btn-label'>App Store</span>
+					<span className="sual-btn-label">App Store</span>
 				</>
 			);
 	}
