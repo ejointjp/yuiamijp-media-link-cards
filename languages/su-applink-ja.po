@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SU Applink 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/su-applink\n"
-"POT-Creation-Date: 2025-10-29T02:02:15+00:00\n"
+"POT-Creation-Date: 2026-07-29T05:38:30+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
 "Last-Translator: Takashi Fujiskai\n"
 "Language-Team: Japanese\n"
@@ -31,165 +31,169 @@ msgstr ""
 
 #. Author of the plugin
 #: su-applink.php
-msgid "Takashi Fujiskai"
+msgid "Takashi Fujisaki"
 msgstr ""
 
-#: inc/admin-page.php:86
-msgid "PHG Token"
-msgstr "PHGトークン"
-
-#: inc/admin-page.php:87
-msgid "Default Search Results"
-msgstr "デフォルトの検索結果数"
-
-#: inc/admin-page.php:88
-msgid "Default Store Country"
-msgstr "デフォルトの検索対象ストア"
-
-#: inc/admin-page.php:89
-msgid "Default Language"
-msgstr "デフォルトの表示言語"
-
-#: inc/admin-page.php:129
-msgid "Select the country of the App Store to search."
-msgstr "検索するApp Storeの国を選択します。"
-
-#: inc/admin-page.php:141
-#: build/index.js:1 src/edit.jsx:267
-msgid "Display Applink in English"
-msgstr "Applinkを英語表記にする"
-
-#: inc/admin-page.php:143
-msgid "If unchecked, the language will be determined automatically."
-msgstr "チェックを外すと、言語が自動的に決定されます。"
-
-#: inc/define.php:144
-msgid "10 items"
-msgstr "10件"
-
-#: inc/define.php:145
-msgid "25 items"
-msgstr "25件"
-
-#: inc/define.php:146
-msgid "50 items"
-msgstr "50件"
-
-#: inc/define.php:147
-msgid "100 items"
-msgstr "100件"
-
-#: inc/define.php:148
-msgid "200 items"
-msgstr "200件"
-
-#: inc/define.php:170
-msgid "Auto"
-msgstr "自動"
-
-#: inc/define.php:171
-msgid "English"
-msgstr "英語"
-
-#: inc/define.php:193
-msgid "Japan"
-msgstr "日本"
-
-#: inc/define.php:194
-msgid "South Korea"
-msgstr "韓国"
-
-#: inc/define.php:195
-msgid "China"
-msgstr "中国"
-
-#: inc/define.php:196
-msgid "Taiwan"
-msgstr "台湾"
-
-#: inc/define.php:197
-msgid "Hong Kong"
-msgstr "香港"
-
-#: inc/define.php:198
-msgid "United States"
-msgstr "米国"
-
-#: inc/define.php:199
-msgid "United Kingdom"
-msgstr "英国"
-
-#: inc/define.php:200
-msgid "Canada"
-msgstr "カナダ"
-
-#: inc/define.php:201
-msgid "Australia"
-msgstr "オーストラリア"
-
-#: inc/define.php:202
-msgid "Singapore"
-msgstr "シンガポール"
-
-#: inc/define.php:203
-msgid "Thailand"
-msgstr "タイ"
-
-#: inc/define.php:204
-msgid "India"
-msgstr "インド"
-
-#: inc/define.php:205
-msgid "Germany"
-msgstr "ドイツ"
-
-#: inc/define.php:206
-msgid "France"
-msgstr "フランス"
-
-#: inc/define.php:207
-msgid "Brazil"
-msgstr "ブラジル"
-
-#: build/index.js:1 src/components/Applink.jsx:50
+#: build/render.php:98 src/render.php:98 build/index.js:1
+#: src/components/Applink.js:54
 msgid "Preview"
 msgstr "試聴"
 
-#: build/index.js:1 src/edit.jsx:246
-msgid "Search Settings"
-msgstr "検索条件設定"
+#: inc/admin-page.php:106
+msgid "PHG Token"
+msgstr "PHGトークン"
 
-#: build/index.js:1 src/edit.jsx:249
-msgid "Number of Results"
-msgstr "検索結果数"
+#: inc/admin-page.php:107
+msgid "Default Search Results"
+msgstr "デフォルトの検索結果数"
 
-#: build/index.js:1 src/edit.jsx:258
-msgid "Store Country"
-msgstr "検索対象ストア"
+#: inc/admin-page.php:108
+msgid "Default Store Country"
+msgstr "デフォルトの検索対象ストア"
 
-#: build/index.js:1 src/edit.jsx:271
-msgid "If turned off, the language will be determined automatically."
-msgstr "オフにすると、言語が自動的に決定されます。"
+#: inc/admin-page.php:109
+msgid "Default Language"
+msgstr "デフォルトの表示言語"
 
-#: build/index.js:1 src/edit.jsx:282
-msgid "Set default values on settings page"
-msgstr "設定ページでデフォルト値を設定する"
+#: inc/admin-page.php:155
+msgid "Select the country of the App Store to search."
+msgstr "検索するApp Storeの国を選択します。"
 
-#: build/index.js:1 src/edit.jsx:308
-msgid "Enter search term and press Enter"
-msgstr "検索ワードを入力してEnter"
+#: inc/admin-page.php:168 build/index.js:1 src/edit.js:296
+msgid "Display Applink in English"
+msgstr "Applinkを英語表記にする"
 
-#: build/index.js:1 src/edit.jsx:209
+#: inc/admin-page.php:170
+msgid "If unchecked, the language will be determined automatically."
+msgstr "チェックを外すと、言語が自動的に決定されます。"
+
+#: inc/define.php:43
+msgid "10 items"
+msgstr "10件"
+
+#: inc/define.php:47
+msgid "25 items"
+msgstr "25件"
+
+#: inc/define.php:51
+msgid "50 items"
+msgstr "50件"
+
+#: inc/define.php:55
+msgid "100 items"
+msgstr "100件"
+
+#: inc/define.php:59
+msgid "200 items"
+msgstr "200件"
+
+#: inc/define.php:75
+msgid "Auto"
+msgstr "自動"
+
+#: inc/define.php:79
+msgid "English"
+msgstr "英語"
+
+#: inc/define.php:94
+msgid "Japan"
+msgstr "日本"
+
+#: inc/define.php:98
+msgid "South Korea"
+msgstr "韓国"
+
+#: inc/define.php:102
+msgid "China"
+msgstr "中国"
+
+#: inc/define.php:106
+msgid "Taiwan"
+msgstr "台湾"
+
+#: inc/define.php:110
+msgid "Hong Kong"
+msgstr "香港"
+
+#: inc/define.php:115
+msgid "United States"
+msgstr "米国"
+
+#: inc/define.php:119
+msgid "United Kingdom"
+msgstr "英国"
+
+#: inc/define.php:123
+msgid "Canada"
+msgstr "カナダ"
+
+#: inc/define.php:127
+msgid "Australia"
+msgstr "オーストラリア"
+
+#: inc/define.php:132
+msgid "Singapore"
+msgstr "シンガポール"
+
+#: inc/define.php:136
+msgid "Thailand"
+msgstr "タイ"
+
+#: inc/define.php:140
+msgid "India"
+msgstr "インド"
+
+#: inc/define.php:144
+msgid "Germany"
+msgstr "ドイツ"
+
+#: inc/define.php:148
+msgid "France"
+msgstr "フランス"
+
+#: inc/define.php:152
+msgid "Brazil"
+msgstr "ブラジル"
+
+#: su-applink.php:129
+msgid "Settings"
+msgstr "設定"
+
+#: build/index.js:1 src/edit.js:189
+msgid "Search Results"
+msgstr "検索結果"
+
+#: build/index.js:1 src/edit.js:204
+msgid "Cached"
+msgstr "キャッシュ"
+
+#: build/index.js:1 src/edit.js:235
 msgid "Failed to retrieve data"
 msgstr "データの取得に失敗しました"
 
-#: build/index.js:1 src/edit.jsx:172
-msgid "Select"
-msgstr "選択"
+#: build/index.js:1 src/edit.js:275
+msgid "Search Settings"
+msgstr "検索条件設定"
 
-#: build/index.js:1 src/edit.jsx:181
-msgid "Search Results"
-msgstr "検索結果"
+#: build/index.js:1 src/edit.js:278
+msgid "Number of Results"
+msgstr "検索結果数"
+
+#: build/index.js:1 src/edit.js:287
+msgid "Store Country"
+msgstr "検索対象ストア"
+
+#: build/index.js:1 src/edit.js:304
+msgid "If turned off, the language will be determined automatically."
+msgstr "オフにすると、言語が自動的に決定されます。"
+
+#: build/index.js:1 src/edit.js:318
+msgid "Set default values on settings page"
+msgstr "設定ページでデフォルト値を設定する"
+
+#: build/index.js:1 src/edit.js:347
+msgid "Enter search term and press Enter"
+msgstr "検索ワードを入力してEnter"
 
 #: build/block.json src/block.json
 msgctxt "block title"
@@ -247,3 +251,6 @@ msgstr ""
 msgctxt "block keyword"
 msgid "book"
 msgstr ""
+
+#~ msgid "Select"
+#~ msgstr "選択"
