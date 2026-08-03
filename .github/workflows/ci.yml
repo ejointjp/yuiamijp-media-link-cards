@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+# 連続 push で古い実行を打ち切る
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-build:
+    name: Lint and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # pnpm のバージョンは package.json の packageManager に解決させる。
+      # with: version: を併記すると "Multiple versions of pnpm specified" で落ちる。
+      - uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint JS
+        run: pnpm run lint:js
+
+      - name: Lint CSS
+        run: pnpm run lint:css
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+
+      # composer のグローバル領域はワークスペース外に置く。
+      # .phpcs.xml.dist が <file>.</file> のため、ワークスペース内に入れると
+      # phpcs が WPCS 自身のソースまで走査対象に含めてしまう。
+      - name: Install PHP_CodeSniffer and WPCS
+        run: |
+          composer global config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+          composer global require --no-interaction --no-progress \
+            squizlabs/php_codesniffer:^3.13 \
+            wp-coding-standards/wpcs:^3.4
+          echo "$(composer config --global home)/vendor/bin" >> "$GITHUB_PATH"
+
+      - name: Lint PHP
+        run: phpcs

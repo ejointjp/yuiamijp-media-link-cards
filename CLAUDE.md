@@ -77,7 +77,28 @@ APIリクエストの`entity`（検索条件。`src/entity-options.js`）とレ�
 
 更新手順はwordpress.mdの通り（`wp i18n make-pot` → `msgmerge` → 訳出 → `msgfmt` / `wp i18n make-json`）。JSONを作り直したら`build/index.js`のmd5名になっているか確認する。
 
+**`make-pot`で`build/`を除外してはいけない。** 除外すると.potの参照が`src/`側だけになり、`make-json`が`md5('src/edit.js')`のような名前でJSONを作る。実際にenqueueされるのは`build/index.js`なので、そのJSONは永久に読み込まれない。除外するのは`node_modules`だけにする。
+
+```bash
+wp i18n make-pot . languages/su-applink.pot --slug=su-applink --exclude=node_modules
+wp i18n make-json languages --no-purge   # --no-purge が無いと.poからJS側の文字列が消える
+```
+
+`make-json`は`src/`配下の参照からもJSONを作るが、読み込まれるのは`build/index.js`の分だけなので残りは削除する。
+
 ## readme
 
 - `readme.txt` — wordpress.org用の正。バージョン・Changelog・Tested up toはここを更新する
 - `readme-ja.txt` — 旧名「Applink Block for WP」時代の日本語版。現在は追従していない
+
+## 配布
+
+**`.distignore`が配布物の中身を決める正。** `.gitattributes`は置いていない（10upのactionは`.distignore`があればそちらだけを見る）。`assets/`は`inc/icons.php`が`assets/icons.json`を実行時に読むため**除外してはいけない**。
+
+`v*`のタグをpushすると`.github/workflows/deploy.yml`がwordpress.orgのSVNへ反映する。手順は`/wp-plugin-publish`。
+
+**`wp-scripts plugin-zip`は使わない。** `.distignore`を一切読まず、`admin/** build/** includes/** languages/** public/**`という固定のglobで拾う。このプラグインは`inc/`と`assets/`を使っているのでどちらも欠落し、読み込むと`require_once`で致命的エラーになるZIPができる。ZIPが要るとき（初回審査への提出など）はCIと同じrsyncで作る。
+
+```bash
+rsync -rn --exclude-from=.distignore --delete-excluded ./ /tmp/distcheck/ --out-format='%n' | grep -v '/$' | sort   # 中身の確認
+```

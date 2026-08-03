@@ -1,0 +1,39 @@
+name: Deploy to WordPress.org
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  tag:
+    name: New tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # ランタイムは ci.yml と同じ値にする。ずれると
+      # 「CI は通るのにリリースだけ落ちる」状態になる。
+      - uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      # 配布物にはビルド成果物を含める。.gitignore で build/ を無視していても、
+      # ここで生成してから配布するので問題ない。
+      - name: Build
+        run: pnpm run build
+
+      # リポジトリ名と wordpress.org の slug が一致しているため SLUG は指定しない。
+      # 配布物の中身は .distignore が決める。
+      - name: WordPress Plugin Deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
