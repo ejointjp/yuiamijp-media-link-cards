@@ -46,27 +46,30 @@ add_action( 'init', 'sual_init' );
 /**
  * ブロックカテゴリーに SU Blocks を追加する
  *
- * @param array                   $categories 既存のブロックカテゴリー。
- * @param WP_Block_Editor_Context $editor_context ブロックエディターのコンテキスト。
+ * 投稿エディターだけでなくサイトエディターとウィジェット画面でも登録する。
+ * これらの画面では $editor_context->post が空になるため、post の有無で
+ * 絞り込むとカテゴリーが登録されず、ブロックがインサーターのカテゴリー
+ * 一覧から消える。
+ *
+ * @param array $categories 既存のブロックカテゴリー。
  * @return array
  */
-function sual_block_categories( $categories, $editor_context ) {
-	if ( ! empty( $editor_context->post ) ) {
-		// 既存のカテゴリーが存在するかチェック
-		$exists = wp_list_pluck( $categories, 'slug' );
-		if ( ! in_array( 'su-blocks', $exists, true ) ) {
-			array_push(
-				$categories,
-				array(
-					'slug'  => 'su-blocks',
-					'title' => 'SU Blocks',
-				)
-			);
-		}
+function sual_block_categories( $categories ) {
+	// 既存のカテゴリーが存在するかチェック
+	$exists = wp_list_pluck( $categories, 'slug' );
+	if ( ! in_array( 'su-blocks', $exists, true ) ) {
+		array_push(
+			$categories,
+			array(
+				'slug'  => 'su-blocks',
+				'title' => 'SU Blocks',
+			)
+		);
 	}
+
 	return $categories;
 }
-add_filter( 'block_categories_all', 'sual_block_categories', 10, 2 );
+add_filter( 'block_categories_all', 'sual_block_categories' );
 
 
 
