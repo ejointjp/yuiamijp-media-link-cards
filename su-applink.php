@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/define.php';
+require_once plugin_dir_path( __FILE__ ) . 'inc/icons.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/admin-page.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/api.php';
 

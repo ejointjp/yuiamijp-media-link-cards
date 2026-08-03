@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SU Applink 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/su-applink\n"
-"POT-Creation-Date: 2026-07-29T05:38:30+00:00\n"
+"POT-Creation-Date: 2026-08-03T03:05:31+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
 "Last-Translator: Takashi Fujiskai\n"
 "Language-Team: Japanese\n"
@@ -34,8 +34,8 @@ msgstr ""
 msgid "Takashi Fujisaki"
 msgstr ""
 
-#: build/render.php:98 src/render.php:98 build/index.js:1
-#: src/components/Applink.js:54
+#: build/render.php:54 src/render.php:54 build/index.js:1
+#: src/components/Applink.js:53
 msgid "Preview"
 msgstr "試聴"
 
@@ -155,7 +155,7 @@ msgstr "フランス"
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: su-applink.php:129
+#: su-applink.php:130
 msgid "Settings"
 msgstr "設定"
 

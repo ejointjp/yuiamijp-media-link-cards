@@ -1,66 +1,42 @@
-import { GrAppleAppStore } from 'react-icons/gr';
-import { HiOutlineBookOpen } from 'react-icons/hi';
-import { SiApple, SiAppstore } from 'react-icons/si';
-import { BiPodcast } from 'react-icons/bi';
+/**
+ * アイコンの描画
+ *
+ * 定義は assets/icons.json が単一の情報源で、フロント側は inc/icons.php が
+ * 同じ JSON を読む。アイコンを足す・差し替えるときは JSON だけを変更する。
+ *
+ * content は同梱 JSON 内の自前マークアップのため dangerouslySetInnerHTML で
+ * 展開している。svg 要素そのものは React が作るので、CSS が当てにしている
+ * `.sual-btn svg` の構造は変わらない。
+ */
+import icons from '../../assets/icons.json';
 
-export const StoreIcon = ( props ) => {
-	switch ( props.type ) {
-		case 'app':
-			return (
-				<>
-					<SiAppstore />
-					<span className="sual-btn-label">App Store</span>
-				</>
-			);
-		case 'mac-app':
-			return (
-				<>
-					<SiAppstore />
-					<span className="sual-btn-label">Mac App Store</span>
-				</>
-			);
+export const Icon = ( { name } ) => {
+	const icon = icons.icons[ name ];
 
-		case 'movie':
-			return (
-				<>
-					<SiApple />
-					<span className="sual-btn-label">TV</span>
-				</>
-			);
-
-		case 'ebook':
-		case 'audiobook':
-			return (
-				<>
-					<HiOutlineBookOpen />
-					<span className="sual-btn-label">Apple Books</span>
-				</>
-			);
-
-		case 'podcast':
-			return (
-				<>
-					<BiPodcast />
-					<span className="sual-btn-label">Apple Podcast</span>
-				</>
-			);
-
-		case 'music-track':
-		case 'music-album':
-		case 'music-video':
-			return (
-				<>
-					<SiApple />
-					<span className="sual-btn-label">Music</span>
-				</>
-			);
-
-		default:
-			return (
-				<>
-					<GrAppleAppStore />
-					<span className="sual-btn-label">App Store</span>
-				</>
-			);
+	if ( ! icon ) {
+		return null;
 	}
+
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="1em"
+			height="1em"
+			{ ...icon.attr }
+			dangerouslySetInnerHTML={ { __html: icon.content } }
+		/>
+	);
+};
+
+export const PreviewIcon = () => <Icon name={ icons.preview } />;
+
+export const StoreIcon = ( { type } ) => {
+	const store = icons.stores[ type ] || icons.stores.default;
+
+	return (
+		<>
+			<Icon name={ store.icon } />
+			<span className="sual-btn-label">{ store.label }</span>
+		</>
+	);
 };

@@ -24,7 +24,6 @@
 		"@wordpress/scripts": "^33.0.0"
 	},
 	"dependencies": {
-		"react-icons": "^4.12.0",
 		"react-loading": "^2.0.3"
 	}
 }
