@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SU Applink 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/su-applink\n"
-"POT-Creation-Date: 2026-08-03T03:05:31+00:00\n"
+"POT-Creation-Date: 2026-08-03T05:31:28+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
 "Last-Translator: Takashi Fujiskai\n"
 "Language-Team: Japanese\n"
@@ -18,16 +18,15 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: su-applink.php
-#, fuzzy
 msgid "SU Blocks - Applink"
-msgstr "SU Blocks"
+msgstr "SU Blocks - Applink"
 
 #. Description of the plugin
 #: su-applink.php
 msgid ""
 "Easily create promotional links for iPhone / iPad / Mac apps, music tracks, "
 "Apple Books, and more."
-msgstr ""
+msgstr "iPhone / iPad / Macのアプリ、曲、Apple Booksなどの紹介リンクを手軽に作成できます。"
 
 #. Author of the plugin
 #: su-applink.php
@@ -59,7 +58,7 @@ msgstr "デフォルトの表示言語"
 msgid "Select the country of the App Store to search."
 msgstr "検索するApp Storeの国を選択します。"
 
-#: inc/admin-page.php:168 build/index.js:1 src/edit.js:296
+#: inc/admin-page.php:168 build/index.js:1 src/edit.js:292
 msgid "Display Applink in English"
 msgstr "Applinkを英語表記にする"
 
@@ -155,102 +154,138 @@ msgstr "フランス"
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: su-applink.php:130
+#: su-applink.php:133
 msgid "Settings"
 msgstr "設定"
 
-#: build/index.js:1 src/edit.js:189
+#: build/index.js:1 src/entity-options.js:6
+msgid "iPhone App"
+msgstr "iPhoneアプリ"
+
+#: build/index.js:1 src/entity-options.js:10
+msgid "iPad App"
+msgstr "iPadアプリ"
+
+#: build/index.js:1 src/entity-options.js:14
+msgid "Mac App"
+msgstr "Macアプリ"
+
+#: build/index.js:1 src/entity-options.js:22
+msgid "Book"
+msgstr "ブック"
+
+#: build/index.js:1 src/entity-options.js:26
+msgid "Audiobook"
+msgstr "オーディオブック"
+
+#: build/index.js:1 src/entity-options.js:30
+msgid "Podcast"
+msgstr "ポッドキャスト"
+
+#: build/index.js:1 src/entity-options.js:34
+msgid "Music Track"
+msgstr "曲"
+
+#: build/index.js:1 src/entity-options.js:38
+msgid "Music Album"
+msgstr "アルバム"
+
+#: build/index.js:1 src/entity-options.js:42
+msgid "Music Video"
+msgstr "ミュージックビデオ"
+
+#: build/index.js:1 src/edit.js:185
 msgid "Search Results"
 msgstr "検索結果"
 
-#: build/index.js:1 src/edit.js:204
+#: build/index.js:1 src/edit.js:200
 msgid "Cached"
 msgstr "キャッシュ"
 
-#: build/index.js:1 src/edit.js:235
+#: build/index.js:1 src/edit.js:231
 msgid "Failed to retrieve data"
 msgstr "データの取得に失敗しました"
 
-#: build/index.js:1 src/edit.js:275
+#: build/index.js:1 src/edit.js:271
 msgid "Search Settings"
 msgstr "検索条件設定"
 
-#: build/index.js:1 src/edit.js:278
+#: build/index.js:1 src/edit.js:274
 msgid "Number of Results"
 msgstr "検索結果数"
 
-#: build/index.js:1 src/edit.js:287
+#: build/index.js:1 src/edit.js:283
 msgid "Store Country"
 msgstr "検索対象ストア"
 
-#: build/index.js:1 src/edit.js:304
+#: build/index.js:1 src/edit.js:300
 msgid "If turned off, the language will be determined automatically."
 msgstr "オフにすると、言語が自動的に決定されます。"
 
-#: build/index.js:1 src/edit.js:318
+#: build/index.js:1 src/edit.js:314
 msgid "Set default values on settings page"
 msgstr "設定ページでデフォルト値を設定する"
 
-#: build/index.js:1 src/edit.js:347
+#: build/index.js:1 src/edit.js:343
 msgid "Enter search term and press Enter"
 msgstr "検索ワードを入力してEnter"
 
 #: build/block.json src/block.json
 msgctxt "block title"
 msgid "Applink"
-msgstr ""
+msgstr "Applink"
 
 #: build/block.json src/block.json
 msgctxt "block description"
 msgid ""
 "Create promotional links for iPhone / iPad / Mac apps, music tracks, Apple "
 "Books, and more."
-msgstr ""
+msgstr "iPhone / iPad / Macのアプリ、曲、Apple Booksなどの紹介リンクを作成します。"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
 msgid "link"
-msgstr ""
+msgstr "リンク"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
 msgid "embed"
-msgstr ""
+msgstr "埋め込み"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
 msgid "app"
-msgstr ""
+msgstr "アプリ"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
 msgid "apple"
-msgstr ""
+msgstr "Apple"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
 msgid "itunes"
-msgstr ""
+msgstr "iTunes"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
 msgid "iphone"
-msgstr ""
+msgstr "iPhone"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
 msgid "ipad"
-msgstr ""
+msgstr "iPad"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
 msgid "mac"
-msgstr ""
+msgstr "Mac"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
 msgid "book"
-msgstr ""
+msgstr "ブック"
 
 #~ msgid "Select"
 #~ msgstr "選択"

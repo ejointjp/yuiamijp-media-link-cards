@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-03T03:05:31+00:00\n"
+"POT-Creation-Date: 2026-08-03T05:31:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: su-applink\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: inc/admin-page.php:168
 #: build/index.js:1
-#: src/edit.js:296
+#: src/edit.js:292
 msgid "Display Applink in English"
 msgstr ""
 
@@ -154,52 +154,97 @@ msgstr ""
 msgid "Brazil"
 msgstr ""
 
-#: su-applink.php:130
+#: su-applink.php:133
 msgid "Settings"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:189
+#: src/entity-options.js:6
+msgid "iPhone App"
+msgstr ""
+
+#: build/index.js:1
+#: src/entity-options.js:10
+msgid "iPad App"
+msgstr ""
+
+#: build/index.js:1
+#: src/entity-options.js:14
+msgid "Mac App"
+msgstr ""
+
+#: build/index.js:1
+#: src/entity-options.js:22
+msgid "Book"
+msgstr ""
+
+#: build/index.js:1
+#: src/entity-options.js:26
+msgid "Audiobook"
+msgstr ""
+
+#: build/index.js:1
+#: src/entity-options.js:30
+msgid "Podcast"
+msgstr ""
+
+#: build/index.js:1
+#: src/entity-options.js:34
+msgid "Music Track"
+msgstr ""
+
+#: build/index.js:1
+#: src/entity-options.js:38
+msgid "Music Album"
+msgstr ""
+
+#: build/index.js:1
+#: src/entity-options.js:42
+msgid "Music Video"
+msgstr ""
+
+#: build/index.js:1
+#: src/edit.js:185
 msgid "Search Results"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:204
+#: src/edit.js:200
 msgid "Cached"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:235
+#: src/edit.js:231
 msgid "Failed to retrieve data"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:275
+#: src/edit.js:271
 msgid "Search Settings"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:278
+#: src/edit.js:274
 msgid "Number of Results"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:287
+#: src/edit.js:283
 msgid "Store Country"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:304
+#: src/edit.js:300
 msgid "If turned off, the language will be determined automatically."
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:318
+#: src/edit.js:314
 msgid "Set default values on settings page"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:347
+#: src/edit.js:343
 msgid "Enter search term and press Enter"
 msgstr ""
 

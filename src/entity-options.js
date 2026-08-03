@@ -1,15 +1,17 @@
+import { __ } from '@wordpress/i18n';
+
 export default [
 	{
 		value: 'software',
-		label: 'iPhone App',
+		label: __( 'iPhone App', 'su-applink' ),
 	},
 	{
 		value: 'iPadSoftware',
-		label: 'iPad App',
+		label: __( 'iPad App', 'su-applink' ),
 	},
 	{
 		value: 'macSoftware',
-		label: 'Mac App',
+		label: __( 'Mac App', 'su-applink' ),
 	},
 	// {
 	//   value: 'movie',
@@ -17,26 +19,26 @@ export default [
 	// },
 	{
 		value: 'ebook',
-		label: 'Book',
+		label: __( 'Book', 'su-applink' ),
 	},
 	{
 		value: 'audiobook',
-		label: 'Audiobook',
+		label: __( 'Audiobook', 'su-applink' ),
 	},
 	{
 		value: 'podcast',
-		label: 'Podcast',
+		label: __( 'Podcast', 'su-applink' ),
 	},
 	{
 		value: 'musicTrack',
-		label: 'Music Track',
+		label: __( 'Music Track', 'su-applink' ),
 	},
 	{
 		value: 'album',
-		label: 'Music Album',
+		label: __( 'Music Album', 'su-applink' ),
 	},
 	{
 		value: 'musicVideo',
-		label: 'Music Video',
+		label: __( 'Music Video', 'su-applink' ),
 	},
 ];
