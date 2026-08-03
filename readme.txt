@@ -29,9 +29,9 @@ Applink is a custom block that lets you search the Apple ecosystem (App Store, A
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/applink-for-wp` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/su-applink` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. (Optional) Open Settings -> Applink for WP and set default values (PHG token, country, language, results count).
+3. (Optional) Open Settings -> SU Applink and set default values (PHG token, country, language, results count).
 4. In the block editor, insert the "Applink" block and search for content.
 
 == Frequently Asked Questions ==
