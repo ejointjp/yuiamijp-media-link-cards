@@ -80,8 +80,9 @@ function sual_register_activation() {
 	$options = get_option( 'sual-setting' );
 
 	if ( ! $options ) {
+		// token は空で始める。既定でアフィリエイトトークンを仕込まない。
 		$default = array(
-			'token'   => '11l64V',
+			'token'   => '',
 			'country' => 'JP',
 			'lang'    => 'auto',
 		);

@@ -71,8 +71,10 @@ function sual_rest_api_search_callback( $request ) {
 		return new WP_REST_Response( $cached_data, 200 );
 	}
 
-	// キャッシュがない場合、iTunes API にリクエストを投げる
-	$api_url = add_query_arg(
+	// キャッシュがない場合、iTunes API にリクエストを投げる。
+	// add_query_arg は false 以外を落とさないため、未指定のパラメータが
+	// at= のように空で残る。送る前に落としておく。
+	$api_args = array_filter(
 		array(
 			'term'    => rawurlencode( $term ),
 			'entity'  => $entity,
@@ -81,8 +83,12 @@ function sual_rest_api_search_callback( $request ) {
 			'lang'    => $lang,
 			'at'      => $at,
 		),
-		'https://itunes.apple.com/search'
+		static function ( $value ) {
+			return null !== $value && '' !== $value;
+		}
 	);
+
+	$api_url = add_query_arg( $api_args, 'https://itunes.apple.com/search' );
 
 	$response = wp_remote_get( $api_url, array( 'timeout' => 15 ) );
 

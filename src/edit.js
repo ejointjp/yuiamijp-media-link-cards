@@ -66,7 +66,10 @@ const Edit = ( props ) => {
 		searchParams.append( 'entity', entity );
 		searchParams.append( 'term', term );
 		searchParams.append( 'limit', limit );
-		searchParams.append( 'at', options.token || '11l64V' );
+		// PHGトークンは未設定なら送らない
+		if ( options.token ) {
+			searchParams.append( 'at', options.token );
+		}
 
 		const url = restUrl + 'search?' + searchParams.toString();
 
