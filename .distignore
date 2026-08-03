@@ -1,0 +1,35 @@
+# wordpress.org へ配布するときに含めないもの。
+# src/ と assets/ は残す（inc/icons.php が assets/icons.json を実行時に読むため
+# assets/ は必須。src/ は build/ の元になる可読ソースとして同梱する）。
+
+# バージョン管理・CI
+.git
+.github
+.gitignore
+.gitattributes
+.distignore
+
+# 開発用の設定
+.editorconfig
+.phpcs.xml.dist
+.phpcs-cache
+.vscode
+.idea
+.DS_Store
+
+# 依存とビルドツール
+node_modules
+package.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+# 開発用ドキュメント
+CLAUDE.md
+
+# 旧名時代の残骸。どこからも読み込まれない
+readme-ja.txt
+su-applink-ja.json
+languages/su-applink-ja.json
+
+# 生成物
+*.zip
