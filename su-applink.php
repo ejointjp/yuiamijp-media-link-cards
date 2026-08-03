@@ -111,8 +111,8 @@ function sual_admin_enqueue_scripts() {
 				'countryValues'    => $country_values,
 				'langValues'       => $lang_values,
 				'countryToLangMap' => SUAL_COUNTRY_TO_LANG_MAP,
+				// nonce は wp-api-fetch がコア側で付与するため渡さない。
 				'restUrl'          => esc_url_raw( rest_url( 'su-applink/v1/' ) ),
-				'nonce'            => wp_create_nonce( 'wp_rest' ),
 			)
 		) . ';',
 		'before'

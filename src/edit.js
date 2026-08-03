@@ -12,6 +12,7 @@ import {
 	Button,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import apiFetch from '@wordpress/api-fetch';
 
 import ReactLoading from 'react-loading';
 import Applink from './components/Applink';
@@ -37,7 +38,6 @@ const {
 	countryValues,
 	countryToLangMap,
 	restUrl,
-	nonce,
 } =
 	// eslint-disable-next-line no-undef
 	sualAjaxValues;
@@ -73,13 +73,9 @@ const Edit = ( props ) => {
 		setAttributes( { app: {} } );
 
 		try {
-			// WordPress REST APIを経由してiTunes Search APIを呼び出し
-			const res = await fetch( url, {
-				headers: {
-					'X-WP-Nonce': nonce,
-				},
-			} );
-			const data = await res.json();
+			// WordPress REST APIを経由してiTunes Search APIを呼び出し。
+			// apiFetchは2xx以外をrejectし、nonceの付与と更新も面倒を見る。
+			const data = await apiFetch( { url } );
 			setResult( data );
 			setState( 'result-success' );
 		} catch ( e ) {
