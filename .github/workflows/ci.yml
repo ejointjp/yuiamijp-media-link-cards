@@ -20,7 +20,7 @@ jobs:
 
       # pnpm のバージョンは package.json の packageManager に解決させる。
       # with: version: を併記すると "Multiple versions of pnpm specified" で落ちる。
-      - uses: pnpm/action-setup@v6
+      - uses: pnpm/action-setup@v6.0.9
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
