@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SU Applink 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/su-applink\n"
-"POT-Creation-Date: 2026-08-03T05:31:28+00:00\n"
+"POT-Creation-Date: 2026-08-04T02:18:08+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
 "Last-Translator: Takashi Fujiskai\n"
 "Language-Team: Japanese\n"
@@ -18,15 +18,17 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: su-applink.php
-msgid "SU Blocks - Applink"
-msgstr "SU Blocks - Applink"
+msgid "SU Applink"
+msgstr "SU Applink"
 
 #. Description of the plugin
 #: su-applink.php
 msgid ""
 "Easily create promotional links for iPhone / iPad / Mac apps, music tracks, "
 "Apple Books, and more."
-msgstr "iPhone / iPad / Macのアプリ、曲、Apple Booksなどの紹介リンクを手軽に作成できます。"
+msgstr ""
+"iPhone / iPad / Macのアプリ、曲、Apple Booksなどの紹介リンクを手軽に作成でき"
+"ます。"
 
 #. Author of the plugin
 #: su-applink.php
@@ -58,7 +60,7 @@ msgstr "デフォルトの表示言語"
 msgid "Select the country of the App Store to search."
 msgstr "検索するApp Storeの国を選択します。"
 
-#: inc/admin-page.php:168 build/index.js:1 src/edit.js:292
+#: inc/admin-page.php:168 build/index.js:1 src/edit.js:295
 msgid "Display Applink in English"
 msgstr "Applinkを英語表記にする"
 
@@ -154,7 +156,7 @@ msgstr "フランス"
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: su-applink.php:133
+#: su-applink.php:135
 msgid "Settings"
 msgstr "設定"
 
@@ -194,39 +196,39 @@ msgstr "アルバム"
 msgid "Music Video"
 msgstr "ミュージックビデオ"
 
-#: build/index.js:1 src/edit.js:185
+#: build/index.js:1 src/edit.js:188
 msgid "Search Results"
 msgstr "検索結果"
 
-#: build/index.js:1 src/edit.js:200
+#: build/index.js:1 src/edit.js:203
 msgid "Cached"
 msgstr "キャッシュ"
 
-#: build/index.js:1 src/edit.js:231
+#: build/index.js:1 src/edit.js:234
 msgid "Failed to retrieve data"
 msgstr "データの取得に失敗しました"
 
-#: build/index.js:1 src/edit.js:271
+#: build/index.js:1 src/edit.js:274
 msgid "Search Settings"
 msgstr "検索条件設定"
 
-#: build/index.js:1 src/edit.js:274
+#: build/index.js:1 src/edit.js:277
 msgid "Number of Results"
 msgstr "検索結果数"
 
-#: build/index.js:1 src/edit.js:283
+#: build/index.js:1 src/edit.js:286
 msgid "Store Country"
 msgstr "検索対象ストア"
 
-#: build/index.js:1 src/edit.js:300
+#: build/index.js:1 src/edit.js:303
 msgid "If turned off, the language will be determined automatically."
 msgstr "オフにすると、言語が自動的に決定されます。"
 
-#: build/index.js:1 src/edit.js:314
+#: build/index.js:1 src/edit.js:317
 msgid "Set default values on settings page"
 msgstr "設定ページでデフォルト値を設定する"
 
-#: build/index.js:1 src/edit.js:343
+#: build/index.js:1 src/edit.js:346
 msgid "Enter search term and press Enter"
 msgstr "検索ワードを入力してEnter"
 
@@ -240,7 +242,8 @@ msgctxt "block description"
 msgid ""
 "Create promotional links for iPhone / iPad / Mac apps, music tracks, Apple "
 "Books, and more."
-msgstr "iPhone / iPad / Macのアプリ、曲、Apple Booksなどの紹介リンクを作成します。"
+msgstr ""
+"iPhone / iPad / Macのアプリ、曲、Apple Booksなどの紹介リンクを作成します。"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
@@ -286,6 +289,9 @@ msgstr "Mac"
 msgctxt "block keyword"
 msgid "book"
 msgstr "ブック"
+
+#~ msgid "SU Blocks - Applink"
+#~ msgstr "SU Blocks - Applink"
 
 #~ msgid "Select"
 #~ msgstr "選択"

@@ -29,7 +29,7 @@ add_action( 'admin_menu', 'sual_add_admin_page' );
 function sual_options_page_html() {
 	?>
 	<div class="wrap">
-	<h2>SU Blocks - Applink</h2>
+	<h2>SU Applink</h2>
 
 	<?php
 	global $parent_file;

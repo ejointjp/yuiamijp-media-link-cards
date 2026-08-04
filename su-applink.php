@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       SU Blocks - Applink
+ * Plugin Name:       SU Applink
  * Description:       Easily create promotional links for iPhone / iPad / Mac apps, music tracks, Apple Books, and more.
  * Requires at least: 6.3
  * Requires PHP:      7.4
