@@ -1,5 +1,5 @@
 /* =============================================================================
-   SU Applink - Block editor styles
+   SU Blocks - Media Link Cards | Block editor styles
    -----------------------------------------------------------------------------
    style.css の --_ エイリアスを継承する(.sual-editor-wrapper はエディタでも
    style.css が読み込まれるため --_ が利用可能)。

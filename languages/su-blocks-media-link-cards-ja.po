@@ -1,28 +1,29 @@
-# Japanese translation for SU Applink plugin
-# Copyright (C) 2024 Takashi Fujiskai
-# This file is distributed under the same license as the SU Applink plugin.
+# Japanese translation for SU Blocks - Media Link Cards plugin
+# Copyright (C) 2026 Takashi Fujisaki
+# This file is distributed under the same license as the SU Blocks - Media Link Cards plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SU Applink 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/su-applink\n"
-"POT-Creation-Date: 2026-08-04T02:18:08+00:00\n"
+"Project-Id-Version: SU Blocks - Media Link Cards 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/su-blocks-media-"
+"link-cards\n"
+"POT-Creation-Date: 2026-08-10T05:51:14+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
-"Last-Translator: Takashi Fujiskai\n"
+"Last-Translator: Takashi Fujisaki\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Domain: su-applink\n"
+"X-Domain: su-blocks-media-link-cards\n"
 
 #. Plugin Name of the plugin
-#: su-applink.php
-msgid "SU Applink"
-msgstr "SU Applink"
+#: su-blocks-media-link-cards.php
+msgid "SU Blocks - Media Link Cards"
+msgstr "SU Blocks - Media Link Cards"
 
 #. Description of the plugin
-#: su-applink.php
+#: su-blocks-media-link-cards.php
 msgid ""
 "Easily create promotional links for iPhone / iPad / Mac apps, music tracks, "
 "Apple Books, and more."
@@ -31,40 +32,40 @@ msgstr ""
 "ます。"
 
 #. Author of the plugin
-#: su-applink.php
+#: su-blocks-media-link-cards.php
 msgid "Takashi Fujisaki"
-msgstr ""
+msgstr "Takashi Fujisaki"
 
 #: build/render.php:54 src/render.php:54 build/index.js:1
-#: src/components/Applink.js:53
+#: src/components/MediaLinkCard.js:53
 msgid "Preview"
 msgstr "試聴"
 
-#: inc/admin-page.php:106
+#: inc/admin-page.php:99
 msgid "PHG Token"
 msgstr "PHGトークン"
 
-#: inc/admin-page.php:107
+#: inc/admin-page.php:100
 msgid "Default Search Results"
 msgstr "デフォルトの検索結果数"
 
-#: inc/admin-page.php:108
+#: inc/admin-page.php:101
 msgid "Default Store Country"
 msgstr "デフォルトの検索対象ストア"
 
-#: inc/admin-page.php:109
+#: inc/admin-page.php:102
 msgid "Default Language"
 msgstr "デフォルトの表示言語"
 
-#: inc/admin-page.php:155
+#: inc/admin-page.php:148
 msgid "Select the country of the App Store to search."
 msgstr "検索するApp Storeの国を選択します。"
 
-#: inc/admin-page.php:168 build/index.js:1 src/edit.js:295
-msgid "Display Applink in English"
-msgstr "Applinkを英語表記にする"
+#: inc/admin-page.php:161 build/index.js:1 src/edit.js:309
+msgid "Display cards in English"
+msgstr "カードを英語表記にする"
 
-#: inc/admin-page.php:170
+#: inc/admin-page.php:163
 msgid "If unchecked, the language will be determined automatically."
 msgstr "チェックを外すと、言語が自動的に決定されます。"
 
@@ -156,7 +157,7 @@ msgstr "フランス"
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: su-applink.php:135
+#: su-blocks-media-link-cards.php:138
 msgid "Settings"
 msgstr "設定"
 
@@ -208,34 +209,34 @@ msgstr "キャッシュ"
 msgid "Failed to retrieve data"
 msgstr "データの取得に失敗しました"
 
-#: build/index.js:1 src/edit.js:274
+#: build/index.js:1 src/edit.js:278
 msgid "Search Settings"
 msgstr "検索条件設定"
 
-#: build/index.js:1 src/edit.js:277
+#: build/index.js:1 src/edit.js:285
 msgid "Number of Results"
 msgstr "検索結果数"
 
-#: build/index.js:1 src/edit.js:286
+#: build/index.js:1 src/edit.js:297
 msgid "Store Country"
 msgstr "検索対象ストア"
 
-#: build/index.js:1 src/edit.js:303
+#: build/index.js:1 src/edit.js:317
 msgid "If turned off, the language will be determined automatically."
 msgstr "オフにすると、言語が自動的に決定されます。"
 
-#: build/index.js:1 src/edit.js:317
+#: build/index.js:1 src/edit.js:331
 msgid "Set default values on settings page"
 msgstr "設定ページでデフォルト値を設定する"
 
-#: build/index.js:1 src/edit.js:346
+#: build/index.js:1 src/edit.js:360
 msgid "Enter search term and press Enter"
 msgstr "検索ワードを入力してEnter"
 
 #: build/block.json src/block.json
 msgctxt "block title"
-msgid "Applink"
-msgstr "Applink"
+msgid "Media Link Card"
+msgstr "メディアリンクカード"
 
 #: build/block.json src/block.json
 msgctxt "block description"
@@ -290,8 +291,12 @@ msgctxt "block keyword"
 msgid "book"
 msgstr "ブック"
 
-#~ msgid "SU Blocks - Applink"
-#~ msgstr "SU Blocks - Applink"
+#~ msgid "SU Applink"
+#~ msgstr "SU Applink"
+
+#~ msgctxt "block title"
+#~ msgid "Applink"
+#~ msgstr "Applink"
 
 #~ msgid "Select"
 #~ msgstr "選択"

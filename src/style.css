@@ -1,5 +1,5 @@
 /* =============================================================================
-   SU Applink - Front-end styles
+   SU Blocks - Media Link Cards | Front-end styles
    -----------------------------------------------------------------------------
    haku2 の design-system tokens.css のセマンティックトークンに準拠。
    --_ プレフィックスはコンポーネント内部エイリアス。
@@ -8,7 +8,7 @@
    本ファイルでは個別に上書きしない。
    -------------------------------------------------------------------------- */
 
-:where(.wp-block-su-applink),
+:where(.wp-block-su-blocks-media-link-cards),
 :where(.sual-editor-wrapper) {
 	--_color-text: var(--color-text, oklch(21% 0.006 285.885));
 	--_color-text-muted: var(--color-text-muted, oklch(46% 0.01 232));
@@ -35,7 +35,7 @@
 	--_duration-base: var(--duration-base, 250ms);
 	--_ease-out: var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
 
-	/* component-scoped (haku2 トークンにない applink 固有の値) */
+	/* component-scoped (haku2 トークンにないカード固有の値) */
 	--border-radius: var(--_radius-lg);
 	--padding: var(--_space-16) var(--_space-20);
 	--gap: var(--_space-16);

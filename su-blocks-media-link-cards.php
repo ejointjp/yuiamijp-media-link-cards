@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       SU Applink
+ * Plugin Name:       SU Blocks - Media Link Cards
  * Description:       Easily create promotional links for iPhone / iPad / Mac apps, music tracks, Apple Books, and more.
  * Requires at least: 6.3
  * Requires PHP:      7.4
@@ -9,10 +9,10 @@
  * Author:            Takashi Fujisaki
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       su-applink
+ * Text Domain:       su-blocks-media-link-cards
  * Domain Path:       /languages
  *
- * @package           su-applink
+ * @package           su-blocks-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -27,6 +27,9 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/api.php';
 
 /**
  * ブロックを登録し、エディター用スクリプトに翻訳を紐付ける
+ *
+ * 翻訳ファイルは同梱せず、translate.wordpress.org が配信する言語パックを使う。
+ * パスを渡さないことで WordPress が WP_LANG_DIR/plugins を参照する。
  */
 function sual_init() {
 	$block_type = register_block_type( __DIR__ . '/build' );
@@ -38,7 +41,7 @@ function sual_init() {
 		);
 
 		foreach ( $script_handles as $handle ) {
-			wp_set_script_translations( $handle, 'su-applink', plugin_dir_path( __FILE__ ) . 'languages' );
+			wp_set_script_translations( $handle, 'su-blocks-media-link-cards' );
 		}
 	}
 }
@@ -107,14 +110,14 @@ function sual_admin_enqueue_scripts() {
 		'wp-block-editor',
 		'const sualAjaxValues = ' . wp_json_encode(
 			array(
-				'optionsPageUrl'   => admin_url( 'options-general.php?page=su-applink' ),
+				'optionsPageUrl'   => admin_url( 'options-general.php?page=su-blocks-media-link-cards' ),
 				'options'          => get_option( 'sual-setting' ),
 				'limitValues'      => $limit_values,
 				'countryValues'    => $country_values,
 				'langValues'       => $lang_values,
 				'countryToLangMap' => SUAL_COUNTRY_TO_LANG_MAP,
 				// nonce は wp-api-fetch がコア側で付与するため渡さない。
-				'restUrl'          => esc_url_raw( rest_url( 'su-applink/v1/' ) ),
+				'restUrl'          => esc_url_raw( rest_url( 'su-blocks-media-link-cards/v1/' ) ),
 			)
 		) . ';',
 		'before'
@@ -131,8 +134,8 @@ add_action( 'admin_enqueue_scripts', 'sual_admin_enqueue_scripts' );
 function sual_add_action_links( $links ) {
 	$settings_link = sprintf(
 		'<a href="%s">%s</a>',
-		admin_url( 'options-general.php?page=su-applink' ),
-		__( 'Settings', 'su-applink' )
+		admin_url( 'options-general.php?page=su-blocks-media-link-cards' ),
+		__( 'Settings', 'su-blocks-media-link-cards' )
 	);
 	array_unshift( $links, $settings_link );
 

@@ -6,7 +6,7 @@
  * 同じ assets/icons.json を参照する。アイコンを足す・差し替えるときは
  * JSON だけを変更すれば両方に反映される。
  *
- * @package su-applink
+ * @package su-blocks-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -31,7 +31,7 @@ function sual_get_icons() {
 	if ( ! is_readable( $path ) ) {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- 配布ファイルの欠損を握りつぶさないため。
-			error_log( 'SU Applink: assets/icons.json が読み込めません: ' . $path );
+			error_log( 'SU Blocks - Media Link Cards: assets/icons.json が読み込めません: ' . $path );
 		}
 		return $icons;
 	}
@@ -43,7 +43,7 @@ function sual_get_icons() {
 	if ( ! is_array( $decoded ) ) {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- JSON の破損を握りつぶさないため。
-			error_log( 'SU Applink: assets/icons.json の JSON を解析できません: ' . $path );
+			error_log( 'SU Blocks - Media Link Cards: assets/icons.json の JSON を解析できません: ' . $path );
 		}
 		return $icons;
 	}
@@ -71,9 +71,95 @@ function sual_get_store( $type ) {
 }
 
 /**
+ * wp_kses() に渡す svg 用の許可タグ定義を返す
+ *
+ * assets/icons.json のマークアップを出力するために必要な要素と属性だけを許可する。
+ * script / style / use / foreignObject と、on* のイベント属性は含めない。
+ *
+ * 属性名は wp_kses が小文字化して照合するためすべて小文字で書く。
+ * viewBox は viewbox として出力されるが、HTML パーサーが SVG 用に
+ * 正規の綴りへ戻すため表示には影響しない。
+ *
+ * @return array wp_kses 用の許可タグ配列。
+ */
+function sual_get_svg_allowed_html() {
+	$shape_attr = array(
+		'fill'             => true,
+		'fill-rule'        => true,
+		'fill-opacity'     => true,
+		'clip-rule'        => true,
+		'stroke'           => true,
+		'stroke-width'     => true,
+		'stroke-linecap'   => true,
+		'stroke-linejoin'  => true,
+		'stroke-opacity'   => true,
+		'stroke-dasharray' => true,
+		'opacity'          => true,
+		'transform'        => true,
+	);
+
+	return array(
+		'svg'      => array_merge(
+			$shape_attr,
+			array(
+				'xmlns'       => true,
+				'width'       => true,
+				'height'      => true,
+				'viewbox'     => true,
+				'role'        => true,
+				'aria-hidden' => true,
+				'focusable'   => true,
+				'class'       => true,
+			)
+		),
+		'g'        => $shape_attr,
+		'path'     => array_merge( $shape_attr, array( 'd' => true ) ),
+		'circle'   => array_merge(
+			$shape_attr,
+			array(
+				'cx' => true,
+				'cy' => true,
+				'r'  => true,
+			)
+		),
+		'ellipse'  => array_merge(
+			$shape_attr,
+			array(
+				'cx' => true,
+				'cy' => true,
+				'rx' => true,
+				'ry' => true,
+			)
+		),
+		'rect'     => array_merge(
+			$shape_attr,
+			array(
+				'x'      => true,
+				'y'      => true,
+				'width'  => true,
+				'height' => true,
+				'rx'     => true,
+				'ry'     => true,
+			)
+		),
+		'line'     => array_merge(
+			$shape_attr,
+			array(
+				'x1' => true,
+				'y1' => true,
+				'x2' => true,
+				'y2' => true,
+			)
+		),
+		'polygon'  => array_merge( $shape_attr, array( 'points' => true ) ),
+		'polyline' => array_merge( $shape_attr, array( 'points' => true ) ),
+	);
+}
+
+/**
  * アイコン名から svg タグの文字列を組み立てる
  *
- * 戻り値は同梱 JSON 内の自前マークアップのため、出力側でエスケープしない。
+ * 戻り値は出力側で sual_get_svg_allowed_html() を使って wp_kses() に通すこと。
  *
  * @param string $name アイコン名（assets/icons.json の icons のキー）。
  * @return string svg タグ。定義が無ければ空文字。

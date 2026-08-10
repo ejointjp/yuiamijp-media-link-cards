@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "su/applink",
+	"name": "su-blocks/media-link-cards",
 	"version": "0.1.0",
-	"title": "Applink",
+	"title": "Media Link Card",
 	"category": "su-blocks",
 	"icon": "instagram",
 	"description": "Create promotional links for iPhone / iPad / Mac apps, music tracks, Apple Books, and more.",
@@ -11,7 +11,7 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "su-applink",
+	"textdomain": "su-blocks-media-link-cards",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

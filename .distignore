@@ -26,10 +26,16 @@ pnpm-workspace.yaml
 # 開発用ドキュメント
 CLAUDE.md
 
+# 翻訳ファイル。wordpress.org でホストされるプラグインの翻訳は
+# translate.wordpress.org が言語パックとして配信するため同梱しない。
+# 原本の languages/*.pot だけを残す。
+*.po
+*.mo
+*.l10n.php
+languages/*.json
+
 # 旧名時代の残骸。どこからも読み込まれない
 readme-ja.txt
-su-applink-ja.json
-languages/su-applink-ja.json
 
 # 生成物
 *.zip

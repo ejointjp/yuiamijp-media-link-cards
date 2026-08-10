@@ -6,7 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 概要
 
-WordPressのブロックプラグイン「SU Blocks - Applink」。ブロックエディターからiTunes Search APIを検索し、App Store / Apple Books / Apple Musicなどのアイテムをカード形式で埋め込む。wordpress.org配布（slug: `su-applink`）。
+WordPressのブロックプラグイン「SU Blocks - Media Link Cards」。ブロックエディターからiTunes Search APIを検索し、App Store / Apple Books / Apple Musicなどのアイテムをカード形式で埋め込む。wordpress.org配布（slug: `su-blocks-media-link-cards`）。
+
+旧名は「SU Applink」（slug: `su-applink`）。wordpress.orgの審査で「Applink」が他者のプロジェクト名と重なると指摘され、2026年8月に改名した。`Applink`という語をコードにもドキュメントにも戻さない。
 
 ## コマンド
 
@@ -30,7 +32,7 @@ phpcbf           # PHPの自動修正
 
 `src/save.js`は`null`を返す。投稿本文にHTMLは保存せず、`build/render.php`（実体は`src/render.php`）が毎回フロントを描画する。ブロックの状態はすべて`app`属性（オブジェクト）と`entity`属性（文字列）に入る。
 
-カード本体のマークアップはフロント（`src/render.php`）とエディタープレビュー（`src/components/Applink.js`）に分かれている。PHPとJSXでは共有しようがないので構造だけは二重管理で、**クラス名やDOM構造を変えるときは両方を直す**。
+カード本体のマークアップはフロント（`src/render.php`）とエディタープレビュー（`src/components/MediaLinkCard.js`）に分かれている。PHPとJSXでは共有しようがないので構造だけは二重管理で、**クラス名やDOM構造を変えるときは両方を直す**。
 
 一方、**アイコンとストア名は`assets/icons.json`が単一の情報源**。`inc/icons.php`と`src/components/StoreIcon.js`が同じJSONを読むので、アイコンを足す・差し替えるときはJSONだけを変更すればよい。
 
@@ -40,11 +42,15 @@ preview  試聴ボタンに使うアイコン名
 stores   type → { label, icon }
 ```
 
+PHP側の`sual_get_icon_svg()`が返すsvgは、出力時に`wp_kses()`と`sual_get_svg_allowed_html()`（`inc/icons.php`）を必ず通す。審査でエスケープ漏れとして指摘された箇所なので、`echo`のまま戻してはいけない。**`assets/icons.json`に新しい要素や属性を足したら、許可リストにも足す。** 許可リストに無い要素・属性はwp_ksesが黙って落とす。
+
+wp_ksesは属性名を小文字化するため`viewBox`は`viewbox`として出力されるが、HTMLパーサーがSVG用の綴りへ戻すので表示には影響しない。
+
 CSS（`src/style.css`）は共通で、`.sual-btn svg`のような子孫セレクタでアイコンに色を当てている。**svgの外側にラッパー要素を足すとフロントとエディターで見た目がズレる**ため、`StoreIcon.js`はsvg要素自体をReactで作り、`content`だけを`dangerouslySetInnerHTML`で流し込んでいる。
 
 ### データの流れ
 
-1. `src/edit.js`が`sualAjaxValues.restUrl`（= `su-applink/v1/search`）へfetch
+1. `src/edit.js`が`sualAjaxValues.restUrl`（= `su-blocks-media-link-cards/v1/search`）へfetch
 2. `inc/api.php`が`https://itunes.apple.com/search`へ中継。パラメータのmd5をキーに12時間トランジェントでキャッシュし、`cached`フラグを付けて返す。権限は`edit_posts`
 3. 検索結果の1件を選ぶと`src/app-attributes.js`が`{ id, type, title, url, artist, iconUrl, previewUrl }`へ正規化し、`app`属性に保存
 4. `src/render.php`が`$attributes['app']`を読んで出力
@@ -63,39 +69,47 @@ APIリクエストの`entity`（検索条件。`src/entity-options.js`）とレ�
 
 - PHP関数: `sual_` / 定数: `SUAL_` / オプション: `sual-setting`
 - CSSクラス: フロント`sual-`、エディター専用`sual-editor-`
-- テキストドメイン: `su-applink`。i18n対応済みなので表示文字列は必ず`__()`系に通す
+- テキストドメイン: `su-blocks-media-link-cards`。i18n対応済みなので表示文字列は必ず`__()`系に通す
+- ブロック名: `su-blocks/media-link-cards`（フロントのラッパークラスは`wp-block-su-blocks-media-link-cards`）
+- 関数接頭辞の`sual_`とオプション名`sual-setting`は旧名由来だが、一意なので改名時もそのまま据え置いた
 
 ## 翻訳
 
-日本語のみ。**実際に読み込まれるのは次の3つ**。
+日本語のみ。**翻訳ファイルは配布物に同梱しない。** wordpress.orgでホストされるプラグインの翻訳はtranslate.wordpress.orgが言語パックとして配信するため、`.po` / `.mo` / `.json` を同梱すると審査で指摘される。`.distignore`で除外済み。
 
-- `languages/su-applink.pot` — 原本
-- `languages/su-applink-ja.po` / `.mo` — PHP側
-- `languages/su-applink-ja-dfbff627e6c248bcb3b61d7d06da9ca9.json` — JS側。ハッシュは`md5('build/index.js')`なので、**バンドルの出力パスを変えるとこのファイルは読まれなくなる**
+リポジトリに置くのは次の2つだけ。
 
-`languages/su-applink-ja.json`とリポジトリ直下の`su-applink-ja.json`はどこからも読み込まれていない残骸。更新しない。
+- `languages/su-blocks-media-link-cards.pot` — 原本。配布物にも含める
+- `languages/su-blocks-media-link-cards-ja.po` — 日本語訳。translate.wordpress.orgへImportするための原資であって、実行時には読まれない
 
-更新手順はwordpress.mdの通り（`wp i18n make-pot` → `msgmerge` → 訳出 → `msgfmt` / `wp i18n make-json`）。JSONを作り直したら`build/index.js`のmd5名になっているか確認する。
+`.mo`と`.json`は作らない。`wp_set_script_translations()`にもパスを渡していないので、WordPressは`WP_LANG_DIR/plugins`の言語パックだけを見る。
 
-**`make-pot`で`build/`を除外してはいけない。** 除外すると.potの参照が`src/`側だけになり、`make-json`が`md5('src/edit.js')`のような名前でJSONを作る。実際にenqueueされるのは`build/index.js`なので、そのJSONは永久に読み込まれない。除外するのは`node_modules`だけにする。
+公開後の流れ。
+
+1. translate.wordpress.orgのプロジェクトページから`languages/su-blocks-media-link-cards-ja.po`をImportする
+2. 承認には日本語ロケールのPTE権限が要る。作者でも自動では付かないので申請する
+3. 初回の言語パックはStableの90%以上が承認された時点で生成される。以降は閾値に関係なく更新される
+
+表示文字列を追加・変更したら`.pot`と`.po`を更新する。**`make-pot`で`build/`を除外してはいけない**（.potの参照が`src/`側だけになる）。除外するのは`node_modules`だけ。
 
 ```bash
-wp i18n make-pot . languages/su-applink.pot --slug=su-applink --exclude=node_modules
-wp i18n make-json languages --no-purge   # --no-purge が無いと.poからJS側の文字列が消える
+wp i18n make-pot . languages/su-blocks-media-link-cards.pot --slug=su-blocks-media-link-cards --exclude=node_modules
+msgmerge --update --backup=none languages/su-blocks-media-link-cards-ja.po languages/su-blocks-media-link-cards.pot
+msgfmt --statistics -o /dev/null languages/su-blocks-media-link-cards-ja.po   # 未訳とfuzzyが0であることを確認
 ```
-
-`make-json`は`src/`配下の参照からもJSONを作るが、読み込まれるのは`build/index.js`の分だけなので残りは削除する。
 
 ## readme
 
 - `readme.txt` — wordpress.org用の正。バージョン・Changelog・Tested up toはここを更新する
-- `readme-ja.txt` — 旧名「Applink Block for WP」時代の日本語版。現在は追従していない
+- `readme-ja.txt` — 旧名時代の日本語版。追従しておらず配布物にも入らない残骸
 
 ## 配布
 
 **`.distignore`が配布物の中身を決める正。** `.gitattributes`は置いていない（10upのactionは`.distignore`があればそちらだけを見る）。`assets/`は`inc/icons.php`が`assets/icons.json`を実行時に読むため**除外してはいけない**。
 
 `v*`のタグをpushすると`.github/workflows/deploy.yml`がwordpress.orgのSVNへ反映する。手順は`/wp-plugin-publish`。
+
+workflowは`SLUG: su-blocks-media-link-cards`を明示している。リポジトリ名に依存させていないので、リポジトリ名を変えてもデプロイ先はズレない。
 
 **`wp-scripts plugin-zip`は使わない。** `.distignore`を一切読まず、`admin/** build/** includes/** languages/** public/**`という固定のglobで拾う。このプラグインは`inc/`と`assets/`を使っているのでどちらも欠落し、読み込むと`require_once`で致命的エラーになるZIPができる。ZIPが要るとき（初回審査への提出など）はCIと同じrsyncで作る。
 

@@ -1,7 +1,7 @@
 import { PreviewIcon, StoreIcon } from './StoreIcon';
 import { __ } from '@wordpress/i18n';
 
-const Applink = ( { app, isEditor = false } ) => {
+const MediaLinkCard = ( { app, isEditor = false } ) => {
 	const LinkWrapper = ( { href, children, className, ...props } ) => {
 		if ( isEditor ) {
 			return <span className={ className }>{ children }</span>;
@@ -50,7 +50,10 @@ const Applink = ( { app, isEditor = false } ) => {
 						>
 							<PreviewIcon />
 							<span className="sual-btn-label">
-								{ __( 'Preview', 'su-applink' ) }
+								{ __(
+									'Preview',
+									'su-blocks-media-link-cards'
+								) }
 							</span>
 						</LinkWrapper>
 					) }
@@ -68,4 +71,4 @@ const Applink = ( { app, isEditor = false } ) => {
 	);
 };
 
-export default Applink;
+export default MediaLinkCard;

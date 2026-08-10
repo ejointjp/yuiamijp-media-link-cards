@@ -30,10 +30,11 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      # リポジトリ名と wordpress.org の slug が一致しているため SLUG は指定しない。
+      # SLUG は wordpress.org 側の slug を明示する。リポジトリ名に依存させない。
       # 配布物の中身は .distignore が決める。
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: su-blocks-media-link-cards

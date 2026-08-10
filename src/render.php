@@ -1,12 +1,12 @@
 <?php
 /**
- * Applink ブロックのフロント側の出力
+ * Media Link Card ブロックのフロント側の出力
  *
  * アイコンとストア名は assets/icons.json が単一の情報源。
- * エディター側のプレビューは src/components/Applink.js が同じ JSON を読む。
+ * エディター側のプレビューは src/components/MediaLinkCard.js が同じ JSON を読む。
  * マークアップを変えるときは両方を揃えること。
  *
- * @package su-applink
+ * @package su-blocks-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -34,7 +34,7 @@ $sual_wrapper_attributes = get_block_wrapper_attributes();
 
 ?>
 
-<div <?php echo $sual_wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<div <?php echo $sual_wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_block_wrapper_attributes() returns markup already escaped by WordPress core. ?>>
 	<div class="sual sual-<?php echo esc_attr( $sual_type ); ?>">
 		<a class="sual-figure" href="<?php echo esc_url( $sual_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
 			<img class="sual-img" src="<?php echo esc_url( $sual_icon ); ?>" alt="<?php echo esc_attr( $sual_title ); ?>" />
@@ -50,12 +50,12 @@ $sual_wrapper_attributes = get_block_wrapper_attributes();
 			<div class="sual-btns">
 				<?php if ( ! empty( $sual_preview_url ) ) : ?>
 					<a class="sual-audition sual-btn" href="<?php echo esc_url( $sual_preview_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
-						<?php echo sual_get_icon_svg( $sual_preview_icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- 自前の定数マークアップ。 ?>
-						<span class="sual-btn-label"><?php echo esc_html__( 'Preview', 'su-applink' ); ?></span>
+						<?php echo wp_kses( sual_get_icon_svg( $sual_preview_icon ), sual_get_svg_allowed_html() ); ?>
+						<span class="sual-btn-label"><?php echo esc_html__( 'Preview', 'su-blocks-media-link-cards' ); ?></span>
 					</a>
 				<?php endif; ?>
 				<a class="sual-store sual-btn" href="<?php echo esc_url( $sual_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
-					<?php echo sual_get_icon_svg( $sual_store_icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- 自前の定数マークアップ。 ?>
+					<?php echo wp_kses( sual_get_icon_svg( $sual_store_icon ), sual_get_svg_allowed_html() ); ?>
 					<span class="sual-btn-label"><?php echo esc_html( $sual_store_label ); ?></span>
 				</a>
 			</div>

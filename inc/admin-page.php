@@ -2,7 +2,7 @@
 /**
  * 管理画面の設定ページ
  *
- * @package su-applink
+ * @package su-blocks-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,10 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function sual_add_admin_page() {
 	add_options_page(
-		'SU Applink',
-		'SU Applink',
+		'SU Blocks - Media Link Cards',
+		'Media Link Cards',
 		'manage_options',
-		'su-applink',
+		'su-blocks-media-link-cards',
 		'sual_options_page_html'
 	);
 }
@@ -29,14 +29,7 @@ add_action( 'admin_menu', 'sual_add_admin_page' );
 function sual_options_page_html() {
 	?>
 	<div class="wrap">
-	<h2>SU Applink</h2>
-
-	<?php
-	global $parent_file;
-	if ( 'options-general.php' !== $parent_file ) {
-		require_once ABSPATH . 'wp-admin/options-head.php';
-	}
-	?>
+	<h2>SU Blocks - Media Link Cards</h2>
 
 	<form method="post" action="options.php">
 		<?php
@@ -103,10 +96,10 @@ function sual_page_init() {
 	);
 	add_settings_section( 'sual-setting-section-id', '', '', 'sual-setting' );
 
-	add_settings_field( 'token', __( 'PHG Token', 'su-applink' ), 'sual_token_callback', 'sual-setting', 'sual-setting-section-id' );
-	add_settings_field( 'limit', __( 'Default Search Results', 'su-applink' ), 'sual_limit_callback', 'sual-setting', 'sual-setting-section-id' );
-	add_settings_field( 'country', __( 'Default Store Country', 'su-applink' ), 'sual_country_callback', 'sual-setting', 'sual-setting-section-id' );
-	add_settings_field( 'lang', __( 'Default Language', 'su-applink' ), 'sual_lang_callback', 'sual-setting', 'sual-setting-section-id' );
+	add_settings_field( 'token', __( 'PHG Token', 'su-blocks-media-link-cards' ), 'sual_token_callback', 'sual-setting', 'sual-setting-section-id' );
+	add_settings_field( 'limit', __( 'Default Search Results', 'su-blocks-media-link-cards' ), 'sual_limit_callback', 'sual-setting', 'sual-setting-section-id' );
+	add_settings_field( 'country', __( 'Default Store Country', 'su-blocks-media-link-cards' ), 'sual_country_callback', 'sual-setting', 'sual-setting-section-id' );
+	add_settings_field( 'lang', __( 'Default Language', 'su-blocks-media-link-cards' ), 'sual_lang_callback', 'sual-setting', 'sual-setting-section-id' );
 }
 add_action( 'admin_init', 'sual_page_init' );
 
@@ -152,7 +145,7 @@ function sual_country_callback() {
 		printf( '<option value="%s" %s>%s</option>', esc_attr( $item['value'] ), selected( $option_val, $item['value'], false ), esc_html( $item['label'] ) );
 	}
 	echo '</select>';
-	echo '<p class="description">' . esc_html__( 'Select the country of the App Store to search.', 'su-applink' ) . '</p>';
+	echo '<p class="description">' . esc_html__( 'Select the country of the App Store to search.', 'su-blocks-media-link-cards' ) . '</p>';
 }
 
 /**
@@ -165,7 +158,7 @@ function sual_lang_callback() {
 	printf(
 		'<label><input type="checkbox" id="lang-checkbox" name="sual-setting[lang]" value="en_us" %1$s> %2$s</label>',
 		checked( 'en_us', $option_val, false ),
-		esc_html__( 'Display Applink in English', 'su-applink' )
+		esc_html__( 'Display cards in English', 'su-blocks-media-link-cards' )
 	);
-	echo '<p class="description">' . esc_html__( 'If unchecked, the language will be determined automatically.', 'su-applink' ) . '</p>';
+	echo '<p class="description">' . esc_html__( 'If unchecked, the language will be determined automatically.', 'su-blocks-media-link-cards' ) . '</p>';
 }

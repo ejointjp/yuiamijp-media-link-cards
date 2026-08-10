@@ -2,7 +2,7 @@
 /**
  * iTunes Search API を中継する REST API
  *
- * @package su-applink
+ * @package su-blocks-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register REST API route for SU Applink search
+ * Register REST API route for SU Blocks - Media Link Cards search
  */
 function sual_register_rest_routes() {
 	register_rest_route(
-		'su-applink/v1',
+		'su-blocks-media-link-cards/v1',
 		'/search',
 		array(
 			'methods'             => 'GET',
@@ -34,7 +34,7 @@ function sual_rest_api_search_permission_check() {
 }
 
 /**
- * Callback function for SU Applink search API
+ * Callback function for SU Blocks - Media Link Cards search API
  *
  * @param WP_REST_Request $request リクエスト。
  * @return WP_REST_Response

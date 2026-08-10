@@ -2,7 +2,7 @@
 /**
  * 定数と選択肢の定義
  *
- * @package su-applink
+ * @package su-blocks-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -40,23 +40,23 @@ function sual_get_limit_values() {
 	$values = array(
 		array(
 			'value' => 10,
-			'label' => __( '10 items', 'su-applink' ),
+			'label' => __( '10 items', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 25,
-			'label' => __( '25 items', 'su-applink' ),
+			'label' => __( '25 items', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 50,
-			'label' => __( '50 items', 'su-applink' ),
+			'label' => __( '50 items', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 100,
-			'label' => __( '100 items', 'su-applink' ),
+			'label' => __( '100 items', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 200,
-			'label' => __( '200 items', 'su-applink' ),
+			'label' => __( '200 items', 'su-blocks-media-link-cards' ),
 		),
 	);
 
@@ -72,11 +72,11 @@ function sual_get_lang_values() {
 	return array(
 		array(
 			'value' => 'auto',
-			'label' => __( 'Auto', 'su-applink' ),
+			'label' => __( 'Auto', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'en_us',
-			'label' => __( 'English', 'su-applink' ),
+			'label' => __( 'English', 'su-blocks-media-link-cards' ),
 		),
 	);
 }
@@ -91,65 +91,65 @@ function sual_get_country_values() {
 		// アジア主要国
 		array(
 			'value' => 'JP',
-			'label' => __( 'Japan', 'su-applink' ),
+			'label' => __( 'Japan', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'KR',
-			'label' => __( 'South Korea', 'su-applink' ),
+			'label' => __( 'South Korea', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'CN',
-			'label' => __( 'China', 'su-applink' ),
+			'label' => __( 'China', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'TW',
-			'label' => __( 'Taiwan', 'su-applink' ),
+			'label' => __( 'Taiwan', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'HK',
-			'label' => __( 'Hong Kong', 'su-applink' ),
+			'label' => __( 'Hong Kong', 'su-blocks-media-link-cards' ),
 		),
 		// 英語圏主要国
 		array(
 			'value' => 'US',
-			'label' => __( 'United States', 'su-applink' ),
+			'label' => __( 'United States', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'GB',
-			'label' => __( 'United Kingdom', 'su-applink' ),
+			'label' => __( 'United Kingdom', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'CA',
-			'label' => __( 'Canada', 'su-applink' ),
+			'label' => __( 'Canada', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'AU',
-			'label' => __( 'Australia', 'su-applink' ),
+			'label' => __( 'Australia', 'su-blocks-media-link-cards' ),
 		),
 		// その他主要国
 		array(
 			'value' => 'SG',
-			'label' => __( 'Singapore', 'su-applink' ),
+			'label' => __( 'Singapore', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'TH',
-			'label' => __( 'Thailand', 'su-applink' ),
+			'label' => __( 'Thailand', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'IN',
-			'label' => __( 'India', 'su-applink' ),
+			'label' => __( 'India', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'DE',
-			'label' => __( 'Germany', 'su-applink' ),
+			'label' => __( 'Germany', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'FR',
-			'label' => __( 'France', 'su-applink' ),
+			'label' => __( 'France', 'su-blocks-media-link-cards' ),
 		),
 		array(
 			'value' => 'BR',
-			'label' => __( 'Brazil', 'su-applink' ),
+			'label' => __( 'Brazil', 'su-blocks-media-link-cards' ),
 		),
 	);
 }

@@ -15,7 +15,7 @@ import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 
 import ReactLoading from 'react-loading';
-import Applink from './components/Applink';
+import MediaLinkCard from './components/MediaLinkCard';
 import entityOptions from './entity-options';
 import {
 	appAtts,
@@ -185,7 +185,7 @@ const Edit = ( props ) => {
 		return (
 			<>
 				<div className="sual-editor-result-num">
-					{ __( 'Search Results', 'su-applink' ) }{ ' ' }
+					{ __( 'Search Results', 'su-blocks-media-link-cards' ) }{ ' ' }
 					{ result.resultCount }
 					{ result.cached && (
 						<span
@@ -200,7 +200,7 @@ const Edit = ( props ) => {
 								color: '#8b7012',
 							} }
 						>
-							⚡️ { __( 'Cached', 'su-applink' ) }
+							⚡️ { __( 'Cached', 'su-blocks-media-link-cards' ) }
 						</span>
 					) }
 				</div>
@@ -231,7 +231,10 @@ const Edit = ( props ) => {
 			case 'result-error':
 				return (
 					<InfoText>
-						{ __( 'Failed to retrieve data', 'su-applink' ) }
+						{ __(
+							'Failed to retrieve data',
+							'su-blocks-media-link-cards'
+						) }
 					</InfoText>
 				);
 
@@ -271,10 +274,18 @@ const Edit = ( props ) => {
 	return (
 		<div { ...blockProps }>
 			<InspectorControls>
-				<PanelBody title={ __( 'Search Settings', 'su-applink' ) }>
+				<PanelBody
+					title={ __(
+						'Search Settings',
+						'su-blocks-media-link-cards'
+					) }
+				>
 					<BaseControl __nextHasNoMarginBottom>
 						<SelectControl
-							label={ __( 'Number of Results', 'su-applink' ) }
+							label={ __(
+								'Number of Results',
+								'su-blocks-media-link-cards'
+							) }
 							value={ limit }
 							onChange={ ( value ) => setLimit( value ) }
 							options={ limitValues }
@@ -283,7 +294,10 @@ const Edit = ( props ) => {
 						/>
 
 						<SelectControl
-							label={ __( 'Store Country', 'su-applink' ) }
+							label={ __(
+								'Store Country',
+								'su-blocks-media-link-cards'
+							) }
 							value={ country }
 							onChange={ ( value ) => setCountry( value ) }
 							options={ countryValues }
@@ -293,8 +307,8 @@ const Edit = ( props ) => {
 
 						<ToggleControl
 							label={ __(
-								'Display Applink in English',
-								'su-applink'
+								'Display cards in English',
+								'su-blocks-media-link-cards'
 							) }
 							checked={ lang === 'en_us' }
 							onChange={ ( checked ) =>
@@ -302,7 +316,7 @@ const Edit = ( props ) => {
 							}
 							help={ __(
 								'If turned off, the language will be determined automatically.',
-								'su-applink'
+								'su-blocks-media-link-cards'
 							) }
 							__nextHasNoMarginBottom
 						/>
@@ -316,7 +330,7 @@ const Edit = ( props ) => {
 							>
 								{ __(
 									'Set default values on settings page',
-									'su-applink'
+									'su-blocks-media-link-cards'
 								) }
 							</Button>
 						</p>
@@ -345,7 +359,7 @@ const Edit = ( props ) => {
 						ref={ inputRef }
 						placeholder={ __(
 							'Enter search term and press Enter',
-							'su-applink'
+							'su-blocks-media-link-cards'
 						) }
 						value={ tempTerm }
 						onChange={ ( value ) => setTempTerm( value ) }
@@ -355,7 +369,7 @@ const Edit = ( props ) => {
 			) }
 
 			<Display />
-			{ hasApp && <Applink app={ app } isEditor={ true } /> }
+			{ hasApp && <MediaLinkCard app={ app } isEditor={ true } /> }
 			{ hasResult && <ResultList /> }
 		</div>
 	);
