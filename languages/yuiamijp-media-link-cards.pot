@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-10T05:51:14+00:00\n"
+"POT-Creation-Date: 2026-09-11T02:45:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: yuiamijp-media-link-cards\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: inc/admin-page.php:161
 #: build/index.js:1
-#: src/edit.js:309
+#: src/edit.js:311
 msgid "Display cards in English"
 msgstr ""
 
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Brazil"
 msgstr ""
 
-#: yuiamijp-media-link-cards.php:138
+#: yuiamijp-media-link-cards.php:177
 msgid "Settings"
 msgstr ""
 
@@ -204,47 +204,47 @@ msgid "Music Video"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:188
+#: src/edit.js:190
 msgid "Search Results"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:203
+#: src/edit.js:205
 msgid "Cached"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:234
+#: src/edit.js:236
 msgid "Failed to retrieve data"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:278
+#: src/edit.js:280
 msgid "Search Settings"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:285
+#: src/edit.js:287
 msgid "Number of Results"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:297
+#: src/edit.js:299
 msgid "Store Country"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:317
+#: src/edit.js:319
 msgid "If turned off, the language will be determined automatically."
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:331
+#: src/edit.js:333
 msgid "Set default values on settings page"
 msgstr ""
 
 #: build/index.js:1
-#: src/edit.js:360
+#: src/edit.js:362
 msgid "Enter search term and press Enter"
 msgstr ""
 

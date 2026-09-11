@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: yuiamijp Media Link Cards 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yuiamijp-media-"
 "link-cards\n"
-"POT-Creation-Date: 2026-08-10T05:51:14+00:00\n"
+"POT-Creation-Date: 2026-09-11T02:45:37+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
 "Last-Translator: Takashi Fujisaki\n"
 "Language-Team: Japanese\n"
@@ -61,7 +61,7 @@ msgstr "デフォルトの表示言語"
 msgid "Select the country of the App Store to search."
 msgstr "検索するApp Storeの国を選択します。"
 
-#: inc/admin-page.php:161 build/index.js:1 src/edit.js:309
+#: inc/admin-page.php:161 build/index.js:1 src/edit.js:311
 msgid "Display cards in English"
 msgstr "カードを英語表記にする"
 
@@ -157,7 +157,7 @@ msgstr "フランス"
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: yuiamijp-media-link-cards.php:138
+#: yuiamijp-media-link-cards.php:177
 msgid "Settings"
 msgstr "設定"
 
@@ -197,39 +197,39 @@ msgstr "アルバム"
 msgid "Music Video"
 msgstr "ミュージックビデオ"
 
-#: build/index.js:1 src/edit.js:188
+#: build/index.js:1 src/edit.js:190
 msgid "Search Results"
 msgstr "検索結果"
 
-#: build/index.js:1 src/edit.js:203
+#: build/index.js:1 src/edit.js:205
 msgid "Cached"
 msgstr "キャッシュ"
 
-#: build/index.js:1 src/edit.js:234
+#: build/index.js:1 src/edit.js:236
 msgid "Failed to retrieve data"
 msgstr "データの取得に失敗しました"
 
-#: build/index.js:1 src/edit.js:278
+#: build/index.js:1 src/edit.js:280
 msgid "Search Settings"
 msgstr "検索条件設定"
 
-#: build/index.js:1 src/edit.js:285
+#: build/index.js:1 src/edit.js:287
 msgid "Number of Results"
 msgstr "検索結果数"
 
-#: build/index.js:1 src/edit.js:297
+#: build/index.js:1 src/edit.js:299
 msgid "Store Country"
 msgstr "検索対象ストア"
 
-#: build/index.js:1 src/edit.js:317
+#: build/index.js:1 src/edit.js:319
 msgid "If turned off, the language will be determined automatically."
 msgstr "オフにすると、言語が自動的に決定されます。"
 
-#: build/index.js:1 src/edit.js:331
+#: build/index.js:1 src/edit.js:333
 msgid "Set default values on settings page"
 msgstr "設定ページでデフォルト値を設定する"
 
-#: build/index.js:1 src/edit.js:360
+#: build/index.js:1 src/edit.js:362
 msgid "Enter search term and press Enter"
 msgstr "検索ワードを入力してEnter"
 
