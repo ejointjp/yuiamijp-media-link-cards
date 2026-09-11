@@ -78,9 +78,48 @@ add_filter( 'block_categories_all', 'yuiamijp_block_categories' );
 
 
 /**
+ * 旧オプション名 sual-setting から設定を引き継ぐ
+ *
+ * slug を変えるとディレクトリ名も変わるため、WordPress からは別プラグインと
+ * して扱われる。旧プラグインを無効化してこちらを有効化したときに、一度だけ
+ * 設定を移す。こちらにすでに設定があれば何もしない。
+ *
+ * 移行元を sual-setting だけに限るのは、それより前の世代（alfwp-setting /
+ * litoal-setting / wpalb-setting）は既定値にアフィリエイトトークンが入って
+ * いたため。他人のサイトから引き継ぐと、設定した覚えのないトークンが復活する。
+ * sual 世代は wordpress.org で公開していないので、作者の環境にしか存在しない。
+ *
+ * 旧プラグインを削除すると uninstall.php が走って旧設定も消える。設定を引き
+ * 継ぎたい場合は、先にこちらを有効化すること。
+ */
+function yuiamijp_migrate_legacy_options() {
+	if ( get_option( 'yuiamijp-setting' ) ) {
+		return;
+	}
+
+	$legacy = get_option( 'sual-setting' );
+
+	if ( ! is_array( $legacy ) ) {
+		return;
+	}
+
+	// 知っているキーだけを拾う。旧世代にあった nocss などは持ち込まない。
+	$migrated = array_intersect_key(
+		$legacy,
+		array_flip( array( 'token', 'limit', 'country', 'lang' ) )
+	);
+
+	if ( $migrated ) {
+		update_option( 'yuiamijp-setting', $migrated );
+	}
+}
+
+/**
  * プラグイン有効化時にオプション値を初期化する
  */
 function yuiamijp_register_activation() {
+	yuiamijp_migrate_legacy_options();
+
 	$options = get_option( 'yuiamijp-setting' );
 
 	if ( ! $options ) {
