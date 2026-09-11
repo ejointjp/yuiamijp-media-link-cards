@@ -1,10 +1,10 @@
-# Japanese translation for SU Blocks - Media Link Cards plugin
+# Japanese translation for yuiamijp Media Link Cards plugin
 # Copyright (C) 2026 Takashi Fujisaki
-# This file is distributed under the same license as the SU Blocks - Media Link Cards plugin.
+# This file is distributed under the same license as the yuiamijp Media Link Cards plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SU Blocks - Media Link Cards 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/su-blocks-media-"
+"Project-Id-Version: yuiamijp Media Link Cards 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yuiamijp-media-"
 "link-cards\n"
 "POT-Creation-Date: 2026-08-10T05:51:14+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
@@ -15,15 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Domain: su-blocks-media-link-cards\n"
+"X-Domain: yuiamijp-media-link-cards\n"
 
 #. Plugin Name of the plugin
-#: su-blocks-media-link-cards.php
-msgid "SU Blocks - Media Link Cards"
-msgstr "SU Blocks - Media Link Cards"
+#: yuiamijp-media-link-cards.php
+msgid "yuiamijp Media Link Cards"
+msgstr "yuiamijp Media Link Cards"
 
 #. Description of the plugin
-#: su-blocks-media-link-cards.php
+#: yuiamijp-media-link-cards.php
 msgid ""
 "Easily create promotional links for iPhone / iPad / Mac apps, music tracks, "
 "Apple Books, and more."
@@ -32,7 +32,7 @@ msgstr ""
 "ます。"
 
 #. Author of the plugin
-#: su-blocks-media-link-cards.php
+#: yuiamijp-media-link-cards.php
 msgid "Takashi Fujisaki"
 msgstr "Takashi Fujisaki"
 
@@ -157,7 +157,7 @@ msgstr "フランス"
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: su-blocks-media-link-cards.php:138
+#: yuiamijp-media-link-cards.php:138
 msgid "Settings"
 msgstr "設定"
 

@@ -14,51 +14,48 @@ const MediaLinkCard = ( { app, isEditor = false } ) => {
 	};
 
 	return (
-		<div className={ `sual sual-${ app.type }` }>
+		<div className={ `yuiamijp yuiamijp-${ app.type }` }>
 			<LinkWrapper
-				className="sual-figure"
+				className="yuiamijp-figure"
 				href={ app.url }
 				target="_blank"
 				rel="noopener nofollow noreferrer"
 			>
 				<img
-					className="sual-img"
+					className="yuiamijp-img"
 					src={ app.iconUrl }
 					alt={ app.title }
 				/>
 			</LinkWrapper>
-			<div className="sual-content">
-				<div className="sual-info">
+			<div className="yuiamijp-content">
+				<div className="yuiamijp-info">
 					<LinkWrapper
-						className="sual-title"
+						className="yuiamijp-title"
 						href={ app.url }
 						target="_blank"
 						rel="noopener nofollow noreferrer"
 					>
 						{ app.title }
 					</LinkWrapper>
-					<div className="sual-artist">{ app.artist }</div>
+					<div className="yuiamijp-artist">{ app.artist }</div>
 				</div>
 
-				<div className="sual-btns">
+				<div className="yuiamijp-btns">
 					{ app.previewUrl && (
 						<LinkWrapper
-							className="sual-audition sual-btn"
+							className="yuiamijp-audition yuiamijp-btn"
 							href={ app.previewUrl }
 							target="_blank"
 							rel="noopener nofollow noreferrer"
 						>
 							<PreviewIcon />
-							<span className="sual-btn-label">
-								{ __(
-									'Preview',
-									'su-blocks-media-link-cards'
-								) }
+							<span className="yuiamijp-btn-label">
+								{ __( 'Preview', 'yuiamijp-media-link-cards' ) }
 							</span>
 						</LinkWrapper>
 					) }
 					<LinkWrapper
-						className="sual-store sual-btn"
+						className="yuiamijp-store yuiamijp-btn"
 						href={ app.url }
 						target="_blank"
 						rel="noopener nofollow noreferrer"

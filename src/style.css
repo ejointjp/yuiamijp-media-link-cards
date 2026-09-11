@@ -1,5 +1,5 @@
 /* =============================================================================
-   SU Blocks - Media Link Cards | Front-end styles
+   yuiamijp Media Link Cards | Front-end styles
    -----------------------------------------------------------------------------
    haku2 の design-system tokens.css のセマンティックトークンに準拠。
    --_ プレフィックスはコンポーネント内部エイリアス。
@@ -8,8 +8,8 @@
    本ファイルでは個別に上書きしない。
    -------------------------------------------------------------------------- */
 
-:where(.wp-block-su-blocks-media-link-cards),
-:where(.sual-editor-wrapper) {
+:where(.wp-block-yuiamijp-media-link-cards),
+:where(.yuiamijp-editor-wrapper) {
 	--_color-text: var(--color-text, oklch(21% 0.006 285.885));
 	--_color-text-muted: var(--color-text-muted, oklch(46% 0.01 232));
 	--_color-bg: var(--color-bg, oklch(100% 0 0deg));
@@ -45,7 +45,7 @@
 	container-type: inline-size;
 }
 
-.sual {
+.yuiamijp {
 	overflow: hidden;
 	display: flex;
 	gap: var(--_space-24);
@@ -67,37 +67,37 @@
 	}
 }
 
-.sual-figure {
+.yuiamijp-figure {
 	line-height: 1;
 }
 
-.sual-img {
+.yuiamijp-img {
 	width: 5rem;
 	border-radius: var(--_radius-md);
 
-	.sual-app & {
+	.yuiamijp-app & {
 		border-radius: 25%;
 	}
 
-	.sual-music-video & {
+	.yuiamijp-music-video & {
 		aspect-ratio: 16 / 9;
 		width: 5.33rem;
 		object-fit: cover;
 		object-position: center center;
 	}
 
-	.sual-ebook & {
+	.yuiamijp-ebook & {
 		width: 3.5rem;
 	}
 }
 
-.sual-content {
+.yuiamijp-content {
 	display: flex;
 	flex-basis: 100%;
 	flex-direction: column;
 }
 
-.sual-title {
+.yuiamijp-title {
 	display: block;
 
 	font-size: var(--_text-sm);
@@ -106,20 +106,20 @@
 	text-decoration: none !important;
 }
 
-.sual-artist {
+.yuiamijp-artist {
 	margin-top: var(--_space-4);
 	font-size: var(--_text-xs);
 	color: var(--_color-text-muted);
 }
 
-.sual-btns {
+.yuiamijp-btns {
 	display: flex;
 	gap: var(--_space-8);
 	align-items: center;
 	margin-top: var(--_space-12);
 }
 
-.sual-btn {
+.yuiamijp-btn {
 	display: flex;
 	flex-shrink: 0;
 	gap: var(--_space-4);
@@ -142,40 +142,42 @@
 	}
 }
 
-.sual-audition svg {
+.yuiamijp-audition svg {
 	color: #3f3f46 !important;
 }
 
-:is(.sual-app, .sual-mac-app) .sual-btn svg {
+:is(.yuiamijp-app, .yuiamijp-mac-app) .yuiamijp-btn svg {
 	color: #3b82f6; /* blue-500 */
 }
 
-.sual-movie .sual-btn svg {
+.yuiamijp-movie .yuiamijp-btn svg {
 	color: #18181b; /* zinc-900 */
 }
 
-:is(.sual-ebook, .sual-audiobook) .sual-btn svg {
+:is(.yuiamijp-ebook, .yuiamijp-audiobook) .yuiamijp-btn svg {
 	color: #f59e0b; /* amber-500 */
 }
 
-.sual-podcast .sual-btn svg {
+.yuiamijp-podcast .yuiamijp-btn svg {
 	color: #8b5cf6; /* violet-500 */
 }
 
-:is(.sual-music-track, .sual-music-album, .sual-music-video) .sual-btn svg {
+:is(.yuiamijp-music-track, .yuiamijp-music-album, .yuiamijp-music-video)
+.yuiamijp-btn
+svg {
 	color: #f43f5e; /* rose-500 */
 }
 
 @container (width >= 32rem) {
 
-	.sual {
+	.yuiamijp {
 		--padding: var(--_space-20);
 
 		flex-direction: row;
 		align-items: center;
 	}
 
-	.sual-content {
+	.yuiamijp-content {
 		display: flex;
 		flex-basis: 100%;
 		flex-direction: row;
@@ -183,19 +185,19 @@
 		justify-content: space-between;
 	}
 
-	.sual-info {
+	.yuiamijp-info {
 
-		.sual-title {
+		.yuiamijp-title {
 			font-size: var(--_text-base);
 		}
 	}
 
-	.sual-btns {
+	.yuiamijp-btns {
 		margin-top: 0;
 		margin-right: var(--_space-16);
 	}
 
-	.sual-btn {
+	.yuiamijp-btn {
 		font-size: var(--_text-sm);
 	}
 }

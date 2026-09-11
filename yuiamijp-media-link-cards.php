@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       SU Blocks - Media Link Cards
+ * Plugin Name:       yuiamijp Media Link Cards
  * Description:       Easily create promotional links for iPhone / iPad / Mac apps, music tracks, Apple Books, and more.
  * Requires at least: 6.3
  * Requires PHP:      7.4
@@ -9,10 +9,10 @@
  * Author:            Takashi Fujisaki
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       su-blocks-media-link-cards
+ * Text Domain:       yuiamijp-media-link-cards
  * Domain Path:       /languages
  *
- * @package           su-blocks-media-link-cards
+ * @package           yuiamijp-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -31,7 +31,7 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/api.php';
  * 翻訳ファイルは同梱せず、translate.wordpress.org が配信する言語パックを使う。
  * パスを渡さないことで WordPress が WP_LANG_DIR/plugins を参照する。
  */
-function sual_init() {
+function yuiamijp_init() {
 	$block_type = register_block_type( __DIR__ . '/build' );
 
 	if ( ! is_wp_error( $block_type ) && function_exists( 'wp_set_script_translations' ) ) {
@@ -41,14 +41,14 @@ function sual_init() {
 		);
 
 		foreach ( $script_handles as $handle ) {
-			wp_set_script_translations( $handle, 'su-blocks-media-link-cards' );
+			wp_set_script_translations( $handle, 'yuiamijp-media-link-cards' );
 		}
 	}
 }
-add_action( 'init', 'sual_init' );
+add_action( 'init', 'yuiamijp_init' );
 
 /**
- * ブロックカテゴリーに SU Blocks を追加する
+ * ブロックカテゴリーに yuiamijp を追加する
  *
  * 投稿エディターだけでなくサイトエディターとウィジェット画面でも登録する。
  * これらの画面では $editor_context->post が空になるため、post の有無で
@@ -58,30 +58,30 @@ add_action( 'init', 'sual_init' );
  * @param array $categories 既存のブロックカテゴリー。
  * @return array
  */
-function sual_block_categories( $categories ) {
+function yuiamijp_block_categories( $categories ) {
 	// 既存のカテゴリーが存在するかチェック
 	$exists = wp_list_pluck( $categories, 'slug' );
-	if ( ! in_array( 'su-blocks', $exists, true ) ) {
+	if ( ! in_array( 'yuiamijp', $exists, true ) ) {
 		array_push(
 			$categories,
 			array(
-				'slug'  => 'su-blocks',
-				'title' => 'SU Blocks',
+				'slug'  => 'yuiamijp',
+				'title' => 'yuiamijp',
 			)
 		);
 	}
 
 	return $categories;
 }
-add_filter( 'block_categories_all', 'sual_block_categories' );
+add_filter( 'block_categories_all', 'yuiamijp_block_categories' );
 
 
 
 /**
  * プラグイン有効化時にオプション値を初期化する
  */
-function sual_register_activation() {
-	$options = get_option( 'sual-setting' );
+function yuiamijp_register_activation() {
+	$options = get_option( 'yuiamijp-setting' );
 
 	if ( ! $options ) {
 		// token は空で始める。既定でアフィリエイトトークンを仕込まない。
@@ -91,39 +91,39 @@ function sual_register_activation() {
 			'lang'    => 'auto',
 		);
 
-		update_option( 'sual-setting', $default );
+		update_option( 'yuiamijp-setting', $default );
 	}
 }
 // プラグイン有効時に実行
-register_activation_hook( __FILE__, 'sual_register_activation' );
+register_activation_hook( __FILE__, 'yuiamijp_register_activation' );
 
 /**
  * 管理画面のブロックエディターへ設定値を JavaScript のグローバル変数として渡す
  */
-function sual_admin_enqueue_scripts() {
-	$limit_values   = sual_get_limit_values();
-	$country_values = sual_get_country_values();
-	$lang_values    = sual_get_lang_values();
+function yuiamijp_admin_enqueue_scripts() {
+	$limit_values   = yuiamijp_get_limit_values();
+	$country_values = yuiamijp_get_country_values();
+	$lang_values    = yuiamijp_get_lang_values();
 
 	// PHPからJavaScriptに値を渡す
 	wp_add_inline_script(
 		'wp-block-editor',
-		'const sualAjaxValues = ' . wp_json_encode(
+		'const yuiamijpAjaxValues = ' . wp_json_encode(
 			array(
-				'optionsPageUrl'   => admin_url( 'options-general.php?page=su-blocks-media-link-cards' ),
-				'options'          => get_option( 'sual-setting' ),
+				'optionsPageUrl'   => admin_url( 'options-general.php?page=yuiamijp-media-link-cards' ),
+				'options'          => get_option( 'yuiamijp-setting' ),
 				'limitValues'      => $limit_values,
 				'countryValues'    => $country_values,
 				'langValues'       => $lang_values,
-				'countryToLangMap' => SUAL_COUNTRY_TO_LANG_MAP,
+				'countryToLangMap' => YUIAMIJP_COUNTRY_TO_LANG_MAP,
 				// nonce は wp-api-fetch がコア側で付与するため渡さない。
-				'restUrl'          => esc_url_raw( rest_url( 'su-blocks-media-link-cards/v1/' ) ),
+				'restUrl'          => esc_url_raw( rest_url( 'yuiamijp-media-link-cards/v1/' ) ),
 			)
 		) . ';',
 		'before'
 	);
 }
-add_action( 'admin_enqueue_scripts', 'sual_admin_enqueue_scripts' );
+add_action( 'admin_enqueue_scripts', 'yuiamijp_admin_enqueue_scripts' );
 
 /**
  * Add settings link to plugins page
@@ -131,14 +131,14 @@ add_action( 'admin_enqueue_scripts', 'sual_admin_enqueue_scripts' );
  * @param array $links Existing links.
  * @return array
  */
-function sual_add_action_links( $links ) {
+function yuiamijp_add_action_links( $links ) {
 	$settings_link = sprintf(
 		'<a href="%s">%s</a>',
-		admin_url( 'options-general.php?page=su-blocks-media-link-cards' ),
-		__( 'Settings', 'su-blocks-media-link-cards' )
+		admin_url( 'options-general.php?page=yuiamijp-media-link-cards' ),
+		__( 'Settings', 'yuiamijp-media-link-cards' )
 	);
 	array_unshift( $links, $settings_link );
 
 	return $links;
 }
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'sual_add_action_links' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'yuiamijp_add_action_links' );

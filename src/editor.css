@@ -1,11 +1,11 @@
 /* =============================================================================
-   SU Blocks - Media Link Cards | Block editor styles
+   yuiamijp Media Link Cards | Block editor styles
    -----------------------------------------------------------------------------
-   style.css の --_ エイリアスを継承する(.sual-editor-wrapper はエディタでも
+   style.css の --_ エイリアスを継承する(.yuiamijp-editor-wrapper はエディタでも
    style.css が読み込まれるため --_ が利用可能)。
    -------------------------------------------------------------------------- */
 
-.sual-editor-wrapper {
+.yuiamijp-editor-wrapper {
 	container-type: inline-size;
 	display: flex;
 	flex-direction: column;
@@ -20,12 +20,12 @@
 	}
 }
 
-.sual-editor-type {
+.yuiamijp-editor-type {
 	border: none;
 	border-radius: 0.375rem;
 }
 
-.sual-editor-input {
+.yuiamijp-editor-input {
 	box-sizing: border-box;
 	width: 100%;
 	margin-top: var(--_space-8);
@@ -35,7 +35,7 @@
 	border-radius: 0.375rem;
 }
 
-.sual-editor-list {
+.yuiamijp-editor-list {
 	overflow-y: scroll;
 	display: flex;
 	flex-direction: column;
@@ -50,13 +50,13 @@
 	border-radius: var(--border-radius);
 }
 
-.sual-editor-result-num {
+.yuiamijp-editor-result-num {
 	font-size: var(--_text-sm);
 	font-weight: var(--_weight-bold);
 }
 
 /* button 要素のため既定のスタイルを打ち消している */
-.sual-editor-item {
+.yuiamijp-editor-item {
 	cursor: pointer;
 
 	display: flex;
@@ -87,12 +87,12 @@
 	}
 }
 
-.sual-editor-img {
+.yuiamijp-editor-img {
 	display: block;
 }
 
 /* button の中身のため span で組んでいる。以降 display の指定が要る */
-.sual-editor-figure {
+.yuiamijp-editor-figure {
 	display: block;
 
 	> img {
@@ -101,19 +101,19 @@
 	}
 }
 
-.sual-editor-music-video .sual-editor-img {
+.yuiamijp-editor-music-video .yuiamijp-editor-img {
 	aspect-ratio: 16 / 9;
 	width: 4rem;
 	object-fit: cover;
 	object-position: center center;
 }
 
-.sual-editor-content {
+.yuiamijp-editor-content {
 	display: block;
 	margin-right: auto;
 }
 
-.sual-editor-title {
+.yuiamijp-editor-title {
 	display: block;
 	width: 100%;
 
@@ -123,7 +123,7 @@
 	text-decoration: none;
 }
 
-.sual-editor-artist {
+.yuiamijp-editor-artist {
 	display: block;
 	width: 100%;
 	font-size: var(--_text-xs);
@@ -131,13 +131,13 @@
 
 @container (width >= 768px) {
 
-	.sual-editor-control {
+	.yuiamijp-editor-control {
 		display: flex;
 		gap: var(--_space-16);
 		align-items: center;
 	}
 
-	.sual-editor-input {
+	.yuiamijp-editor-input {
 		margin-top: 0;
 		margin-left: var(--_space-12);
 	}

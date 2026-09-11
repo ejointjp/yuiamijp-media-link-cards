@@ -2,7 +2,7 @@
 /**
  * 定数と選択肢の定義
  *
- * @package su-blocks-media-link-cards
+ * @package yuiamijp-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // 国コードから言語コードへのマッピング
 define(
-	'SUAL_COUNTRY_TO_LANG_MAP',
+	'YUIAMIJP_COUNTRY_TO_LANG_MAP',
 	array(
 		'JP' => 'ja_jp',
 		'KR' => 'ko_kr',
@@ -36,27 +36,27 @@ define(
  *
  * @return array
  */
-function sual_get_limit_values() {
+function yuiamijp_get_limit_values() {
 	$values = array(
 		array(
 			'value' => 10,
-			'label' => __( '10 items', 'su-blocks-media-link-cards' ),
+			'label' => __( '10 items', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 25,
-			'label' => __( '25 items', 'su-blocks-media-link-cards' ),
+			'label' => __( '25 items', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 50,
-			'label' => __( '50 items', 'su-blocks-media-link-cards' ),
+			'label' => __( '50 items', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 100,
-			'label' => __( '100 items', 'su-blocks-media-link-cards' ),
+			'label' => __( '100 items', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 200,
-			'label' => __( '200 items', 'su-blocks-media-link-cards' ),
+			'label' => __( '200 items', 'yuiamijp-media-link-cards' ),
 		),
 	);
 
@@ -68,15 +68,15 @@ function sual_get_limit_values() {
  *
  * @return array
  */
-function sual_get_lang_values() {
+function yuiamijp_get_lang_values() {
 	return array(
 		array(
 			'value' => 'auto',
-			'label' => __( 'Auto', 'su-blocks-media-link-cards' ),
+			'label' => __( 'Auto', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'en_us',
-			'label' => __( 'English', 'su-blocks-media-link-cards' ),
+			'label' => __( 'English', 'yuiamijp-media-link-cards' ),
 		),
 	);
 }
@@ -86,70 +86,70 @@ function sual_get_lang_values() {
  *
  * @return array
  */
-function sual_get_country_values() {
+function yuiamijp_get_country_values() {
 	return array(
 		// アジア主要国
 		array(
 			'value' => 'JP',
-			'label' => __( 'Japan', 'su-blocks-media-link-cards' ),
+			'label' => __( 'Japan', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'KR',
-			'label' => __( 'South Korea', 'su-blocks-media-link-cards' ),
+			'label' => __( 'South Korea', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'CN',
-			'label' => __( 'China', 'su-blocks-media-link-cards' ),
+			'label' => __( 'China', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'TW',
-			'label' => __( 'Taiwan', 'su-blocks-media-link-cards' ),
+			'label' => __( 'Taiwan', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'HK',
-			'label' => __( 'Hong Kong', 'su-blocks-media-link-cards' ),
+			'label' => __( 'Hong Kong', 'yuiamijp-media-link-cards' ),
 		),
 		// 英語圏主要国
 		array(
 			'value' => 'US',
-			'label' => __( 'United States', 'su-blocks-media-link-cards' ),
+			'label' => __( 'United States', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'GB',
-			'label' => __( 'United Kingdom', 'su-blocks-media-link-cards' ),
+			'label' => __( 'United Kingdom', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'CA',
-			'label' => __( 'Canada', 'su-blocks-media-link-cards' ),
+			'label' => __( 'Canada', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'AU',
-			'label' => __( 'Australia', 'su-blocks-media-link-cards' ),
+			'label' => __( 'Australia', 'yuiamijp-media-link-cards' ),
 		),
 		// その他主要国
 		array(
 			'value' => 'SG',
-			'label' => __( 'Singapore', 'su-blocks-media-link-cards' ),
+			'label' => __( 'Singapore', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'TH',
-			'label' => __( 'Thailand', 'su-blocks-media-link-cards' ),
+			'label' => __( 'Thailand', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'IN',
-			'label' => __( 'India', 'su-blocks-media-link-cards' ),
+			'label' => __( 'India', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'DE',
-			'label' => __( 'Germany', 'su-blocks-media-link-cards' ),
+			'label' => __( 'Germany', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'FR',
-			'label' => __( 'France', 'su-blocks-media-link-cards' ),
+			'label' => __( 'France', 'yuiamijp-media-link-cards' ),
 		),
 		array(
 			'value' => 'BR',
-			'label' => __( 'Brazil', 'su-blocks-media-link-cards' ),
+			'label' => __( 'Brazil', 'yuiamijp-media-link-cards' ),
 		),
 	);
 }

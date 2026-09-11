@@ -6,57 +6,57 @@
  * エディター側のプレビューは src/components/MediaLinkCard.js が同じ JSON を読む。
  * マークアップを変えるときは両方を揃えること。
  *
- * @package su-blocks-media-link-cards
+ * @package yuiamijp-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$sual_app         = isset( $attributes['app'] ) ? $attributes['app'] : array();
-$sual_type        = isset( $sual_app['type'] ) ? $sual_app['type'] : '';
-$sual_url         = isset( $sual_app['url'] ) ? $sual_app['url'] : '';
-$sual_title       = isset( $sual_app['title'] ) ? $sual_app['title'] : '';
-$sual_artist      = isset( $sual_app['artist'] ) ? $sual_app['artist'] : '';
-$sual_icon        = isset( $sual_app['iconUrl'] ) ? $sual_app['iconUrl'] : '';
-$sual_preview_url = isset( $sual_app['previewUrl'] ) ? $sual_app['previewUrl'] : '';
+$yuiamijp_app         = isset( $attributes['app'] ) ? $attributes['app'] : array();
+$yuiamijp_type        = isset( $yuiamijp_app['type'] ) ? $yuiamijp_app['type'] : '';
+$yuiamijp_url         = isset( $yuiamijp_app['url'] ) ? $yuiamijp_app['url'] : '';
+$yuiamijp_title       = isset( $yuiamijp_app['title'] ) ? $yuiamijp_app['title'] : '';
+$yuiamijp_artist      = isset( $yuiamijp_app['artist'] ) ? $yuiamijp_app['artist'] : '';
+$yuiamijp_icon        = isset( $yuiamijp_app['iconUrl'] ) ? $yuiamijp_app['iconUrl'] : '';
+$yuiamijp_preview_url = isset( $yuiamijp_app['previewUrl'] ) ? $yuiamijp_app['previewUrl'] : '';
 
-if ( empty( $sual_url ) || empty( $sual_title ) ) {
+if ( empty( $yuiamijp_url ) || empty( $yuiamijp_title ) ) {
 	return;
 }
 
-$sual_icons              = sual_get_icons();
-$sual_store              = sual_get_store( $sual_type );
-$sual_store_label        = isset( $sual_store['label'] ) ? $sual_store['label'] : '';
-$sual_store_icon         = isset( $sual_store['icon'] ) ? $sual_store['icon'] : '';
-$sual_preview_icon       = isset( $sual_icons['preview'] ) ? $sual_icons['preview'] : '';
-$sual_wrapper_attributes = get_block_wrapper_attributes();
+$yuiamijp_icons              = yuiamijp_get_icons();
+$yuiamijp_store              = yuiamijp_get_store( $yuiamijp_type );
+$yuiamijp_store_label        = isset( $yuiamijp_store['label'] ) ? $yuiamijp_store['label'] : '';
+$yuiamijp_store_icon         = isset( $yuiamijp_store['icon'] ) ? $yuiamijp_store['icon'] : '';
+$yuiamijp_preview_icon       = isset( $yuiamijp_icons['preview'] ) ? $yuiamijp_icons['preview'] : '';
+$yuiamijp_wrapper_attributes = get_block_wrapper_attributes();
 
 ?>
 
-<div <?php echo $sual_wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_block_wrapper_attributes() returns markup already escaped by WordPress core. ?>>
-	<div class="sual sual-<?php echo esc_attr( $sual_type ); ?>">
-		<a class="sual-figure" href="<?php echo esc_url( $sual_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
-			<img class="sual-img" src="<?php echo esc_url( $sual_icon ); ?>" alt="<?php echo esc_attr( $sual_title ); ?>" />
+<div <?php echo $yuiamijp_wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_block_wrapper_attributes() returns markup already escaped by WordPress core. ?>>
+	<div class="yuiamijp yuiamijp-<?php echo esc_attr( $yuiamijp_type ); ?>">
+		<a class="yuiamijp-figure" href="<?php echo esc_url( $yuiamijp_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+			<img class="yuiamijp-img" src="<?php echo esc_url( $yuiamijp_icon ); ?>" alt="<?php echo esc_attr( $yuiamijp_title ); ?>" />
 		</a>
-		<div class="sual-content">
-			<div class="sual-info">
-				<a class="sual-title" href="<?php echo esc_url( $sual_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
-					<?php echo esc_html( $sual_title ); ?>
+		<div class="yuiamijp-content">
+			<div class="yuiamijp-info">
+				<a class="yuiamijp-title" href="<?php echo esc_url( $yuiamijp_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+					<?php echo esc_html( $yuiamijp_title ); ?>
 				</a>
-				<div class="sual-artist"><?php echo esc_html( $sual_artist ); ?></div>
+				<div class="yuiamijp-artist"><?php echo esc_html( $yuiamijp_artist ); ?></div>
 			</div>
 
-			<div class="sual-btns">
-				<?php if ( ! empty( $sual_preview_url ) ) : ?>
-					<a class="sual-audition sual-btn" href="<?php echo esc_url( $sual_preview_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
-						<?php echo wp_kses( sual_get_icon_svg( $sual_preview_icon ), sual_get_svg_allowed_html() ); ?>
-						<span class="sual-btn-label"><?php echo esc_html__( 'Preview', 'su-blocks-media-link-cards' ); ?></span>
+			<div class="yuiamijp-btns">
+				<?php if ( ! empty( $yuiamijp_preview_url ) ) : ?>
+					<a class="yuiamijp-audition yuiamijp-btn" href="<?php echo esc_url( $yuiamijp_preview_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+						<?php echo wp_kses( yuiamijp_get_icon_svg( $yuiamijp_preview_icon ), yuiamijp_get_svg_allowed_html() ); ?>
+						<span class="yuiamijp-btn-label"><?php echo esc_html__( 'Preview', 'yuiamijp-media-link-cards' ); ?></span>
 					</a>
 				<?php endif; ?>
-				<a class="sual-store sual-btn" href="<?php echo esc_url( $sual_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
-					<?php echo wp_kses( sual_get_icon_svg( $sual_store_icon ), sual_get_svg_allowed_html() ); ?>
-					<span class="sual-btn-label"><?php echo esc_html( $sual_store_label ); ?></span>
+				<a class="yuiamijp-store yuiamijp-btn" href="<?php echo esc_url( $yuiamijp_url ); ?>" target="_blank" rel="noopener nofollow noreferrer">
+					<?php echo wp_kses( yuiamijp_get_icon_svg( $yuiamijp_store_icon ), yuiamijp_get_svg_allowed_html() ); ?>
+					<span class="yuiamijp-btn-label"><?php echo esc_html( $yuiamijp_store_label ); ?></span>
 				</a>
 			</div>
 		</div>

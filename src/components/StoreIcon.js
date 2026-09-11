@@ -6,7 +6,7 @@
  *
  * content は同梱 JSON 内の自前マークアップのため dangerouslySetInnerHTML で
  * 展開している。svg 要素そのものは React が作るので、CSS が当てにしている
- * `.sual-btn svg` の構造は変わらない。
+ * `.yuiamijp-btn svg` の構造は変わらない。
  */
 import icons from '../../assets/icons.json';
 
@@ -36,7 +36,7 @@ export const StoreIcon = ( { type } ) => {
 	return (
 		<>
 			<Icon name={ store.icon } />
-			<span className="sual-btn-label">{ store.label }</span>
+			<span className="yuiamijp-btn-label">{ store.label }</span>
 		</>
 	);
 };

@@ -40,10 +40,12 @@ const {
 	restUrl,
 } =
 	// eslint-disable-next-line no-undef
-	sualAjaxValues;
+	yuiamijpAjaxValues;
 
 const Edit = ( props ) => {
-	const blockProps = useBlockProps( { className: 'sual-editor-wrapper' } );
+	const blockProps = useBlockProps( {
+		className: 'yuiamijp-editor-wrapper',
+	} );
 	const { attributes, setAttributes, isSelected } = props;
 	const { app, entity } = attributes;
 	const [ result, setResult ] = useState( {} );
@@ -155,7 +157,7 @@ const Edit = ( props ) => {
 			return (
 				<button
 					type="button"
-					className={ `sual-editor-item sual-editor-${
+					className={ `yuiamijp-editor-item yuiamijp-editor-${
 						item.kind || item.wrapperType || 'default'
 					}` }
 					key={ i }
@@ -163,18 +165,18 @@ const Edit = ( props ) => {
 						setAttributes( { app: itemApp } );
 					} }
 				>
-					<span className="sual-editor-figure">
+					<span className="yuiamijp-editor-figure">
 						<img
-							className="sual-editor-img"
+							className="yuiamijp-editor-img"
 							src={ itemApp.iconUrl }
 							alt={ itemApp.title }
 						/>
 					</span>
-					<span className="sual-editor-content">
-						<span className="sual-editor-title">
+					<span className="yuiamijp-editor-content">
+						<span className="yuiamijp-editor-title">
 							{ itemApp.title }
 						</span>
-						<span className="sual-editor-artist">
+						<span className="yuiamijp-editor-artist">
 							{ itemApp.artist }
 						</span>
 					</span>
@@ -184,12 +186,12 @@ const Edit = ( props ) => {
 
 		return (
 			<>
-				<div className="sual-editor-result-num">
-					{ __( 'Search Results', 'su-blocks-media-link-cards' ) }{ ' ' }
+				<div className="yuiamijp-editor-result-num">
+					{ __( 'Search Results', 'yuiamijp-media-link-cards' ) }{ ' ' }
 					{ result.resultCount }
 					{ result.cached && (
 						<span
-							className="sual-editor-cached-badge"
+							className="yuiamijp-editor-cached-badge"
 							style={ {
 								marginLeft: '10px',
 								fontSize: '0.8em',
@@ -200,12 +202,12 @@ const Edit = ( props ) => {
 								color: '#8b7012',
 							} }
 						>
-							⚡️ { __( 'Cached', 'su-blocks-media-link-cards' ) }
+							⚡️ { __( 'Cached', 'yuiamijp-media-link-cards' ) }
 						</span>
 					) }
 				</div>
 				{ result.resultCount > 0 && (
-					<div className="sual-editor-list">{ list }</div>
+					<div className="yuiamijp-editor-list">{ list }</div>
 				) }
 			</>
 		);
@@ -233,7 +235,7 @@ const Edit = ( props ) => {
 					<InfoText>
 						{ __(
 							'Failed to retrieve data',
-							'su-blocks-media-link-cards'
+							'yuiamijp-media-link-cards'
 						) }
 					</InfoText>
 				);
@@ -277,14 +279,14 @@ const Edit = ( props ) => {
 				<PanelBody
 					title={ __(
 						'Search Settings',
-						'su-blocks-media-link-cards'
+						'yuiamijp-media-link-cards'
 					) }
 				>
 					<BaseControl __nextHasNoMarginBottom>
 						<SelectControl
 							label={ __(
 								'Number of Results',
-								'su-blocks-media-link-cards'
+								'yuiamijp-media-link-cards'
 							) }
 							value={ limit }
 							onChange={ ( value ) => setLimit( value ) }
@@ -296,7 +298,7 @@ const Edit = ( props ) => {
 						<SelectControl
 							label={ __(
 								'Store Country',
-								'su-blocks-media-link-cards'
+								'yuiamijp-media-link-cards'
 							) }
 							value={ country }
 							onChange={ ( value ) => setCountry( value ) }
@@ -308,7 +310,7 @@ const Edit = ( props ) => {
 						<ToggleControl
 							label={ __(
 								'Display cards in English',
-								'su-blocks-media-link-cards'
+								'yuiamijp-media-link-cards'
 							) }
 							checked={ lang === 'en_us' }
 							onChange={ ( checked ) =>
@@ -316,7 +318,7 @@ const Edit = ( props ) => {
 							}
 							help={ __(
 								'If turned off, the language will be determined automatically.',
-								'su-blocks-media-link-cards'
+								'yuiamijp-media-link-cards'
 							) }
 							__nextHasNoMarginBottom
 						/>
@@ -330,7 +332,7 @@ const Edit = ( props ) => {
 							>
 								{ __(
 									'Set default values on settings page',
-									'su-blocks-media-link-cards'
+									'yuiamijp-media-link-cards'
 								) }
 							</Button>
 						</p>
@@ -339,9 +341,9 @@ const Edit = ( props ) => {
 			</InspectorControls>
 
 			{ isSelected && (
-				<div className="sual-editor-control">
+				<div className="yuiamijp-editor-control">
 					<SelectControl
-						className="sual-editor-type"
+						className="yuiamijp-editor-type"
 						value={ entity }
 						onChange={ ( value ) => {
 							// setEntity(value);
@@ -354,12 +356,12 @@ const Edit = ( props ) => {
 					/>
 
 					<PlainText
-						className="sual-editor-input"
+						className="yuiamijp-editor-input"
 						tagName="input"
 						ref={ inputRef }
 						placeholder={ __(
 							'Enter search term and press Enter',
-							'su-blocks-media-link-cards'
+							'yuiamijp-media-link-cards'
 						) }
 						value={ tempTerm }
 						onChange={ ( value ) => setTempTerm( value ) }

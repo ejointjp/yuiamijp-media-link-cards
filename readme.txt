@@ -1,4 +1,4 @@
-=== SU Blocks - Media Link Cards ===
+=== yuiamijp Media Link Cards ===
 Contributors: ejointjp
 Tags: block, apple, itunes, app store, affiliate
 Requires at least: 6.3
@@ -49,8 +49,6 @@ This plugin is an independent project. It is not affiliated with, endorsed by, o
 
 Apple, App Store, Mac App Store, Apple Books, Apple Music, Apple Podcasts and iTunes are trademarks of Apple Inc., registered in the U.S. and other countries. These names are used here only to describe the services the plugin can link to.
 
-"SU Blocks" is the plugin series name of the author, also used by the author's plugin "SU Blocks - Blogcard".
-
 == Screenshots ==
 
 1. Select a content category, enter a search term, and pick an item from suggestions to embed its link widget.
@@ -59,7 +57,7 @@ Apple, App Store, Mac App Store, Apple Books, Apple Music, Apple Podcasts and iT
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/su-blocks-media-link-cards` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/yuiamijp-media-link-cards` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. (Optional) Open Settings -> Media Link Cards and set default values (PHG token, country, language, results count).
 4. In the block editor, insert the "Media Link Card" block and search for content.

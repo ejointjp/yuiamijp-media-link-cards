@@ -2,7 +2,7 @@
 /**
  * 管理画面の設定ページ
  *
- * @package su-blocks-media-link-cards
+ * @package yuiamijp-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,29 +12,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * 設定画面を「設定」メニューに追加する
  */
-function sual_add_admin_page() {
+function yuiamijp_add_admin_page() {
 	add_options_page(
-		'SU Blocks - Media Link Cards',
+		'yuiamijp Media Link Cards',
 		'Media Link Cards',
 		'manage_options',
-		'su-blocks-media-link-cards',
-		'sual_options_page_html'
+		'yuiamijp-media-link-cards',
+		'yuiamijp_options_page_html'
 	);
 }
-add_action( 'admin_menu', 'sual_add_admin_page' );
+add_action( 'admin_menu', 'yuiamijp_add_admin_page' );
 
 /**
  * 設定ページの HTML を出力する
  */
-function sual_options_page_html() {
+function yuiamijp_options_page_html() {
 	?>
 	<div class="wrap">
-	<h2>SU Blocks - Media Link Cards</h2>
+	<h2>yuiamijp Media Link Cards</h2>
 
 	<form method="post" action="options.php">
 		<?php
-		settings_fields( 'sual-setting' );
-		do_settings_sections( 'sual-setting' );
+		settings_fields( 'yuiamijp-setting' );
+		do_settings_sections( 'yuiamijp-setting' );
 		submit_button();
 		?>
 	</form>
@@ -48,7 +48,7 @@ function sual_options_page_html() {
  * @param array $input 送信された設定値。
  * @return array サニタイズ済みの設定値。
  */
-function sual_sanitize_options( $input ) {
+function yuiamijp_sanitize_options( $input ) {
 	$sanitized = array();
 
 	// トークンのサニタイズ（英数字のみ許可）
@@ -86,41 +86,41 @@ function sual_sanitize_options( $input ) {
 /**
  * 設定項目とセクションを登録する
  */
-function sual_page_init() {
+function yuiamijp_page_init() {
 	register_setting(
-		'sual-setting',
-		'sual-setting',
+		'yuiamijp-setting',
+		'yuiamijp-setting',
 		array(
-			'sanitize_callback' => 'sual_sanitize_options',
+			'sanitize_callback' => 'yuiamijp_sanitize_options',
 		)
 	);
-	add_settings_section( 'sual-setting-section-id', '', '', 'sual-setting' );
+	add_settings_section( 'yuiamijp-setting-section-id', '', '', 'yuiamijp-setting' );
 
-	add_settings_field( 'token', __( 'PHG Token', 'su-blocks-media-link-cards' ), 'sual_token_callback', 'sual-setting', 'sual-setting-section-id' );
-	add_settings_field( 'limit', __( 'Default Search Results', 'su-blocks-media-link-cards' ), 'sual_limit_callback', 'sual-setting', 'sual-setting-section-id' );
-	add_settings_field( 'country', __( 'Default Store Country', 'su-blocks-media-link-cards' ), 'sual_country_callback', 'sual-setting', 'sual-setting-section-id' );
-	add_settings_field( 'lang', __( 'Default Language', 'su-blocks-media-link-cards' ), 'sual_lang_callback', 'sual-setting', 'sual-setting-section-id' );
+	add_settings_field( 'token', __( 'PHG Token', 'yuiamijp-media-link-cards' ), 'yuiamijp_token_callback', 'yuiamijp-setting', 'yuiamijp-setting-section-id' );
+	add_settings_field( 'limit', __( 'Default Search Results', 'yuiamijp-media-link-cards' ), 'yuiamijp_limit_callback', 'yuiamijp-setting', 'yuiamijp-setting-section-id' );
+	add_settings_field( 'country', __( 'Default Store Country', 'yuiamijp-media-link-cards' ), 'yuiamijp_country_callback', 'yuiamijp-setting', 'yuiamijp-setting-section-id' );
+	add_settings_field( 'lang', __( 'Default Language', 'yuiamijp-media-link-cards' ), 'yuiamijp_lang_callback', 'yuiamijp-setting', 'yuiamijp-setting-section-id' );
 }
-add_action( 'admin_init', 'sual_page_init' );
+add_action( 'admin_init', 'yuiamijp_page_init' );
 
 /**
  * PHG トークンの入力欄を出力する
  */
-function sual_token_callback() {
-	$options = get_option( 'sual-setting' );
+function yuiamijp_token_callback() {
+	$options = get_option( 'yuiamijp-setting' );
 	$token   = isset( $options['token'] ) ? $options['token'] : '';
-	printf( '<input type="text" name="sual-setting[token]" size="30" value="%s">', esc_attr( $token ) );
+	printf( '<input type="text" name="yuiamijp-setting[token]" size="30" value="%s">', esc_attr( $token ) );
 }
 
 /**
  * 検索結果数の選択欄を出力する
  */
-function sual_limit_callback() {
-	$options    = get_option( 'sual-setting' );
+function yuiamijp_limit_callback() {
+	$options    = get_option( 'yuiamijp-setting' );
 	$option_val = isset( $options['limit'] ) ? $options['limit'] : 10;
-	$values     = sual_get_limit_values();
+	$values     = yuiamijp_get_limit_values();
 
-	echo '<select name="sual-setting[limit]">';
+	echo '<select name="yuiamijp-setting[limit]">';
 	foreach ( $values as $val ) {
 		printf(
 			'<option value="%1$s" %2$s>%3$s</option>',
@@ -135,30 +135,30 @@ function sual_limit_callback() {
 /**
  * 検索対象ストアの国の選択欄を出力する
  */
-function sual_country_callback() {
-	$options    = get_option( 'sual-setting' );
+function yuiamijp_country_callback() {
+	$options    = get_option( 'yuiamijp-setting' );
 	$option_val = isset( $options['country'] ) ? $options['country'] : 'JP';
-	$values     = sual_get_country_values();
+	$values     = yuiamijp_get_country_values();
 
-	echo '<select name="sual-setting[country]">';
+	echo '<select name="yuiamijp-setting[country]">';
 	foreach ( $values as $item ) {
 		printf( '<option value="%s" %s>%s</option>', esc_attr( $item['value'] ), selected( $option_val, $item['value'], false ), esc_html( $item['label'] ) );
 	}
 	echo '</select>';
-	echo '<p class="description">' . esc_html__( 'Select the country of the App Store to search.', 'su-blocks-media-link-cards' ) . '</p>';
+	echo '<p class="description">' . esc_html__( 'Select the country of the App Store to search.', 'yuiamijp-media-link-cards' ) . '</p>';
 }
 
 /**
  * 表示言語のチェックボックスを出力する
  */
-function sual_lang_callback() {
-	$options    = get_option( 'sual-setting' );
+function yuiamijp_lang_callback() {
+	$options    = get_option( 'yuiamijp-setting' );
 	$option_val = isset( $options['lang'] ) ? $options['lang'] : 'auto';
 
 	printf(
-		'<label><input type="checkbox" id="lang-checkbox" name="sual-setting[lang]" value="en_us" %1$s> %2$s</label>',
+		'<label><input type="checkbox" id="lang-checkbox" name="yuiamijp-setting[lang]" value="en_us" %1$s> %2$s</label>',
 		checked( 'en_us', $option_val, false ),
-		esc_html__( 'Display cards in English', 'su-blocks-media-link-cards' )
+		esc_html__( 'Display cards in English', 'yuiamijp-media-link-cards' )
 	);
-	echo '<p class="description">' . esc_html__( 'If unchecked, the language will be determined automatically.', 'su-blocks-media-link-cards' ) . '</p>';
+	echo '<p class="description">' . esc_html__( 'If unchecked, the language will be determined automatically.', 'yuiamijp-media-link-cards' ) . '</p>';
 }

@@ -6,7 +6,7 @@
  * 同じ assets/icons.json を参照する。アイコンを足す・差し替えるときは
  * JSON だけを変更すれば両方に反映される。
  *
- * @package su-blocks-media-link-cards
+ * @package yuiamijp-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return array preview と stores を持つ配列。読み込めない場合は空配列。
  */
-function sual_get_icons() {
+function yuiamijp_get_icons() {
 	static $icons = null;
 
 	if ( null !== $icons ) {
@@ -31,7 +31,7 @@ function sual_get_icons() {
 	if ( ! is_readable( $path ) ) {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- 配布ファイルの欠損を握りつぶさないため。
-			error_log( 'SU Blocks - Media Link Cards: assets/icons.json が読み込めません: ' . $path );
+			error_log( 'yuiamijp Media Link Cards: assets/icons.json が読み込めません: ' . $path );
 		}
 		return $icons;
 	}
@@ -43,7 +43,7 @@ function sual_get_icons() {
 	if ( ! is_array( $decoded ) ) {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- JSON の破損を握りつぶさないため。
-			error_log( 'SU Blocks - Media Link Cards: assets/icons.json の JSON を解析できません: ' . $path );
+			error_log( 'yuiamijp Media Link Cards: assets/icons.json の JSON を解析できません: ' . $path );
 		}
 		return $icons;
 	}
@@ -59,8 +59,8 @@ function sual_get_icons() {
  * @param string $type ストア種別（app / ebook / podcast など）。
  * @return array label（ストア名）と icon（アイコン名）を持つ配列。定義が無ければ空配列。
  */
-function sual_get_store( $type ) {
-	$icons  = sual_get_icons();
+function yuiamijp_get_store( $type ) {
+	$icons  = yuiamijp_get_icons();
 	$stores = isset( $icons['stores'] ) && is_array( $icons['stores'] ) ? $icons['stores'] : array();
 
 	if ( isset( $stores[ $type ] ) ) {
@@ -82,7 +82,7 @@ function sual_get_store( $type ) {
  *
  * @return array wp_kses 用の許可タグ配列。
  */
-function sual_get_svg_allowed_html() {
+function yuiamijp_get_svg_allowed_html() {
 	$shape_attr = array(
 		'fill'             => true,
 		'fill-rule'        => true,
@@ -159,13 +159,13 @@ function sual_get_svg_allowed_html() {
 /**
  * アイコン名から svg タグの文字列を組み立てる
  *
- * 戻り値は出力側で sual_get_svg_allowed_html() を使って wp_kses() に通すこと。
+ * 戻り値は出力側で yuiamijp_get_svg_allowed_html() を使って wp_kses() に通すこと。
  *
  * @param string $name アイコン名（assets/icons.json の icons のキー）。
  * @return string svg タグ。定義が無ければ空文字。
  */
-function sual_get_icon_svg( $name ) {
-	$icons = sual_get_icons();
+function yuiamijp_get_icon_svg( $name ) {
+	$icons = yuiamijp_get_icons();
 
 	if ( ! is_string( $name ) || ! isset( $icons['icons'][ $name ]['content'] ) ) {
 		return '';

@@ -1,17 +1,17 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "su-blocks/media-link-cards",
+	"name": "yuiamijp/media-link-cards",
 	"version": "0.1.0",
 	"title": "Media Link Card",
-	"category": "su-blocks",
+	"category": "yuiamijp",
 	"icon": "instagram",
 	"description": "Create promotional links for iPhone / iPad / Mac apps, music tracks, Apple Books, and more.",
 	"example": {},
 	"supports": {
 		"html": false
 	},
-	"textdomain": "su-blocks-media-link-cards",
+	"textdomain": "yuiamijp-media-link-cards",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

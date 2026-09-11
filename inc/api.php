@@ -2,7 +2,7 @@
 /**
  * iTunes Search API を中継する REST API
  *
- * @package su-blocks-media-link-cards
+ * @package yuiamijp-media-link-cards
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,36 +10,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register REST API route for SU Blocks - Media Link Cards search
+ * Register REST API route for yuiamijp Media Link Cards search
  */
-function sual_register_rest_routes() {
+function yuiamijp_register_rest_routes() {
 	register_rest_route(
-		'su-blocks-media-link-cards/v1',
+		'yuiamijp-media-link-cards/v1',
 		'/search',
 		array(
 			'methods'             => 'GET',
-			'callback'            => 'sual_rest_api_search_callback',
-			'permission_callback' => 'sual_rest_api_search_permission_check',
+			'callback'            => 'yuiamijp_rest_api_search_callback',
+			'permission_callback' => 'yuiamijp_rest_api_search_permission_check',
 		)
 	);
 }
-add_action( 'rest_api_init', 'sual_register_rest_routes' );
+add_action( 'rest_api_init', 'yuiamijp_register_rest_routes' );
 
 /**
  * Permission callback for the REST API route
  */
-function sual_rest_api_search_permission_check() {
+function yuiamijp_rest_api_search_permission_check() {
 	// エディター権限以上を持つユーザーのみ許可（あるいは投稿編集権限）
 	return current_user_can( 'edit_posts' );
 }
 
 /**
- * Callback function for SU Blocks - Media Link Cards search API
+ * Callback function for yuiamijp Media Link Cards search API
  *
  * @param WP_REST_Request $request リクエスト。
  * @return WP_REST_Response
  */
-function sual_rest_api_search_callback( $request ) {
+function yuiamijp_rest_api_search_callback( $request ) {
 	// パラメータの取得
 	$term    = $request->get_param( 'term' );
 	$entity  = $request->get_param( 'entity' );
@@ -61,7 +61,7 @@ function sual_rest_api_search_callback( $request ) {
 		'lang'     => $lang,
 		'at'       => $at,
 	);
-	$cache_key = 'sual_search_' . md5( wp_json_encode( $params ) );
+	$cache_key = 'yuiamijp_search_' . md5( wp_json_encode( $params ) );
 
 	// トランジェント（キャッシュ）の確認
 	$cached_data = get_transient( $cache_key );
