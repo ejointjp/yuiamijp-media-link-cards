@@ -8,7 +8,7 @@
 	"packageManager": "pnpm@11.17.0",
 	"scripts": {
 		"build": "wp-scripts build",
-		"format": "wp-scripts format src/*.js src/components src/*.css",
+		"format": "wp-scripts format src/*.js src/components && wp-scripts lint-style \"src/*.css\" --fix",
 		"lint:css": "wp-scripts lint-style \"src/*.css\"",
 		"lint:js": "wp-scripts lint-js src/*.js src/components",
 		"lint:all": "pnpm lint:js && pnpm lint:css",
