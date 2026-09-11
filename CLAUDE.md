@@ -6,9 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 概要
 
-WordPressのブロックプラグイン「SU Blocks - Media Link Cards」。ブロックエディターからiTunes Search APIを検索し、App Store / Apple Books / Apple Musicなどのアイテムをカード形式で埋め込む。wordpress.org配布（slug: `su-blocks-media-link-cards`）。
+WordPressのブロックプラグイン「yuiamijp Media Link Cards」。ブロックエディターからiTunes Search APIを検索し、App Store / Apple Books / Apple Musicなどのアイテムをカード形式で埋め込む。wordpress.org配布（slug: `yuiamijp-media-link-cards`）。
 
-旧名は「SU Applink」（slug: `su-applink`）。wordpress.orgの審査で「Applink」が他者のプロジェクト名と重なると指摘され、2026年8月に改名した。`Applink`という語をコードにもドキュメントにも戻さない。
+名前はwordpress.orgの審査で2回指摘を受けて変わっている。
+
+1. 「SU Applink」（slug: `su-applink`）— 「Applink」が他者のプロジェクト名と重なると指摘され、2026年8月10日に改名
+2. 「SU Blocks - Media Link Cards」（slug: `su-blocks-media-link-cards`）— 2026年8月11日、こちらも識別性が足りないと指摘された。「SU」は短い頭字語にすぎず「Blocks」は一般的な記述だという理由で、既存プラグイン「SU Blocks - Blogcard」で同じパターンを使っている点は理由として認められなかった
+
+`Applink`と`SU Blocks`はコードにもドキュメントにも戻さない。readme.txtに書いていた「SU Blocksは作者のシリーズ名である」という主張も、名指しで否決されたため削除済み。
 
 ## コマンド
 
@@ -17,7 +22,7 @@ pnpm install     # 依存導入（pnpm固定）
 pnpm start       # src/ をwatchしてbuild/ へ出力
 pnpm build       # 本番ビルド。src/ を変更したら必ず実行する
 pnpm lint:all    # JS + CSS（lint:js と lint:css）
-pnpm format      # 整形。package.jsonのスクリプト経由で対象を明示（引数なしで直接実行しない）
+pnpm format      # 整形。JSはprettier、CSSはstylelintの--fix
 phpcs            # PHP。グローバル1本運用。.phpcs.xml.dist を自動で読む
 phpcbf           # PHPの自動修正
 ```
@@ -25,6 +30,8 @@ phpcbf           # PHPの自動修正
 テストは存在しない。
 
 `build/` は`.gitignore`済みだが`register_block_type( __DIR__ . '/build' )`が参照するため、動作確認の前に必ず`pnpm build`を通す。
+
+**`pnpm format`でCSSにprettierをかけてはいけない。** prettierとstylelintは整形が食い違うため、交互に走らせても収束しない。食い違うのは80桁を超えるセレクタの折り返し方（prettierのインデントが`@stylistic/indentation`に違反する）と、ブロック先頭の空行（prettierは削除し、stylelintは`rule-empty-line-before`で要求する）。CSSの整形はstylelintの`--fix`に一本化してある。`format`スクリプトの対象を広げるときはこの点に注意する。
 
 ## アーキテクチャ
 
@@ -42,36 +49,42 @@ preview  試聴ボタンに使うアイコン名
 stores   type → { label, icon }
 ```
 
-PHP側の`sual_get_icon_svg()`が返すsvgは、出力時に`wp_kses()`と`sual_get_svg_allowed_html()`（`inc/icons.php`）を必ず通す。審査でエスケープ漏れとして指摘された箇所なので、`echo`のまま戻してはいけない。**`assets/icons.json`に新しい要素や属性を足したら、許可リストにも足す。** 許可リストに無い要素・属性はwp_ksesが黙って落とす。
+PHP側の`yuiamijp_get_icon_svg()`が返すsvgは、出力時に`wp_kses()`と`yuiamijp_get_svg_allowed_html()`（`inc/icons.php`）を必ず通す。審査でエスケープ漏れとして指摘された箇所なので、`echo`のまま戻してはいけない。**`assets/icons.json`に新しい要素や属性を足したら、許可リストにも足す。** 許可リストに無い要素・属性はwp_ksesが黙って落とす。
 
 wp_ksesは属性名を小文字化するため`viewBox`は`viewbox`として出力されるが、HTMLパーサーがSVG用の綴りへ戻すので表示には影響しない。
 
-CSS（`src/style.css`）は共通で、`.sual-btn svg`のような子孫セレクタでアイコンに色を当てている。**svgの外側にラッパー要素を足すとフロントとエディターで見た目がズレる**ため、`StoreIcon.js`はsvg要素自体をReactで作り、`content`だけを`dangerouslySetInnerHTML`で流し込んでいる。
+CSS（`src/style.css`）は共通で、`.yuiamijp-btn svg`のような子孫セレクタでアイコンに色を当てている。**svgの外側にラッパー要素を足すとフロントとエディターで見た目がズレる**ため、`StoreIcon.js`はsvg要素自体をReactで作り、`content`だけを`dangerouslySetInnerHTML`で流し込んでいる。
 
 ### データの流れ
 
-1. `src/edit.js`が`sualAjaxValues.restUrl`（= `su-blocks-media-link-cards/v1/search`）へfetch
+1. `src/edit.js`が`yuiamijpAjaxValues.restUrl`（= `yuiamijp-media-link-cards/v1/search`）へfetch
 2. `inc/api.php`が`https://itunes.apple.com/search`へ中継。パラメータのmd5をキーに12時間トランジェントでキャッシュし、`cached`フラグを付けて返す。権限は`edit_posts`
 3. 検索結果の1件を選ぶと`src/app-attributes.js`が`{ id, type, title, url, artist, iconUrl, previewUrl }`へ正規化し、`app`属性に保存
 4. `src/render.php`が`$attributes['app']`を読んで出力
 
-APIリクエストの`entity`（検索条件。`src/entity-options.js`）とレスポンスの`kind` / `wrapperType`（`edit.js`の`itemAtts()`が判定）は別物。そこから決まる`type`（`app` / `mac-app` / `ebook` / `podcast` / `music-track`…）が、`render.php`・`StoreIcon.js`・CSSクラス`sual-{type}`の分岐キーになる。種別を増やすときはこの3箇所と`app-attributes.js`が対象。
+APIリクエストの`entity`（検索条件。`src/entity-options.js`）とレスポンスの`kind` / `wrapperType`（`edit.js`の`itemAtts()`が判定）は別物。そこから決まる`type`（`app` / `mac-app` / `ebook` / `podcast` / `music-track`…）が、`render.php`・`StoreIcon.js`・CSSクラス`yuiamijp-{type}`の分岐キーになる。種別を増やすときはこの3箇所と`app-attributes.js`が対象。
 
 ### PHP → JSの受け渡し
 
-`sual_admin_enqueue_scripts()`が`wp-block-editor`ハンドルへ`sualAjaxValues`をインラインスクリプトとして出力する。設定値・選択肢・REST URL・nonceはすべてこれ経由。`src/edit.js`はモジュール読み込み時にこのグローバルを分解代入するため、キーを増減したらedit.js側も合わせる。
+`yuiamijp_admin_enqueue_scripts()`が`wp-block-editor`ハンドルへ`yuiamijpAjaxValues`をインラインスクリプトとして出力する。設定値・選択肢・REST URL・nonceはすべてこれ経由。`src/edit.js`はモジュール読み込み時にこのグローバルを分解代入するため、キーを増減したらedit.js側も合わせる。
 
 ### 設定
 
-オプション名`sual-setting`（キー: `token` / `limit` / `country` / `lang`）。`inc/admin-page.php`がSettings APIで登録・サニタイズし、`uninstall.php`が削除する。有効化時のデフォルトには`limit`が入らないので、設定を一度も保存していない環境では`options.limit`がundefinedになる（`edit.js`と`inc/admin-page.php`が10でフォールバックする）。国から言語への対応表は`SUAL_COUNTRY_TO_LANG_MAP`（`inc/define.php`）で、選択肢の配列も同ファイルに集約されている。
+オプション名`yuiamijp-setting`（キー: `token` / `limit` / `country` / `lang`）。`inc/admin-page.php`がSettings APIで登録・サニタイズし、`uninstall.php`が削除する。有効化時のデフォルトには`limit`が入らないので、設定を一度も保存していない環境では`options.limit`がundefinedになる（`edit.js`と`inc/admin-page.php`が10でフォールバックする）。国から言語への対応表は`YUIAMIJP_COUNTRY_TO_LANG_MAP`（`inc/define.php`）で、選択肢の配列も同ファイルに集約されている。
+
+有効化時に`yuiamijp_migrate_legacy_options()`（メインファイル）が旧オプション`sual-setting`の内容を引き継ぐ。**移行元をsual世代だけに限っているのは、それより前の世代（`alfwp-setting` / `litoal-setting` / `wpalb-setting`）は既定値にアフィリエイトトークン`11l64V`が入っていたため。** 旧公開版wp-applinkのユーザーから引き継ぐと、設定した覚えのないトークンが復活する。sual世代は未公開なので作者の環境にしか存在しない。
+
+slugが変わるとディレクトリ名も変わり、WordPressからは別プラグインとして扱われる。旧プラグインを削除すると`uninstall.php`が旧設定を消すので、**設定を引き継ぐには先に新しい側を有効化する**。
 
 ## 命名規約
 
-- PHP関数: `sual_` / 定数: `SUAL_` / オプション: `sual-setting`
-- CSSクラス: フロント`sual-`、エディター専用`sual-editor-`
-- テキストドメイン: `su-blocks-media-link-cards`。i18n対応済みなので表示文字列は必ず`__()`系に通す
-- ブロック名: `su-blocks/media-link-cards`（フロントのラッパークラスは`wp-block-su-blocks-media-link-cards`）
-- 関数接頭辞の`sual_`とオプション名`sual-setting`は旧名由来だが、一意なので改名時もそのまま据え置いた
+- PHP関数: `yuiamijp_` / 定数: `YUIAMIJP_` / オプション: `yuiamijp-setting`
+- CSSクラス: フロント`yuiamijp-`（ベースクラスは`.yuiamijp`）、エディター専用`yuiamijp-editor-`
+- テキストドメイン: `yuiamijp-media-link-cards`。i18n対応済みなので表示文字列は必ず`__()`系に通す
+- ブロック名: `yuiamijp/media-link-cards`（フロントのラッパークラスは`wp-block-yuiamijp-media-link-cards`）
+- ブロックカテゴリー: slug・タイトルとも`yuiamijp`
+- JSへ渡すグローバル: `yuiamijpAjaxValues`
+- 接頭辞はすべて`yuiamijp`で統一した。旧名由来の`sual_`は残していない
 
 ## 翻訳
 
@@ -79,23 +92,23 @@ APIリクエストの`entity`（検索条件。`src/entity-options.js`）とレ�
 
 リポジトリに置くのは次の2つだけ。
 
-- `languages/su-blocks-media-link-cards.pot` — 原本。配布物にも含める
-- `languages/su-blocks-media-link-cards-ja.po` — 日本語訳。translate.wordpress.orgへImportするための原資であって、実行時には読まれない
+- `languages/yuiamijp-media-link-cards.pot` — 原本。配布物にも含める
+- `languages/yuiamijp-media-link-cards-ja.po` — 日本語訳。translate.wordpress.orgへImportするための原資であって、実行時には読まれない
 
 `.mo`と`.json`は作らない。`wp_set_script_translations()`にもパスを渡していないので、WordPressは`WP_LANG_DIR/plugins`の言語パックだけを見る。
 
 公開後の流れ。
 
-1. translate.wordpress.orgのプロジェクトページから`languages/su-blocks-media-link-cards-ja.po`をImportする
+1. translate.wordpress.orgのプロジェクトページから`languages/yuiamijp-media-link-cards-ja.po`をImportする
 2. 承認には日本語ロケールのPTE権限が要る。作者でも自動では付かないので申請する
 3. 初回の言語パックはStableの90%以上が承認された時点で生成される。以降は閾値に関係なく更新される
 
 表示文字列を追加・変更したら`.pot`と`.po`を更新する。**`make-pot`で`build/`を除外してはいけない**（.potの参照が`src/`側だけになる）。除外するのは`node_modules`だけ。
 
 ```bash
-wp i18n make-pot . languages/su-blocks-media-link-cards.pot --slug=su-blocks-media-link-cards --exclude=node_modules
-msgmerge --update --backup=none languages/su-blocks-media-link-cards-ja.po languages/su-blocks-media-link-cards.pot
-msgfmt --statistics -o /dev/null languages/su-blocks-media-link-cards-ja.po   # 未訳とfuzzyが0であることを確認
+wp i18n make-pot . languages/yuiamijp-media-link-cards.pot --slug=yuiamijp-media-link-cards --exclude=node_modules
+msgmerge --update --backup=none languages/yuiamijp-media-link-cards-ja.po languages/yuiamijp-media-link-cards.pot
+msgfmt --statistics -o /dev/null languages/yuiamijp-media-link-cards-ja.po   # 未訳とfuzzyが0であることを確認
 ```
 
 ## readme
@@ -109,7 +122,7 @@ msgfmt --statistics -o /dev/null languages/su-blocks-media-link-cards-ja.po   # 
 
 `v*`のタグをpushすると`.github/workflows/deploy.yml`がwordpress.orgのSVNへ反映する。手順は`/wp-plugin-publish`。
 
-workflowは`SLUG: su-blocks-media-link-cards`を明示している。リポジトリ名に依存させていないので、リポジトリ名を変えてもデプロイ先はズレない。
+workflowは`SLUG: yuiamijp-media-link-cards`を明示している。リポジトリ名に依存させていないので、リポジトリ名を変えてもデプロイ先はズレない。
 
 **`wp-scripts plugin-zip`は使わない。** `.distignore`を一切読まず、`admin/** build/** includes/** languages/** public/**`という固定のglobで拾う。このプラグインは`inc/`と`assets/`を使っているのでどちらも欠落し、読み込むと`require_once`で致命的エラーになるZIPができる。ZIPが要るとき（初回審査への提出など）はCIと同じrsyncで作る。
 
