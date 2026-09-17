@@ -22,6 +22,29 @@ function yuiamijp_register_rest_routes() {
 			'permission_callback' => 'yuiamijp_rest_api_search_permission_check',
 		)
 	);
+
+	// 配信終了アイテムの一括スキャン。設定を触れる管理者だけに許可する。
+	register_rest_route(
+		'yuiamijp-media-link-cards/v1',
+		'/scan',
+		array(
+			'methods'             => 'POST',
+			'callback'            => 'yuiamijp_rest_scan_callback',
+			'permission_callback' => 'yuiamijp_rest_scan_permission_check',
+			'args'                => array(
+				'phase'  => array(
+					'type'    => 'string',
+					'enum'    => array( 'collect', 'check' ),
+					'default' => 'collect',
+				),
+				'offset' => array(
+					'type'    => 'integer',
+					'minimum' => 0,
+					'default' => 0,
+				),
+			),
+		)
+	);
 }
 add_action( 'rest_api_init', 'yuiamijp_register_rest_routes' );
 
