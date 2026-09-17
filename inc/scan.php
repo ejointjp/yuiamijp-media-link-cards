@@ -199,17 +199,26 @@ function yuiamijp_set_scan_progress( array $progress ) {
  * collect フェーズを1ページ分進める
  *
  * @param int $offset 投稿のオフセット。0 なら新しいスキャンとして中間データを捨てる。
- * @return array REST レスポンスの本体。
+ * @return array|WP_Error REST レスポンスの本体。
  */
 function yuiamijp_scan_collect( $offset ) {
-	$offset   = max( 0, (int) $offset );
-	$progress = 0 === $offset ? false : yuiamijp_get_scan_progress();
+	$offset = max( 0, (int) $offset );
 
-	if ( false === $progress ) {
+	if ( 0 === $offset ) {
 		$progress = array(
 			'items'  => array(),
 			'errors' => array(),
 		);
+	} else {
+		$progress = yuiamijp_get_scan_progress();
+
+		if ( false === $progress ) {
+			return new WP_Error(
+				'yuiamijp_scan_expired',
+				__( 'The scan data has expired. Start the scan again.', 'yuiamijp-media-link-cards' ),
+				array( 'status' => 409 )
+			);
+		}
 	}
 
 	$query = new WP_Query(
