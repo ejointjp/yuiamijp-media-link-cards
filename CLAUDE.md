@@ -33,6 +33,8 @@ phpcbf           # PHPの自動修正
 
 **`pnpm format`でCSSにprettierをかけてはいけない。** prettierとstylelintは整形が食い違うため、交互に走らせても収束しない。食い違うのは80桁を超えるセレクタの折り返し方（prettierのインデントが`@stylistic/indentation`に違反する）と、ブロック先頭の空行（prettierは削除し、stylelintは`rule-empty-line-before`で要求する）。CSSの整形はstylelintの`--fix`に一本化してある。`format`スクリプトの対象を広げるときはこの点に注意する。
 
+**`wp-scripts format`をファイル引数なしで直接実行しない。**`--check`は未対応で、続く引数を食って引数ゼロになり、`.`全体（`.github/*.yml`や`pnpm-lock.yaml`も）を`--write`で4スペースに整形してしまう。使うのは引数を明示した`pnpm format`だけ。整形後は`git status`で意図しないファイルが変わっていないことを確認する。
+
 ## アーキテクチャ
 
 ### 動的ブロック（SSR）
@@ -49,7 +51,7 @@ preview  試聴ボタンに使うアイコン名
 stores   type → { label, icon }
 ```
 
-PHP側の`yuiamijp_get_icon_svg()`が返すsvgは、出力時に`wp_kses()`と`yuiamijp_get_svg_allowed_html()`（`inc/icons.php`）を必ず通す。審査でエスケープ漏れとして指摘された箇所なので、`echo`のまま戻してはいけない。**`assets/icons.json`に新しい要素や属性を足したら、許可リストにも足す。** 許可リストに無い要素・属性はwp_ksesが黙って落とす。
+PHP側の`yuiamijp_get_icon_svg()`が返すsvgは、出力時に`wp_kses()`と`yuiamijp_get_svg_allowed_html()`（`inc/icons.php`）を必ず通す。審査でエスケープ漏れとして指摘された箇所なので、`echo`のまま戻してはいけない。**`assets/icons.json`に新しい要素や属性を足したら、許可リストにも足す。** 許可リストにない要素・属性はwp_ksesが黙って落とす。
 
 wp_ksesは属性名を小文字化するため`viewBox`は`viewbox`として出力されるが、HTMLパーサーがSVG用の綴りへ戻すので表示には影響しない。
 
@@ -63,6 +65,19 @@ CSS（`src/style.css`）は共通で、`.yuiamijp-btn svg`のような子孫セ�
 4. `src/render.php`が`$attributes['app']`を読んで出力
 
 APIリクエストの`entity`（検索条件。`src/entity-options.js`）とレスポンスの`kind` / `wrapperType`（`edit.js`の`itemAtts()`が判定）は別物。そこから決まる`type`（`app` / `mac-app` / `ebook` / `podcast` / `music-track`…）が、`render.php`・`StoreIcon.js`・CSSクラス`yuiamijp-{type}`の分岐キーになる。種別を増やすときはこの3箇所と`app-attributes.js`が対象。
+
+### 配信終了の判定
+
+設定ページの「Link check」から管理者が手動で実行する一括スキャンで、カードのアイテムがストアから消えていないかを確かめる。定期実行はない。フロントから外部へ接続することもない。
+
+- `inc/scan.php` — RESTの`/scan`のコールバックと権限チェック（`manage_options`）を実装する（ルート登録は`inc/api.php`、`phase` / `offset`を進めながら繰り返し呼ぶのは`assets/admin.js`）。`collect`は`yuiamijp_scan_post_types()`が絞る投稿タイプ（`get_post_types( array( 'exclude_from_search' => false ) )`に`wp_block`を加えたもの）と`get_post_stati( array( 'internal' => false ) )`のステータスを`parse_blocks()`で走査してカードの`app.id`を集める。`exclude_from_search`が真の投稿タイプ（`wp_template` / `wp_template_part`など）は対象外で、投稿ではなくオプション`widget_block`に保存されるブロックウィジェットも対象外だ。`check`は集めたIDを`https://itunes.apple.com/lookup`へ100件ずつ問い合わせ、返らなかったIDを配信終了と判定する
+- `inc/status.php` — 結果の保存先。`yuiamijp-status`（配信終了IDだけ。フロントが読む）と`yuiamijp-scan`（全記録。管理画面が読む）。どちらもautoloadしない。`uninstall.php`が消す
+- `src/render.php`は`yuiamijp_is_unavailable()`で、`src/edit.js`は`yuiamijpAjaxValues.unavailableIds`で判定し、後者は結果を`unavailable`プロップとして`src/components/MediaLinkCard.js`へ渡す。判定がtrueなら`<a>`を`<span>`にして「配信終了」ラベルを出す
+- `assets/admin.js` — 設定ページの進捗表示。ビルドを通さない素のJS。`package.json`の`lint:js`と`format`の対象に入れてある。表示文字列はPHPで翻訳して`wp_localize_script()`で渡す（`.json`翻訳を同梱しないため。JS側で`__()`を使わない）
+
+通信失敗・HTTP 200以外・JSONの破損があったバッチは判定を保留し、前回の判定を引き継ぐ（前回もなければ`unknown`）。「返らなかったIDは配信終了」はレスポンスが正常なときだけ。lookupの結果は検索APIの`limit`に切られない（生存ID 168件で実測済み）。`limit`は送らない。
+
+投稿本文は書き換えない。判定を消したければ再スキャンするか、optionを削除する。
 
 ### PHP → JSの受け渡し
 
@@ -78,12 +93,12 @@ slugが変わるとディレクトリ名も変わり、WordPressからは別プ�
 
 ## 命名規約
 
-- PHP関数: `yuiamijp_` / 定数: `YUIAMIJP_` / オプション: `yuiamijp-setting`
+- PHP関数: `yuiamijp_` / 定数: `YUIAMIJP_` / オプション: `yuiamijp-setting` `yuiamijp-status` `yuiamijp-scan` / トランジェント: `yuiamijp_search_*` `yuiamijp_scan_progress`
 - CSSクラス: フロント`yuiamijp-`（ベースクラスは`.yuiamijp`）、エディター専用`yuiamijp-editor-`
 - テキストドメイン: `yuiamijp-media-link-cards`。i18n対応済みなので表示文字列は必ず`__()`系に通す
 - ブロック名: `yuiamijp/media-link-cards`（フロントのラッパークラスは`wp-block-yuiamijp-media-link-cards`）
 - ブロックカテゴリー: slug・タイトルとも`yuiamijp`
-- JSへ渡すグローバル: `yuiamijpAjaxValues`
+- JSへ渡すグローバル: ブロックエディター向けの`yuiamijpAjaxValues`、設定ページ向けの`yuiamijpScan`
 - 接頭辞はすべて`yuiamijp`で統一した。旧名由来の`sual_`は残していない
 
 ## 翻訳
@@ -108,8 +123,11 @@ slugが変わるとディレクトリ名も変わり、WordPressからは別プ�
 ```bash
 wp i18n make-pot . languages/yuiamijp-media-link-cards.pot --slug=yuiamijp-media-link-cards --exclude=node_modules
 msgmerge --update --backup=none languages/yuiamijp-media-link-cards-ja.po languages/yuiamijp-media-link-cards.pot
+msgattrib --no-obsolete --output-file=languages/yuiamijp-media-link-cards-ja.po languages/yuiamijp-media-link-cards-ja.po
 msgfmt --statistics -o /dev/null languages/yuiamijp-media-link-cards-ja.po   # 未訳とfuzzyが0であることを確認
 ```
+
+改名前のエントリが`#~`のobsoleteとして残ると、translate.wordpress.orgへのImportに不要なエントリが混ざる。`msgattrib`で落とす。ただし、一時的にコードから消しただけの文字列の既訳も同時に落ちるため、戻すときは訳し直しになる。
 
 ## readme
 

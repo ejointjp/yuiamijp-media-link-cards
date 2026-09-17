@@ -5,7 +5,7 @@
  * Description:       Easily create promotional links for iPhone / iPad / Mac apps, music tracks, Apple Books, and more.
  * Requires at least: 6.3
  * Requires PHP:      7.4
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Takashi Fujisaki
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -22,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/define.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/icons.php';
+require_once plugin_dir_path( __FILE__ ) . 'inc/status.php';
+require_once plugin_dir_path( __FILE__ ) . 'inc/scan.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/admin-page.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/api.php';
 
@@ -157,6 +159,8 @@ function yuiamijp_admin_enqueue_scripts() {
 				'countryToLangMap' => YUIAMIJP_COUNTRY_TO_LANG_MAP,
 				// nonce は wp-api-fetch がコア側で付与するため渡さない。
 				'restUrl'          => esc_url_raw( rest_url( 'yuiamijp-media-link-cards/v1/' ) ),
+				// 配信終了と判定された ID。エディターのプレビューをフロントと揃えるため。
+				'unavailableIds'   => yuiamijp_get_unavailable_ids(),
 			)
 		) . ';',
 		'before'

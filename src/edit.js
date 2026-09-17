@@ -38,6 +38,7 @@ const {
 	countryValues,
 	countryToLangMap,
 	restUrl,
+	unavailableIds = [],
 } =
 	// eslint-disable-next-line no-undef
 	yuiamijpAjaxValues;
@@ -371,7 +372,13 @@ const Edit = ( props ) => {
 			) }
 
 			<Display />
-			{ hasApp && <MediaLinkCard app={ app } isEditor={ true } /> }
+			{ hasApp && (
+				<MediaLinkCard
+					app={ app }
+					isEditor={ true }
+					unavailable={ unavailableIds.includes( Number( app.id ) ) }
+				/>
+			) }
 			{ hasResult && <ResultList /> }
 		</div>
 	);

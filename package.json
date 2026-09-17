@@ -1,6 +1,6 @@
 {
 	"name": "yuiamijp-media-link-cards",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Search the Apple ecosystem from the block editor and embed a rich card.",
 	"author": "Takashi Fujisaki",
 	"license": "GPL-2.0-or-later",
@@ -8,9 +8,9 @@
 	"packageManager": "pnpm@11.17.0",
 	"scripts": {
 		"build": "wp-scripts build",
-		"format": "wp-scripts format src/*.js src/components && wp-scripts lint-style \"src/*.css\" --fix",
+		"format": "wp-scripts format src/*.js src/components assets/admin.js && wp-scripts lint-style \"src/*.css\" --fix",
 		"lint:css": "wp-scripts lint-style \"src/*.css\"",
-		"lint:js": "wp-scripts lint-js src/*.js src/components",
+		"lint:js": "wp-scripts lint-js src/*.js src/components assets/admin.js",
 		"lint:all": "pnpm lint:js && pnpm lint:css",
 		"packages-update": "wp-scripts packages-update",
 		"start": "wp-scripts start"

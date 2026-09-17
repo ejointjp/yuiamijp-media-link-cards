@@ -153,3 +153,10 @@ function yuiamijp_get_country_values() {
 		),
 	);
 }
+
+// 配信終了スキャンのバッチサイズ。
+// 投稿は50件ずつ parse_blocks() で走査し、ID は100件ずつ lookup へ問い合わせる。
+// lookup は id をカンマ区切りで受け、結果は limit に切られない（168件で実測済み）。
+// 100件で URL は約1150文字。
+define( 'YUIAMIJP_SCAN_POSTS_PER_PAGE', 50 );
+define( 'YUIAMIJP_SCAN_LOOKUP_BATCH', 100 );
