@@ -51,12 +51,14 @@
 				result.total
 			);
 
+			// サーバーが前進しなかったらループを抜ける。catch 側が i18n.failed を
+			// 前置するので、ここでメッセージを持たせると二重に出る
 			if (
 				! result.done &&
 				result.phase === previousPhase &&
 				result.offset <= previousOffset
 			) {
-				throw new Error( i18n.failed );
+				throw new Error();
 			}
 
 			done = result.done;
