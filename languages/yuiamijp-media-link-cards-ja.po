@@ -82,7 +82,7 @@ msgstr "開始しています…"
 #: inc/admin-page.php:199
 #, php-format
 msgid "Scanning posts… %1$d / %2$d"
-msgstr "投稿を走査しています… %1$d / %2$d"
+msgstr "投稿をスキャンしています… %1$d / %2$d"
 
 #. translators: 1: number of items checked so far, 2: total number of items
 #: inc/admin-page.php:201
