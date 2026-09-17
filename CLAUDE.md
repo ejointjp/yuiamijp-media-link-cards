@@ -51,7 +51,7 @@ preview  試聴ボタンに使うアイコン名
 stores   type → { label, icon }
 ```
 
-PHP側の`yuiamijp_get_icon_svg()`が返すsvgは、出力時に`wp_kses()`と`yuiamijp_get_svg_allowed_html()`（`inc/icons.php`）を必ず通す。審査でエスケープ漏れとして指摘された箇所なので、`echo`のまま戻してはいけない。**`assets/icons.json`に新しい要素や属性を足したら、許可リストにも足す。** 許可リストに無い要素・属性はwp_ksesが黙って落とす。
+PHP側の`yuiamijp_get_icon_svg()`が返すsvgは、出力時に`wp_kses()`と`yuiamijp_get_svg_allowed_html()`（`inc/icons.php`）を必ず通す。審査でエスケープ漏れとして指摘された箇所なので、`echo`のまま戻してはいけない。**`assets/icons.json`に新しい要素や属性を足したら、許可リストにも足す。** 許可リストにない要素・属性はwp_ksesが黙って落とす。
 
 wp_ksesは属性名を小文字化するため`viewBox`は`viewbox`として出力されるが、HTMLパーサーがSVG用の綴りへ戻すので表示には影響しない。
 
@@ -70,7 +70,7 @@ APIリクエストの`entity`（検索条件。`src/entity-options.js`）とレ�
 
 設定ページの「Link check」から管理者が手動で実行する一括スキャンで、カードのアイテムがストアから消えていないかを確かめる。定期実行はない。フロントから外部へ接続することもない。
 
-- `inc/scan.php` — RESTの`/scan`のコールバックと権限チェック（`manage_options`）を実装する（ルート登録は`inc/api.php`、`phase` / `offset`を進めながら繰り返し呼ぶのは`assets/admin.js`）。`collect`は`yuiamijp_scan_post_types()`が絞る投稿タイプ（`get_post_types( array( 'exclude_from_search' => false ) )`に`wp_block`を加えたもの）と`get_post_stati( array( 'internal' => false ) )`のステータスを`parse_blocks()`で走査してカードの`app.id`を集める。非公開のカスタム投稿タイプや`wp_template` / `wp_template_part`は対象外で、投稿ではなくオプション`widget_block`に保存されるブロックウィジェットも対象外だ。`check`は集めたIDを`https://itunes.apple.com/lookup`へ100件ずつ問い合わせ、返らなかったIDを配信終了と判定する
+- `inc/scan.php` — RESTの`/scan`のコールバックと権限チェック（`manage_options`）を実装する（ルート登録は`inc/api.php`、`phase` / `offset`を進めながら繰り返し呼ぶのは`assets/admin.js`）。`collect`は`yuiamijp_scan_post_types()`が絞る投稿タイプ（`get_post_types( array( 'exclude_from_search' => false ) )`に`wp_block`を加えたもの）と`get_post_stati( array( 'internal' => false ) )`のステータスを`parse_blocks()`で走査してカードの`app.id`を集める。`exclude_from_search`が真の投稿タイプ（`wp_template` / `wp_template_part`など）は対象外で、投稿ではなくオプション`widget_block`に保存されるブロックウィジェットも対象外だ。`check`は集めたIDを`https://itunes.apple.com/lookup`へ100件ずつ問い合わせ、返らなかったIDを配信終了と判定する
 - `inc/status.php` — 結果の保存先。`yuiamijp-status`（配信終了IDだけ。フロントが読む）と`yuiamijp-scan`（全記録。管理画面が読む）。どちらもautoloadしない。`uninstall.php`が消す
 - `src/render.php`は`yuiamijp_is_unavailable()`で、`src/edit.js`は`yuiamijpAjaxValues.unavailableIds`で判定し、後者は結果を`unavailable`プロップとして`src/components/MediaLinkCard.js`へ渡す。判定がtrueなら`<a>`を`<span>`にして「配信終了」ラベルを出す
 - `assets/admin.js` — 設定ページの進捗表示。ビルドを通さない素のJS。`package.json`の`lint:js`と`format`の対象に入れてある。表示文字列はPHPで翻訳して`wp_localize_script()`で渡す（`.json`翻訳を同梱しないため。JS側で`__()`を使わない）
