@@ -33,6 +33,8 @@ phpcbf           # PHPの自動修正
 
 **`pnpm format`でCSSにprettierをかけてはいけない。** prettierとstylelintは整形が食い違うため、交互に走らせても収束しない。食い違うのは80桁を超えるセレクタの折り返し方（prettierのインデントが`@stylistic/indentation`に違反する）と、ブロック先頭の空行（prettierは削除し、stylelintは`rule-empty-line-before`で要求する）。CSSの整形はstylelintの`--fix`に一本化してある。`format`スクリプトの対象を広げるときはこの点に注意する。
 
+**`wp-scripts format`をファイル引数なしで直接実行しない。**`--check`は未対応で、続く引数を食って引数ゼロになり、`.`全体（`.github/*.yml`や`pnpm-lock.yaml`も）を`--write`で4スペースに整形してしまう。使うのは引数を明示した`pnpm format`だけ。整形後は`git status`で意図しないファイルが変わっていないことを確認する。
+
 ## アーキテクチャ
 
 ### 動的ブロック（SSR）
@@ -64,6 +66,19 @@ CSS（`src/style.css`）は共通で、`.yuiamijp-btn svg`のような子孫セ�
 
 APIリクエストの`entity`（検索条件。`src/entity-options.js`）とレスポンスの`kind` / `wrapperType`（`edit.js`の`itemAtts()`が判定）は別物。そこから決まる`type`（`app` / `mac-app` / `ebook` / `podcast` / `music-track`…）が、`render.php`・`StoreIcon.js`・CSSクラス`yuiamijp-{type}`の分岐キーになる。種別を増やすときはこの3箇所と`app-attributes.js`が対象。
 
+### 配信終了の判定
+
+設定ページの「Link check」から管理者が手動で実行する一括スキャンで、カードのアイテムがストアから消えていないかを確かめる。定期実行はない。フロントから外部へ接続することもない。
+
+- `inc/scan.php` — RESTの`/scan`（`manage_options`）を`phase` / `offset`を進めながら繰り返し呼ぶ。`collect`で全投稿（`get_post_stati( array( 'internal' => false ) )`のステータス、再利用ブロック`wp_block`も含む）を`parse_blocks()`で走査してカードの`app.id`を集め、`check`で`https://itunes.apple.com/lookup`へ100件ずつ問い合わせる。返らなかったIDが配信終了
+- `inc/status.php` — 結果の保存先。`yuiamijp-status`（配信終了IDだけ。フロントが読む）と`yuiamijp-scan`（全記録。管理画面が読む）。どちらもautoloadしない。`uninstall.php`が消す
+- `src/render.php`と`src/components/MediaLinkCard.js`は`yuiamijp_is_unavailable()` / `yuiamijpAjaxValues.unavailableIds`で判定し、`<a>`を`<span>`にして「配信終了」ラベルを出す
+- `assets/admin.js` — 設定ページの進捗表示。ビルドを通さない素のJS。`package.json`の`lint:js`と`format`の対象に入れてある。表示文字列はPHPで翻訳して`wp_localize_script()`で渡す（`.json`翻訳を同梱しないため。JS側で`__()`を使わない）
+
+通信失敗・HTTP 200以外・JSONの破損があったバッチは判定を保留し、前回の判定を引き継ぐ（前回もなければ`unknown`）。「返らなかったIDは配信終了」はレスポンスが正常なときだけ。lookupの結果は検索APIの`limit`に切られない（生存ID 168件で実測済み）。`limit`は送らない。
+
+投稿本文は書き換えない。判定を消したければ再スキャンするか、optionを削除する。
+
 ### PHP → JSの受け渡し
 
 `yuiamijp_admin_enqueue_scripts()`が`wp-block-editor`ハンドルへ`yuiamijpAjaxValues`をインラインスクリプトとして出力する。設定値・選択肢・REST URL・nonceはすべてこれ経由。`src/edit.js`はモジュール読み込み時にこのグローバルを分解代入するため、キーを増減したらedit.js側も合わせる。
@@ -78,7 +93,7 @@ slugが変わるとディレクトリ名も変わり、WordPressからは別プ�
 
 ## 命名規約
 
-- PHP関数: `yuiamijp_` / 定数: `YUIAMIJP_` / オプション: `yuiamijp-setting`
+- PHP関数: `yuiamijp_` / 定数: `YUIAMIJP_` / オプション: `yuiamijp-setting` `yuiamijp-status` `yuiamijp-scan` / トランジェント: `yuiamijp_search_*` `yuiamijp_scan_progress`
 - CSSクラス: フロント`yuiamijp-`（ベースクラスは`.yuiamijp`）、エディター専用`yuiamijp-editor-`
 - テキストドメイン: `yuiamijp-media-link-cards`。i18n対応済みなので表示文字列は必ず`__()`系に通す
 - ブロック名: `yuiamijp/media-link-cards`（フロントのラッパークラスは`wp-block-yuiamijp-media-link-cards`）
@@ -108,8 +123,11 @@ slugが変わるとディレクトリ名も変わり、WordPressからは別プ�
 ```bash
 wp i18n make-pot . languages/yuiamijp-media-link-cards.pot --slug=yuiamijp-media-link-cards --exclude=node_modules
 msgmerge --update --backup=none languages/yuiamijp-media-link-cards-ja.po languages/yuiamijp-media-link-cards.pot
+msgattrib --no-obsolete --output-file=languages/yuiamijp-media-link-cards-ja.po languages/yuiamijp-media-link-cards-ja.po
 msgfmt --statistics -o /dev/null languages/yuiamijp-media-link-cards-ja.po   # 未訳とfuzzyが0であることを確認
 ```
+
+改名前のエントリが`#~`のobsoleteとして残ると、translate.wordpress.orgへのImportに不要なエントリが混ざる。`msgattrib`で落とす。
 
 ## readme
 

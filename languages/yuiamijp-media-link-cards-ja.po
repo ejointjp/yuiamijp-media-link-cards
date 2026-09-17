@@ -382,13 +382,3 @@ msgstr "Mac"
 msgctxt "block keyword"
 msgid "book"
 msgstr "ブック"
-
-#~ msgid "SU Applink"
-#~ msgstr "SU Applink"
-
-#~ msgctxt "block title"
-#~ msgid "Applink"
-#~ msgstr "Applink"
-
-#~ msgid "Select"
-#~ msgstr "選択"

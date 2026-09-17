@@ -5,7 +5,7 @@
  * Description:       Easily create promotional links for iPhone / iPad / Mac apps, music tracks, Apple Books, and more.
  * Requires at least: 6.3
  * Requires PHP:      7.4
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Takashi Fujisaki
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
