@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: yuiamijp Media Link Cards 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yuiamijp-media-"
 "link-cards\n"
-"POT-Creation-Date: 2026-09-11T02:45:37+00:00\n"
+"POT-Creation-Date: 2026-09-17T10:08:18+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
 "Last-Translator: Takashi Fujisaki\n"
 "Language-Team: Japanese\n"
@@ -36,38 +36,126 @@ msgstr ""
 msgid "Takashi Fujisaki"
 msgstr "Takashi Fujisaki"
 
-#: build/render.php:54 src/render.php:54 build/index.js:1
-#: src/components/MediaLinkCard.js:53
+#: build/render.php:69 src/render.php:69 build/index.js:1
+#: src/components/MediaLinkCard.js:60
+msgid "No longer available"
+msgstr "配信終了"
+
+#: build/render.php:75 src/render.php:75 build/index.js:1
+#: src/components/MediaLinkCard.js:77
 msgid "Preview"
 msgstr "試聴"
 
-#: inc/admin-page.php:99
+#: inc/admin-page.php:101
 msgid "PHG Token"
 msgstr "PHGトークン"
 
-#: inc/admin-page.php:100
+#: inc/admin-page.php:102
 msgid "Default Search Results"
 msgstr "デフォルトの検索結果数"
 
-#: inc/admin-page.php:101
+#: inc/admin-page.php:103
 msgid "Default Store Country"
 msgstr "デフォルトの検索対象ストア"
 
-#: inc/admin-page.php:102
+#: inc/admin-page.php:104
 msgid "Default Language"
 msgstr "デフォルトの表示言語"
 
-#: inc/admin-page.php:148
+#: inc/admin-page.php:150
 msgid "Select the country of the App Store to search."
 msgstr "検索するApp Storeの国を選択します。"
 
-#: inc/admin-page.php:161 build/index.js:1 src/edit.js:311
+#: inc/admin-page.php:163 build/index.js:1 src/edit.js:312
 msgid "Display cards in English"
 msgstr "カードを英語表記にする"
 
-#: inc/admin-page.php:163
+#: inc/admin-page.php:165
 msgid "If unchecked, the language will be determined automatically."
 msgstr "チェックを外すと、言語が自動的に決定されます。"
+
+#: inc/admin-page.php:197
+msgid "Starting…"
+msgstr "開始しています…"
+
+#. translators: 1: number of posts scanned so far, 2: total number of posts
+#: inc/admin-page.php:199
+#, php-format
+msgid "Scanning posts… %1$d / %2$d"
+msgstr "投稿を走査しています… %1$d / %2$d"
+
+#. translators: 1: number of items checked so far, 2: total number of items
+#: inc/admin-page.php:201
+#, php-format
+msgid "Checking items… %1$d / %2$d"
+msgstr "アイテムを確認しています… %1$d / %2$d"
+
+#: inc/admin-page.php:202
+msgid "Scan complete. Reloading…"
+msgstr "スキャンが完了しました。再読み込みします…"
+
+#: inc/admin-page.php:203
+msgid "Scan failed."
+msgstr "スキャンに失敗しました。"
+
+#: inc/admin-page.php:220
+msgid "Link check"
+msgstr "リンクチェック"
+
+#: inc/admin-page.php:221
+msgid ""
+"Checks every card on this site against Apple's catalog and marks the items "
+"that are no longer available. Marked cards are shown without links on the "
+"front end."
+msgstr ""
+"このサイトのすべてのカードをAppleのカタログと照合し、配信が終了したアイテムに"
+"印を付けます。印の付いたカードは、フロントエンドではリンクなしで表示されま"
+"す。"
+
+#: inc/admin-page.php:223
+msgid "Start scan"
+msgstr "スキャンを開始"
+
+#: inc/admin-page.php:228
+msgid "Never scanned."
+msgstr "まだスキャンしていません。"
+
+#. translators: %s: date and time of the last scan
+#: inc/admin-page.php:237
+#, php-format
+msgid "Last scanned: %s"
+msgstr "最終スキャン: %s"
+
+#. translators: 1: number of items checked, 2: number of items no longer available
+#: inc/admin-page.php:248
+#, php-format
+msgid "%1$d items checked, %2$d no longer available."
+msgstr "%1$d件を確認し、%2$d件が配信終了でした。"
+
+#. translators: %d: number of items that could not be checked
+#: inc/admin-page.php:261
+#, php-format
+msgid ""
+"Could not check %d items. Their previous status was kept. Try again later."
+msgstr ""
+"%d件を確認できませんでした。前回の判定を維持しています。しばらくしてから再実"
+"行してください。"
+
+#: inc/admin-page.php:283
+msgid "Title"
+msgstr "タイトル"
+
+#: inc/admin-page.php:284
+msgid "Type"
+msgstr "種別"
+
+#: inc/admin-page.php:285
+msgid "ID"
+msgstr "ID"
+
+#: inc/admin-page.php:286
+msgid "Used in"
+msgstr "使用している投稿"
 
 #: inc/define.php:43
 msgid "10 items"
@@ -157,7 +245,11 @@ msgstr "フランス"
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: yuiamijp-media-link-cards.php:177
+#: inc/scan.php:218 inc/scan.php:302
+msgid "The scan data has expired. Start the scan again."
+msgstr "スキャンのデータが失効しました。もう一度スキャンを開始してください。"
+
+#: yuiamijp-media-link-cards.php:181
 msgid "Settings"
 msgstr "設定"
 
@@ -197,39 +289,39 @@ msgstr "アルバム"
 msgid "Music Video"
 msgstr "ミュージックビデオ"
 
-#: build/index.js:1 src/edit.js:190
+#: build/index.js:1 src/edit.js:191
 msgid "Search Results"
 msgstr "検索結果"
 
-#: build/index.js:1 src/edit.js:205
+#: build/index.js:1 src/edit.js:206
 msgid "Cached"
 msgstr "キャッシュ"
 
-#: build/index.js:1 src/edit.js:236
+#: build/index.js:1 src/edit.js:237
 msgid "Failed to retrieve data"
 msgstr "データの取得に失敗しました"
 
-#: build/index.js:1 src/edit.js:280
+#: build/index.js:1 src/edit.js:281
 msgid "Search Settings"
 msgstr "検索条件設定"
 
-#: build/index.js:1 src/edit.js:287
+#: build/index.js:1 src/edit.js:288
 msgid "Number of Results"
 msgstr "検索結果数"
 
-#: build/index.js:1 src/edit.js:299
+#: build/index.js:1 src/edit.js:300
 msgid "Store Country"
 msgstr "検索対象ストア"
 
-#: build/index.js:1 src/edit.js:319
+#: build/index.js:1 src/edit.js:320
 msgid "If turned off, the language will be determined automatically."
 msgstr "オフにすると、言語が自動的に決定されます。"
 
-#: build/index.js:1 src/edit.js:333
+#: build/index.js:1 src/edit.js:334
 msgid "Set default values on settings page"
 msgstr "設定ページでデフォルト値を設定する"
 
-#: build/index.js:1 src/edit.js:362
+#: build/index.js:1 src/edit.js:363
 msgid "Enter search term and press Enter"
 msgstr "検索ワードを入力してEnter"
 
