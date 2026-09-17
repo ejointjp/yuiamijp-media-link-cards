@@ -159,6 +159,8 @@ function yuiamijp_admin_enqueue_scripts() {
 				'countryToLangMap' => YUIAMIJP_COUNTRY_TO_LANG_MAP,
 				// nonce は wp-api-fetch がコア側で付与するため渡さない。
 				'restUrl'          => esc_url_raw( rest_url( 'yuiamijp-media-link-cards/v1/' ) ),
+				// 配信終了と判定された ID。エディターのプレビューをフロントと揃えるため。
+				'unavailableIds'   => yuiamijp_get_unavailable_ids(),
 			)
 		) . ';',
 		'before'
