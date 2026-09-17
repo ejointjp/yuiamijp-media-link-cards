@@ -70,9 +70,9 @@ APIリクエストの`entity`（検索条件。`src/entity-options.js`）とレ�
 
 設定ページの「Link check」から管理者が手動で実行する一括スキャンで、カードのアイテムがストアから消えていないかを確かめる。定期実行はない。フロントから外部へ接続することもない。
 
-- `inc/scan.php` — RESTの`/scan`（`manage_options`）を`phase` / `offset`を進めながら繰り返し呼ぶ。`collect`で全投稿（`get_post_stati( array( 'internal' => false ) )`のステータス、再利用ブロック`wp_block`も含む）を`parse_blocks()`で走査してカードの`app.id`を集め、`check`で`https://itunes.apple.com/lookup`へ100件ずつ問い合わせる。返らなかったIDが配信終了
+- `inc/scan.php` — RESTの`/scan`のコールバックと権限チェック（`manage_options`）を実装する（ルート登録は`inc/api.php`、`phase` / `offset`を進めながら繰り返し呼ぶのは`assets/admin.js`）。`collect`は`yuiamijp_scan_post_types()`が絞る投稿タイプ（`get_post_types( array( 'exclude_from_search' => false ) )`に`wp_block`を加えたもの）と`get_post_stati( array( 'internal' => false ) )`のステータスを`parse_blocks()`で走査してカードの`app.id`を集める。非公開のカスタム投稿タイプや`wp_template` / `wp_template_part`は対象外で、投稿ではなくオプション`widget_block`に保存されるブロックウィジェットも対象外だ。`check`は集めたIDを`https://itunes.apple.com/lookup`へ100件ずつ問い合わせ、返らなかったIDを配信終了と判定する
 - `inc/status.php` — 結果の保存先。`yuiamijp-status`（配信終了IDだけ。フロントが読む）と`yuiamijp-scan`（全記録。管理画面が読む）。どちらもautoloadしない。`uninstall.php`が消す
-- `src/render.php`と`src/components/MediaLinkCard.js`は`yuiamijp_is_unavailable()` / `yuiamijpAjaxValues.unavailableIds`で判定し、`<a>`を`<span>`にして「配信終了」ラベルを出す
+- `src/render.php`は`yuiamijp_is_unavailable()`で、`src/edit.js`は`yuiamijpAjaxValues.unavailableIds`で判定し、後者は結果を`unavailable`プロップとして`src/components/MediaLinkCard.js`へ渡す。判定がtrueなら`<a>`を`<span>`にして「配信終了」ラベルを出す
 - `assets/admin.js` — 設定ページの進捗表示。ビルドを通さない素のJS。`package.json`の`lint:js`と`format`の対象に入れてある。表示文字列はPHPで翻訳して`wp_localize_script()`で渡す（`.json`翻訳を同梱しないため。JS側で`__()`を使わない）
 
 通信失敗・HTTP 200以外・JSONの破損があったバッチは判定を保留し、前回の判定を引き継ぐ（前回もなければ`unknown`）。「返らなかったIDは配信終了」はレスポンスが正常なときだけ。lookupの結果は検索APIの`limit`に切られない（生存ID 168件で実測済み）。`limit`は送らない。
@@ -127,7 +127,7 @@ msgattrib --no-obsolete --output-file=languages/yuiamijp-media-link-cards-ja.po 
 msgfmt --statistics -o /dev/null languages/yuiamijp-media-link-cards-ja.po   # 未訳とfuzzyが0であることを確認
 ```
 
-改名前のエントリが`#~`のobsoleteとして残ると、translate.wordpress.orgへのImportに不要なエントリが混ざる。`msgattrib`で落とす。
+改名前のエントリが`#~`のobsoleteとして残ると、translate.wordpress.orgへのImportに不要なエントリが混ざる。`msgattrib`で落とす。ただし、一時的にコードから消しただけの文字列の既訳も同時に落ちるため、戻すときは訳し直しになる。
 
 ## readme
 

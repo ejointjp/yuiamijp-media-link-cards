@@ -18,7 +18,7 @@
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
 		<exclude name="Squiz.Commenting.FileComment.SpacingAfterOpen"/>
 		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/>
-		<!-- 日本語には大文字が無いため「大文字で始めろ」は満たしようがない -->
+		<!-- 日本語には大文字がないため「大文字で始めろ」は満たしようがない -->
 		<exclude name="Generic.Commenting.DocComment.LongNotCapital"/>
 		<exclude name="Generic.Commenting.DocComment.ShortNotCapital"/>
 		<!-- docblock の @param / @package は必須としない -->
