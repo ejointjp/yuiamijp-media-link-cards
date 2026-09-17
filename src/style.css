@@ -168,6 +168,31 @@ svg {
 	color: #f43f5e; /* rose-500 */
 }
 
+/* 配信終了と判定されたカード。リンクを外し、アイコンをグレーにする */
+.yuiamijp-unavailable {
+
+	.yuiamijp-img {
+		opacity: 0.55;
+		filter: grayscale(1);
+	}
+
+	.yuiamijp-title {
+		color: var(--_color-text-muted) !important;
+		cursor: default;
+	}
+}
+
+/* ストアボタンの位置に置く「配信終了」ラベル。ボタンではないのでホバーで変化させない */
+.yuiamijp-ended {
+	cursor: default;
+	color: var(--_color-text-muted);
+	background-color: var(--_color-bg-subtle);
+
+	&:hover {
+		background-color: var(--_color-bg-subtle);
+	}
+}
+
 @container (width >= 32rem) {
 
 	.yuiamijp {
