@@ -137,7 +137,7 @@ function yuiamijp_lookup_ids( array $ids, $country ) {
 		'https://itunes.apple.com/lookup'
 	);
 
-	$response = wp_remote_get( $url, array( 'timeout' => 30 ) );
+	$response = wp_remote_get( $url, array( 'timeout' => 15 ) );
 
 	if ( is_wp_error( $response ) ) {
 		yuiamijp_log_scan_error( $response->get_error_message() );
@@ -183,7 +183,19 @@ function yuiamijp_log_scan_error( $message ) {
 function yuiamijp_get_scan_progress() {
 	$progress = get_transient( 'yuiamijp_scan_progress' );
 
-	return is_array( $progress ) ? $progress : false;
+	if ( ! is_array( $progress ) ) {
+		return false;
+	}
+
+	if ( ! isset( $progress['items'] ) || ! is_array( $progress['items'] ) ) {
+		return false;
+	}
+
+	if ( ! isset( $progress['errors'] ) || ! is_array( $progress['errors'] ) ) {
+		return false;
+	}
+
+	return $progress;
 }
 
 /**
@@ -192,7 +204,11 @@ function yuiamijp_get_scan_progress() {
  * @param array $progress 中間データ。
  */
 function yuiamijp_set_scan_progress( array $progress ) {
-	set_transient( 'yuiamijp_scan_progress', $progress, HOUR_IN_SECONDS );
+	$saved = set_transient( 'yuiamijp_scan_progress', $progress, HOUR_IN_SECONDS );
+
+	if ( ! $saved ) {
+		yuiamijp_log_scan_error( 'Failed to save scan progress transient.' );
+	}
 }
 
 /**

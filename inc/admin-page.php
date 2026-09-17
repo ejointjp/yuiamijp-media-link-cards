@@ -178,13 +178,14 @@ function yuiamijp_enqueue_scan_script( $hook_suffix ) {
 		return;
 	}
 
-	$path = plugin_dir_path( __DIR__ ) . 'assets/admin.js';
+	$path    = plugin_dir_path( __DIR__ ) . 'assets/admin.js';
+	$version = file_exists( $path ) ? (string) filemtime( $path ) : false;
 
 	wp_enqueue_script(
 		'yuiamijp-scan',
 		plugin_dir_url( __DIR__ ) . 'assets/admin.js',
 		array( 'wp-api-fetch' ),
-		(string) filemtime( $path ),
+		$version,
 		true
 	);
 
@@ -221,10 +222,10 @@ function yuiamijp_render_scan_section() {
 	<p><?php echo esc_html__( 'Checks every card on this site against Apple\'s catalog and marks the items that are no longer available. Marked cards are shown without links on the front end.', 'yuiamijp-media-link-cards' ); ?></p>
 	<p>
 		<button type="button" class="button button-secondary" id="yuiamijp-scan-start"><?php echo esc_html__( 'Start scan', 'yuiamijp-media-link-cards' ); ?></button>
-		<span id="yuiamijp-scan-status" class="description"></span>
+		<span id="yuiamijp-scan-status" class="description" aria-live="polite"></span>
 	</p>
 	<?php
-	if ( empty( $record ) ) {
+	if ( empty( $record ) || ! isset( $record['items'] ) || ! is_array( $record['items'] ) ) {
 		echo '<p>' . esc_html__( 'Never scanned.', 'yuiamijp-media-link-cards' ) . '</p>';
 		return;
 	}

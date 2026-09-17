@@ -30,7 +30,7 @@ This plugin relies on the iTunes Search API, a third-party service provided by A
 1. In the block editor, when a user with the `edit_posts` capability types a search term and presses Enter.
 2. On the settings page, when an administrator (`manage_options` capability) clicks "Start scan" under "Link check". The plugin then looks up the items embedded on your site to find the ones that are no longer available.
 
-Your site's front end never contacts the service: published posts render from data already stored in your database, so your visitors make no request to Apple.
+Your site's front end never contacts the service: published posts render from data already stored in your database, so the plugin makes no request to Apple for your visitors. The card artwork is loaded from Apple's CDN by the visitor's browser, as with any externally hosted image.
 
 **What is sent.** For a search: the search term you typed, the content type (app, book, podcast, music, and so on), the store country, the display language, the number of results, and — only if you have entered one yourself — your affiliate token. For a link check: the Apple item IDs stored in your cards (public identifiers assigned by Apple) and the store country. No personal data, and no information about your site or its visitors, is sent.
 

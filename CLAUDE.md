@@ -98,7 +98,7 @@ slugが変わるとディレクトリ名も変わり、WordPressからは別プ�
 - テキストドメイン: `yuiamijp-media-link-cards`。i18n対応済みなので表示文字列は必ず`__()`系に通す
 - ブロック名: `yuiamijp/media-link-cards`（フロントのラッパークラスは`wp-block-yuiamijp-media-link-cards`）
 - ブロックカテゴリー: slug・タイトルとも`yuiamijp`
-- JSへ渡すグローバル: `yuiamijpAjaxValues`
+- JSへ渡すグローバル: ブロックエディター向けの`yuiamijpAjaxValues`、設定ページ向けの`yuiamijpScan`
 - 接頭辞はすべて`yuiamijp`で統一した。旧名由来の`sual_`は残していない
 
 ## 翻訳

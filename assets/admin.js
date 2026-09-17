@@ -22,7 +22,7 @@
 
 	// PHP 側の文字列に含まれる %1$d / %2$d を置き換える。翻訳で順序が入れ替わっても効く
 	const progressText = ( template, processed, total ) =>
-		template.replace( '%1$d', processed ).replace( '%2$d', total );
+		template.replaceAll( '%1$d', processed ).replaceAll( '%2$d', total );
 
 	// lookup のレート制限（毎分20回程度）を避けるため、check フェーズではバッチ間に1秒空ける
 	const sleep = ( ms ) =>
@@ -36,6 +36,9 @@
 		let done = false;
 
 		while ( ! done ) {
+			const previousPhase = phase;
+			const previousOffset = offset;
+
 			const result = await wp.apiFetch( {
 				url: scanUrl,
 				method: 'POST',
@@ -47,6 +50,14 @@
 				result.processed,
 				result.total
 			);
+
+			if (
+				! result.done &&
+				result.phase === previousPhase &&
+				result.offset <= previousOffset
+			) {
+				throw new Error( i18n.failed );
+			}
 
 			done = result.done;
 			phase = result.phase;

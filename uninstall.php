@@ -12,3 +12,4 @@ if ( ! defined( 'ABSPATH' ) || ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 delete_option( 'yuiamijp-setting' );
 delete_option( 'yuiamijp-status' );
 delete_option( 'yuiamijp-scan' );
+delete_transient( 'yuiamijp_scan_progress' );
