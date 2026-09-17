@@ -22,7 +22,13 @@ lovemac.jpの移行作業（2026年9月17日）では、ショートコード世
   生存しているアプリは200。配信終了でも200が返るということはない
 - lookupは`id=1,2,3`のカンマ区切りで**一括問い合わせができる**。生存2件と配信終了1件の計3 IDを
   投げたところ、生存2件だけが返った。返らなかったIDが配信終了と判定できる
-- 音楽アルバムやオーディオブックのような`collectionId`系も同じlookupで引ける
+- **lookupの結果は`limit`に切られない。** 検索APIの`limit`（既定50・上限200）がlookupにも効くなら、
+  100件バッチの後半が全部「配信終了」に誤判定される。実在する生存ID 168件で試したところ、
+  50件・100件・168件のどれも全件返り、`limit=200`を付けても変わらなかった。`limit`は送らない
+- 100件分のURL（約1150文字）をAppleは受ける。`add_query_arg()`がカンマを`%2C`にエンコード
+  しても問題なく解釈される
+- 音楽アルバムやオーディオブックのような`collectionId`系も同じlookupで引ける。種別を混ぜて
+  問い合わせても1回で返り、アプリ・ブック・曲は`trackId`、アルバムは`collectionId`で返る
 
 したがって「配信終了かどうか」はlookupのresultCountで確実に判定できる。
 
@@ -75,7 +81,7 @@ array(
     'errors'   => array( 111, 222 ), // 通信失敗で確認できなかったID
     'items'    => array(
         '642099621' => array(
-            'state' => 'unavailable', // 'available' | 'unavailable'
+            'state' => 'unavailable', // 'available' | 'unavailable' | 'unknown'
             'title' => 'Flappy Bird',
             'type'  => 'app',
             'icon'  => 'https://is1-ssl.mzstatic.com/...',
@@ -86,6 +92,9 @@ array(
 ```
 
 `autoload`は`false`。`yuiamijp-status`はこの記録から導出して書き出す。
+
+`state`の`unknown`は、通信失敗で確認できず、前回の判定もないID。フロントでは`available`と
+同じく従来どおり表示する。
 
 キーはブロックの`app.id`（`trackId`または`collectionId`）。iTunesのID空間は共通なので両者は衝突しない。
 `id`を持たない古いカードは対象外とし、従来どおり表示する。
@@ -122,18 +131,22 @@ array(
 1. `items`のキー（ユニークID）を**100件ずつ**カンマ区切りにして
    `https://itunes.apple.com/lookup?id=…&country=<設定値>`へ`wp_remote_get()`する。
    100件でもURLは約1100文字で、実用上の上限2000文字に収まる
-2. 返ってきたIDを`available`、返らなかったIDを`unavailable`として`items`へ記録する
+2. 返ってきたIDを`available`、返らなかったIDを`unavailable`として`items`へ記録する。
+   結果の`trackId`と`collectionId`の両方と突き合わせる
 3. `country`は設定値をそのまま使う。他国のストアで生存していても、読者の国で買えないなら
    配信終了として扱う
-4. **通信に失敗したバッチは状態を書き換えない。** そのバッチのIDを`errors`へ記録し、
-   前回の判定を引き継いだまま次のバッチへ進む。失敗を握りつぶさず管理画面へ表示する
+4. **通信に失敗したバッチは状態を書き換えない。** HTTPが200以外、JSONが壊れている、
+   `results`配列がない、のいずれも通信失敗と同じ扱いにする。「返らなかったIDは配信終了」という
+   判定はレスポンスが正常なときにだけ使う。失敗したバッチのIDを`errors`へ記録し、
+   前回の判定を引き継いだまま次のバッチへ進む。失敗を握りつぶさず管理画面へ表示し、
+   `WP_DEBUG`が有効なら`error_log()`にも原因を残す
 5. 全バッチが終わったら`yuiamijp-scan`を確定保存し、`state`が`unavailable`のIDだけを集めて
    `yuiamijp-status`へ書き出す。トランジェントは削除する
 
 ### 状態の引き継ぎ
 
 スキャンのたびに`yuiamijp-scan`を書き直すが、今回のスキャンで確認できなかったID
-（通信失敗したバッチ）は前回の`state`を引き継ぐ。
+（通信失敗したバッチ）は前回の`state`を引き継ぐ。前回の記録にもなければ`unknown`にする。
 今回の走査でどの投稿にも見つからなかったIDは記録から落とす。
 
 ### レート制限への配慮
@@ -192,33 +205,38 @@ optionの読み込みは1リクエストにつき1回だけ。
 ダークモードはテーマ側で切り替わるため、このファイルでは個別に上書きしない。
 
 ```css
+/* 配信終了と判定されたカード。リンクを外し、アイコンをグレーにする */
 .yuiamijp-unavailable {
 
 	.yuiamijp-img {
-		filter: grayscale(1);
 		opacity: 0.55;
+		filter: grayscale(1);
 	}
 
 	.yuiamijp-title {
 		color: var(--_color-text-muted) !important;
 		cursor: default;
 	}
-
-	/* リンクがないのでホバーの背景変化を止める */
-	&:has(a:hover) {
-		background-color: var(--_color-bg);
-	}
 }
 
+/* ストアボタンの位置に置く「配信終了」ラベル。ボタンではないのでホバーで変化させない */
 .yuiamijp-ended {
-	color: var(--_color-text-muted);
 	cursor: default;
+	color: var(--_color-text-muted);
 	background-color: var(--_color-bg-subtle);
+
+	&:hover {
+		background-color: var(--_color-bg-subtle);
+	}
 }
 ```
 
 `.yuiamijp-title`の`color`に`!important`が付いているのは既存の宣言に合わせるため。
 テーマのリンク色に勝つために元から付いている。
+
+カード全体の`&:has(a:hover)`によるホバー背景は、配信終了カードには`<a>`がないので
+そもそも発火しない。個別に打ち消す必要はない。`.yuiamijp-ended`は`.yuiamijp-btn`の
+`&:hover`を引き継ぐので、同じ背景色で上書きしてホバーの変化を止める。
 
 ## エディターの表示（`src/components/MediaLinkCard.js`）
 
@@ -254,6 +272,13 @@ JavaScriptは`assets/admin.js`に素のまま置く。ブロック用のビル�
 **表示文字列はPHPの`__()`で翻訳し、`wp_localize_script()`でJavaScriptへ渡す。**
 このプラグインは`.json`翻訳を同梱せず`wp_set_script_translations()`にパスを渡していないため、
 JavaScript側で`__()`を使うと言語パックの生成状況に左右される。PHP側で解決してから渡す。
+
+進捗文字列の`%1$d` / `%2$d`はJavaScript側で`String.prototype.replace()`により置き換える。
+`wp.i18n.sprintf()`は使わない。ESLintの`@wordpress/valid-sprintf`が、変数を書式文字列に
+渡す呼び出しをエラーにするため。置き換えはトークン単位なので、翻訳で順序が入れ替わっても効く。
+
+`assets/admin.js`は`package.json`の`lint:js`と`format`の対象に加える。
+`src/`だけを見ている現状のままだと、このファイルだけlintが掛からない。
 
 ## REST API（`inc/api.php`）
 
@@ -336,16 +361,21 @@ readme.txtの`= External service =`は審査を通った文面で、次のよう
 
 変更。
 
+- `inc/define.php` — 走査とlookupのバッチサイズの定数
 - `inc/api.php` — `/scan`ルートの追加
 - `inc/admin-page.php` — Link checkセクション、結果テーブル、スクリプトのenqueue
 - `src/render.php` — 配信終了時の出力の分岐
 - `src/style.css` — `.yuiamijp-unavailable` / `.yuiamijp-ended`
 - `src/components/MediaLinkCard.js` — エディタープレビューの同じ分岐
+- `src/edit.js` — `unavailableIds`の受け取りと`MediaLinkCard`への受け渡し
 - `yuiamijp-media-link-cards.php` — `require_once`の追加、`yuiamijpAjaxValues`へ`unavailableIds`、
   バージョンを1.1.0へ
 - `uninstall.php` — option 2件の削除
 - `readme.txt` — External serviceの更新、Stable tag、Changelog
 - `languages/yuiamijp-media-link-cards.pot` / `languages/yuiamijp-media-link-cards-ja.po`
+- `package.json` — `lint:js`と`format`の対象に`assets/admin.js`を追加、バージョンを1.1.0へ
+- `.distignore` — `docs`を除外。設計書と実装計画を配布物に入れない
+- `CLAUDE.md` — 配信終了判定の節、新しいoption名、`wp-scripts format`の注意
 
 ## 動作確認
 
