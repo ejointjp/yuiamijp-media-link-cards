@@ -1,0 +1,284 @@
+# Translation of Plugins - yuiamijp Media Link Cards - Stable Readme (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - yuiamijp Media Link Cards - Stable Readme (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: +0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.1.0\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - yuiamijp Media Link Cards - Stable Readme "
+"(latest release)\n"
+
+#. Short description.
+msgid ""
+"Create rich promotional links for iPhone / iPad / Mac apps, Apple Books, "
+"music tracks and more. Supports Apple affiliate parameters."
+msgstr ""
+"iPhone / iPad / Mac アプリ、Apple Books、音楽トラックなどの紹介リンクを手軽に"
+"作成できます。Apple のアフィリエイトパラメーターに対応しています。"
+
+#. Plugin name.
+msgid "yuiamijp Media Link Cards"
+msgstr "yuiamijp Media Link Cards"
+
+#. Found in faq paragraph.
+msgid ""
+"Common countries are available (JP, US, GB, CA, AU, SG, TH, IN, DE, FR, BR, "
+"etc.). Language can be set to auto or English; auto maps based on the "
+"selected country."
+msgstr ""
+"主要な国を選べます (JP、US、GB、CA、AU、SG、TH、IN、DE、FR、BR など)。言語は"
+"自動または英語を設定でき、自動の場合は選択した国に応じて切り替わります。"
+
+#. Found in faq paragraph.
+msgid ""
+"Yes. Searching in the block editor queries Apple's iTunes Search API. Your "
+"site's front end never contacts it. See \"External service\" in the "
+"description for exactly what is sent and when."
+msgstr ""
+"はい。ブロックエディターでの検索は Apple の iTunes Search API に問い合わせま"
+"す。サイトのフロント側がこのサービスに接続することはありません。何がいつ送信"
+"されるかは、説明の「外部サービス」を参照してください。"
+
+#. Found in faq paragraph.
+msgid ""
+"Yes, but only if you opt in. The PHG token setting is empty after "
+"installation and nothing is appended to your links until you enter your own "
+"token on the settings page. See \"Affiliate links\" in the description for "
+"details."
+msgstr ""
+"はい。ただし利用するかどうかは任意です。PHG トークンの設定はインストール直後"
+"は空で、設定ページでご自身のトークンを入力するまでリンクには何も付加されませ"
+"ん。詳しくは説明の「アフィリエイトリンク」を参照してください。"
+
+#. Found in faq header.
+msgid "Which countries and languages are supported?"
+msgstr "対応している国と言語は ?"
+
+#. Found in faq header.
+msgid "Does the plugin send anything to a third party?"
+msgstr "第三者に情報を送信しますか ?"
+
+#. Found in faq header.
+msgid "Does this support affiliate links?"
+msgstr "アフィリエイトリンクに対応していますか ?"
+
+#. Found in installation list item.
+msgid ""
+"In the block editor, insert the \"Media Link Card\" block and search for "
+"content."
+msgstr ""
+"ブロックエディターで「Media Link Card」ブロックを挿入し、コンテンツを検索しま"
+"す。"
+
+#. Found in installation list item.
+msgid ""
+"(Optional) Open Settings -&gt; Media Link Cards and set default values (PHG "
+"token, country, language, results count)."
+msgstr ""
+"(任意) 設定 -&gt; Media Link Cards を開き、初期値 (PHG トークン、国、言語、検"
+"索結果の件数) を設定します。"
+
+#. Found in installation list item.
+msgid "Activate the plugin through the 'Plugins' screen in WordPress."
+msgstr "WordPress の「プラグイン」画面でプラグインを有効化します。"
+
+#. Found in installation list item.
+msgid ""
+"Upload the plugin files to the <code>/wp-content/plugins/yuiamijp-media-link-"
+"cards</code> directory, or install the plugin through the WordPress plugins "
+"screen directly."
+msgstr ""
+"プラグインのファイルを <code>/wp-content/plugins/yuiamijp-media-link-cards</"
+"code> ディレクトリにアップロードするか、WordPress のプラグイン画面から直接イ"
+"ンストールします。"
+
+#. Found in description paragraph.
+msgid ""
+"Apple, App Store, Mac App Store, Apple Books, Apple Music, Apple Podcasts "
+"and iTunes are trademarks of Apple Inc., registered in the U.S. and other "
+"countries. These names are used here only to describe the services the "
+"plugin can link to."
+msgstr ""
+"Apple、App Store、Mac App Store、Apple Books、Apple Music、Apple Podcasts、"
+"iTunes は、米国およびその他の国で登録された Apple Inc. の商標です。これらの名"
+"称は、このプラグインがリンクできるサービスを説明する目的でのみ使用していま"
+"す。"
+
+#. Found in description paragraph.
+msgid ""
+"This plugin is an independent project. It is not affiliated with, endorsed "
+"by, or sponsored by Apple Inc."
+msgstr ""
+"このプラグインは独立したプロジェクトです。Apple Inc. との提携、推奨、スポン"
+"サー関係はありません。"
+
+#. Found in description paragraph.
+msgid ""
+"If you join the Apple Services Performance Partner program and enter your "
+"own token on the settings page, that token is appended as the <code>at</"
+"code> parameter to the store links the block outputs, and to the search "
+"requests described above. Only the token you enter is ever used — the plugin "
+"never falls back to a token belonging to the author or anyone else. Clearing "
+"the field stops the parameter from being added."
+msgstr ""
+"Apple Services Performance Partner プログラムに参加し、設定ページでご自身の"
+"トークンを入力すると、そのトークンが、ブロックの出力するストアリンクと上記の"
+"検索リクエストに <code>at</code> パラメーターとして付加されます。使われるのは"
+"入力したトークンだけで、作者や第三者のトークンが代わりに使われることはありま"
+"せん。欄を空にすればパラメーターの付加は止まります。"
+
+#. Found in description paragraph.
+msgid ""
+"This plugin adds <strong>no affiliate parameter by default</strong>. The PHG "
+"token setting is empty after installation, and no token is sent unless you "
+"enter your own."
+msgstr ""
+"このプラグインは<strong>初期状態ではアフィリエイトパラメーターを付加しません"
+"</strong>。PHG トークンの設定はインストール直後は空で、ご自身で入力しない限り"
+"トークンは送信されません。"
+
+#. Found in description paragraph.
+msgid ""
+"<strong>Caching.</strong> Responses are stored in your own database as "
+"transients for 12 hours to reduce the number of requests."
+msgstr ""
+"<strong>キャッシュ。</strong>リクエストの回数を減らすため、レスポンスはお使い"
+"のデータベースに transient として12時間保存されます。"
+
+#. Found in description paragraph.
+msgid ""
+"<strong>What is sent.</strong> The search term you typed, the content type "
+"(app, book, podcast, music, and so on), the store country, the display "
+"language, the number of results, and — only if you have entered one yourself "
+"— your affiliate token. No personal data, and no information about your site "
+"or its visitors, is sent."
+msgstr ""
+"<strong>送信される内容。</strong>入力した検索語、コンテンツの種類 (アプリ、"
+"ブック、ポッドキャスト、ミュージックなど)、ストアの国、表示言語、検索結果の件"
+"数、そしてご自身で入力した場合に限りアフィリエイトトークンです。個人データ"
+"や、サイトと訪問者に関する情報は送信されません。"
+
+#. Found in description paragraph.
+msgid ""
+"<strong>When a request is made.</strong> Only in the block editor, when a "
+"logged-in user with the <code>edit_posts</code> capability types a search "
+"term and presses Enter. Your site's front end never contacts the service: "
+"published posts render from data already stored in the block, so your "
+"visitors make no request to Apple."
+msgstr ""
+"<strong>リクエストが発生するタイミング。</strong>ブロックエディターで、"
+"<code>edit_posts</code> 権限を持つログイン中のユーザーが検索語を入力して "
+"Enter を押したときだけです。サイトのフロント側がこのサービスに接続することは"
+"ありません。公開済みの投稿はブロックに保存済みのデータから表示されるため、訪"
+"問者が Apple にリクエストを送ることはありません。"
+
+#. Found in description paragraph.
+msgid ""
+"This plugin relies on the iTunes Search API, a third-party service provided "
+"by Apple, to search the Apple ecosystem and to retrieve the title, artwork, "
+"artist and store URL of the item you pick. The plugin cannot provide its "
+"search feature without it."
+msgstr ""
+"このプラグインは、Apple が提供する第三者サービスである iTunes Search API を利"
+"用して、Apple のエコシステムを検索し、選んだアイテムのタイトル、アートワー"
+"ク、アーティスト、ストア URL を取得します。このサービスなしでは検索機能を提供"
+"できません。"
+
+#. Found in description paragraph.
+msgid ""
+"This plugin adds a custom block that lets you search the Apple ecosystem "
+"(App Store, Apple Books, Apple Music/iTunes) and embed a rich card with "
+"title, artwork, author/artist, preview button, and a store button."
+msgstr ""
+"このプラグインは、Apple のエコシステム (App Store、Apple Books、Apple "
+"Music / iTunes) を検索し、タイトル、アートワーク、著者・アーティスト、プレ"
+"ビューボタン、ストアボタンを備えたリッチなカードを埋め込めるカスタムブロック"
+"を追加します。"
+
+#. Found in description list item.
+msgid ""
+"Apple Services Performance Partner program: https://performance-"
+"partners.apple.com/"
+msgstr ""
+"Apple Services Performance Partner プログラム: https://performance-"
+"partners.apple.com/"
+
+#. Found in description list item.
+msgid "Apple Privacy Policy: https://www.apple.com/legal/privacy/"
+msgstr "Apple プライバシーポリシー: https://www.apple.com/legal/privacy/"
+
+#. Found in description list item.
+msgid ""
+"Apple Media Services Terms and Conditions: https://www.apple.com/legal/"
+"internet-services/itunes/"
+msgstr ""
+"Apple メディアサービス利用規約: https://www.apple.com/legal/internet-"
+"services/itunes/"
+
+#. Found in description list item.
+msgid "About the API: https://performance-partners.apple.com/search-api"
+msgstr "API について: https://performance-partners.apple.com/search-api"
+
+#. Found in description list item.
+msgid "Service endpoint: https://itunes.apple.com/search"
+msgstr "サービスのエンドポイント: https://itunes.apple.com/search"
+
+#. Found in description list item.
+msgid "Simple settings page for defaults"
+msgstr "初期値を設定できるシンプルな設定ページ"
+
+#. Found in description list item.
+msgid "Adjustable number of search results"
+msgstr "検索結果の件数を調整可能"
+
+#. Found in description list item.
+msgid "Country and language selection for search"
+msgstr "検索する国と言語を選択可能"
+
+#. Found in description list item.
+msgid "Compatible with Apple affiliate links (PHG token)"
+msgstr "Apple のアフィリエイトリンク (PHG トークン) に対応"
+
+#. Found in description list item.
+msgid ""
+"Supports iPhone/iPad/Mac apps, Apple Books, music tracks, albums, and music "
+"videos"
+msgstr ""
+"iPhone / iPad / Mac アプリ、Apple Books、音楽トラック、アルバム、ミュージック"
+"ビデオに対応"
+
+#. Found in description header.
+msgid "Disclaimer"
+msgstr "免責事項"
+
+#. Found in description header.
+msgid "Affiliate links"
+msgstr "アフィリエイトリンク"
+
+#. Found in description header.
+msgid "External service"
+msgstr "外部サービス"
+
+#. Screenshot description.
+msgid "Settings are available from the WordPress admin."
+msgstr "設定は WordPress の管理画面から行えます。"
+
+#. Screenshot description.
+msgid "Example of front-end display."
+msgstr "フロント側の表示例。"
+
+#. Screenshot description.
+msgid ""
+"Select a content category, enter a search term, and pick an item from "
+"suggestions to embed its link widget."
+msgstr ""
+"コンテンツのカテゴリーを選び、検索語を入力して候補からアイテムを選ぶと、その"
+"リンクウィジェットを埋め込めます。"
+
+#. Found in changelog paragraph.
+msgid "Initial release."
+msgstr "初回リリース。"

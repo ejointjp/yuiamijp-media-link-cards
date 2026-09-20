@@ -36,8 +36,7 @@ docs
 *.l10n.php
 languages/*.json
 
-# 旧名時代の残骸。どこからも読み込まれない
-readme-ja.txt
 
 # 生成物
 *.zip
+languages/readme/
