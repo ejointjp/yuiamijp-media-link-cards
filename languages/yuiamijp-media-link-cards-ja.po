@@ -28,8 +28,8 @@ msgid ""
 "Easily create promotional links for iPhone / iPad / Mac apps, music tracks, "
 "Apple Books, and more."
 msgstr ""
-"iPhone / iPad / Macのアプリ、曲、Apple Booksなどの紹介リンクを手軽に作成でき"
-"ます。"
+"iPhone / iPad / Mac のアプリ、曲、Apple Books などの紹介リンクを手軽に作成で"
+"きます。"
 
 #. Author of the plugin
 #: yuiamijp-media-link-cards.php
@@ -48,7 +48,7 @@ msgstr "試聴"
 
 #: inc/admin-page.php:101
 msgid "PHG Token"
-msgstr "PHGトークン"
+msgstr "PHG トークン"
 
 #: inc/admin-page.php:102
 msgid "Default Search Results"
@@ -64,7 +64,7 @@ msgstr "デフォルトの表示言語"
 
 #: inc/admin-page.php:150
 msgid "Select the country of the App Store to search."
-msgstr "検索するApp Storeの国を選択します。"
+msgstr "検索する App Store の国を選択します。"
 
 #: inc/admin-page.php:163 build/index.js:1 src/edit.js:312
 msgid "Display cards in English"
@@ -108,8 +108,8 @@ msgid ""
 "that are no longer available. Marked cards are shown without links on the "
 "front end."
 msgstr ""
-"このサイトのすべてのカードをAppleのカタログと照合し、配信が終了したアイテムに"
-"印を付けます。印の付いたカードは、フロントエンドではリンクなしで表示されま"
+"このサイトのすべてのカードを Apple のカタログと照合し、配信が終了したアイテム"
+"に印を付けます。印の付いたカードは、フロントエンドではリンクなしで表示されま"
 "す。"
 
 #: inc/admin-page.php:223
@@ -255,15 +255,15 @@ msgstr "設定"
 
 #: build/index.js:1 src/entity-options.js:6
 msgid "iPhone App"
-msgstr "iPhoneアプリ"
+msgstr "iPhone アプリ"
 
 #: build/index.js:1 src/entity-options.js:10
 msgid "iPad App"
-msgstr "iPadアプリ"
+msgstr "iPad アプリ"
 
 #: build/index.js:1 src/entity-options.js:14
 msgid "Mac App"
-msgstr "Macアプリ"
+msgstr "Mac アプリ"
 
 #: build/index.js:1 src/entity-options.js:22
 msgid "Book"
@@ -323,7 +323,7 @@ msgstr "設定ページでデフォルト値を設定する"
 
 #: build/index.js:1 src/edit.js:363
 msgid "Enter search term and press Enter"
-msgstr "検索ワードを入力してEnter"
+msgstr "検索ワードを入力して Enter"
 
 #: build/block.json src/block.json
 msgctxt "block title"
@@ -336,7 +336,7 @@ msgid ""
 "Create promotional links for iPhone / iPad / Mac apps, music tracks, Apple "
 "Books, and more."
 msgstr ""
-"iPhone / iPad / Macのアプリ、曲、Apple Booksなどの紹介リンクを作成します。"
+"iPhone / iPad / Mac のアプリ、曲、Apple Books などの紹介リンクを作成します。"
 
 #: build/block.json src/block.json
 msgctxt "block keyword"
