@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="yuiamijp-media-link-cards">
-	<description>WordPress Coding Standards for yuiamijp Media Link Cards</description>
+	<description>WordPress Coding Standards for yuiami.jp Media Link Cards</description>
 
 	<file>.</file>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>

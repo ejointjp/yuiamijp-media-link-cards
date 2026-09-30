@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       yuiamijp Media Link Cards
+ * Plugin Name:       yuiami.jp Media Link Cards
  * Description:       Easily create promotional links for iPhone / iPad / Mac apps, music tracks, Apple Books, and more.
  * Requires at least: 6.3
  * Requires PHP:      7.4
@@ -68,7 +68,7 @@ function yuiamijp_block_categories( $categories ) {
 			$categories,
 			array(
 				'slug'  => 'yuiamijp',
-				'title' => 'yuiamijp',
+				'title' => 'yuiami.jp',
 			)
 		);
 	}

@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function yuiamijp_add_admin_page() {
 	add_options_page(
-		'yuiamijp Media Link Cards',
+		'yuiami.jp Media Link Cards',
 		'Media Link Cards',
 		'manage_options',
 		'yuiamijp-media-link-cards',
@@ -29,7 +29,7 @@ add_action( 'admin_menu', 'yuiamijp_add_admin_page' );
 function yuiamijp_options_page_html() {
 	?>
 	<div class="wrap">
-	<h2>yuiamijp Media Link Cards</h2>
+	<h2>yuiami.jp Media Link Cards</h2>
 
 	<form method="post" action="options.php">
 		<?php

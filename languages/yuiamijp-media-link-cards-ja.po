@@ -1,12 +1,12 @@
-# Japanese translation for yuiamijp Media Link Cards plugin
+# Japanese translation for yuiami.jp Media Link Cards plugin
 # Copyright (C) 2026 Takashi Fujisaki
-# This file is distributed under the same license as the yuiamijp Media Link Cards plugin.
+# This file is distributed under the same license as the yuiami.jp Media Link Cards plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: yuiamijp Media Link Cards 1.0.0\n"
+"Project-Id-Version: yuiami.jp Media Link Cards 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yuiamijp-media-"
 "link-cards\n"
-"POT-Creation-Date: 2026-09-17T10:08:18+00:00\n"
+"POT-Creation-Date: 2026-09-30T15:04:41+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
 "Last-Translator: Takashi Fujisaki\n"
 "Language-Team: Japanese\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: yuiamijp-media-link-cards.php
-msgid "yuiamijp Media Link Cards"
-msgstr "yuiamijp Media Link Cards"
+msgid "yuiami.jp Media Link Cards"
+msgstr "yuiami.jp Media Link Cards"
 
 #. Description of the plugin
 #: yuiamijp-media-link-cards.php
@@ -74,35 +74,35 @@ msgstr "カードを英語表記にする"
 msgid "If unchecked, the language will be determined automatically."
 msgstr "チェックを外すと、言語が自動的に決定されます。"
 
-#: inc/admin-page.php:197
+#: inc/admin-page.php:198
 msgid "Starting…"
 msgstr "開始しています…"
 
 #. translators: 1: number of posts scanned so far, 2: total number of posts
-#: inc/admin-page.php:199
+#: inc/admin-page.php:200
 #, php-format
 msgid "Scanning posts… %1$d / %2$d"
 msgstr "投稿をスキャンしています… %1$d / %2$d"
 
 #. translators: 1: number of items checked so far, 2: total number of items
-#: inc/admin-page.php:201
+#: inc/admin-page.php:202
 #, php-format
 msgid "Checking items… %1$d / %2$d"
 msgstr "アイテムを確認しています… %1$d / %2$d"
 
-#: inc/admin-page.php:202
+#: inc/admin-page.php:203
 msgid "Scan complete. Reloading…"
 msgstr "スキャンが完了しました。再読み込みします…"
 
-#: inc/admin-page.php:203
+#: inc/admin-page.php:204
 msgid "Scan failed."
 msgstr "スキャンに失敗しました。"
 
-#: inc/admin-page.php:220
+#: inc/admin-page.php:221
 msgid "Link check"
 msgstr "リンクチェック"
 
-#: inc/admin-page.php:221
+#: inc/admin-page.php:222
 msgid ""
 "Checks every card on this site against Apple's catalog and marks the items "
 "that are no longer available. Marked cards are shown without links on the "
@@ -112,28 +112,28 @@ msgstr ""
 "に印を付けます。印の付いたカードは、フロントエンドではリンクなしで表示されま"
 "す。"
 
-#: inc/admin-page.php:223
+#: inc/admin-page.php:224
 msgid "Start scan"
 msgstr "スキャンを開始"
 
-#: inc/admin-page.php:228
+#: inc/admin-page.php:229
 msgid "Never scanned."
 msgstr "まだスキャンしていません。"
 
 #. translators: %s: date and time of the last scan
-#: inc/admin-page.php:237
+#: inc/admin-page.php:238
 #, php-format
 msgid "Last scanned: %s"
 msgstr "最終スキャン: %s"
 
 #. translators: 1: number of items checked, 2: number of items no longer available
-#: inc/admin-page.php:248
+#: inc/admin-page.php:249
 #, php-format
 msgid "%1$d items checked, %2$d no longer available."
 msgstr "%1$d件を確認し、%2$d件が配信終了でした。"
 
 #. translators: %d: number of items that could not be checked
-#: inc/admin-page.php:261
+#: inc/admin-page.php:262
 #, php-format
 msgid ""
 "Could not check %d items. Their previous status was kept. Try again later."
@@ -141,19 +141,19 @@ msgstr ""
 "%d件を確認できませんでした。前回の判定を維持しています。しばらくしてから再実"
 "行してください。"
 
-#: inc/admin-page.php:283
+#: inc/admin-page.php:284
 msgid "Title"
 msgstr "タイトル"
 
-#: inc/admin-page.php:284
+#: inc/admin-page.php:285
 msgid "Type"
 msgstr "種別"
 
-#: inc/admin-page.php:285
+#: inc/admin-page.php:286
 msgid "ID"
 msgstr "ID"
 
-#: inc/admin-page.php:286
+#: inc/admin-page.php:287
 msgid "Used in"
 msgstr "使用している投稿"
 
@@ -245,7 +245,7 @@ msgstr "フランス"
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: inc/scan.php:218 inc/scan.php:302
+#: inc/scan.php:234 inc/scan.php:318
 msgid "The scan data has expired. Start the scan again."
 msgstr "スキャンのデータが失効しました。もう一度スキャンを開始してください。"
 

@@ -1,4 +1,4 @@
-=== yuiamijp Media Link Cards ===
+=== yuiami.jp Media Link Cards ===
 Contributors: ejointjp
 Tags: block, apple, itunes, app store, affiliate
 Requires at least: 6.3

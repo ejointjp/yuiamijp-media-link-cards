@@ -31,7 +31,7 @@ function yuiamijp_get_icons() {
 	if ( ! is_readable( $path ) ) {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- 配布ファイルの欠損を握りつぶさないため。
-			error_log( 'yuiamijp Media Link Cards: assets/icons.json が読み込めません: ' . $path );
+			error_log( 'yuiami.jp Media Link Cards: assets/icons.json が読み込めません: ' . $path );
 		}
 		return $icons;
 	}
@@ -43,7 +43,7 @@ function yuiamijp_get_icons() {
 	if ( ! is_array( $decoded ) ) {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- JSON の破損を握りつぶさないため。
-			error_log( 'yuiamijp Media Link Cards: assets/icons.json の JSON を解析できません: ' . $path );
+			error_log( 'yuiami.jp Media Link Cards: assets/icons.json の JSON を解析できません: ' . $path );
 		}
 		return $icons;
 	}

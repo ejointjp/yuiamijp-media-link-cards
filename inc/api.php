@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register REST API route for yuiamijp Media Link Cards search
+ * Register REST API route for yuiami.jp Media Link Cards search
  */
 function yuiamijp_register_rest_routes() {
 	register_rest_route(
@@ -57,7 +57,7 @@ function yuiamijp_rest_api_search_permission_check() {
 }
 
 /**
- * Callback function for yuiamijp Media Link Cards search API
+ * Callback function for yuiami.jp Media Link Cards search API
  *
  * @param WP_REST_Request $request リクエスト。
  * @return WP_REST_Response

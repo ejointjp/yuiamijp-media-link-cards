@@ -171,7 +171,7 @@ function yuiamijp_lookup_ids( array $ids, $country ) {
 function yuiamijp_log_scan_error( $message ) {
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- 通信失敗の原因を握りつぶさないため。
-		error_log( 'yuiamijp Media Link Cards: ' . $message );
+		error_log( 'yuiami.jp Media Link Cards: ' . $message );
 	}
 }
 

@@ -6,12 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 概要
 
-WordPressのブロックプラグイン「yuiamijp Media Link Cards」。ブロックエディターからiTunes Search APIを検索し、App Store / Apple Books / Apple Musicなどのアイテムをカード形式で埋め込む。wordpress.org配布（slug: `yuiamijp-media-link-cards`）。
+WordPressのブロックプラグイン「yuiami.jp Media Link Cards」。ブロックエディターからiTunes Search APIを検索し、App Store / Apple Books / Apple Musicなどのアイテムをカード形式で埋め込む。wordpress.org配布（slug: `yuiamijp-media-link-cards`）。
 
 名前はwordpress.orgの審査で2回指摘を受けて変わっている。
 
 1. 「SU Applink」（slug: `su-applink`）— 「Applink」が他者のプロジェクト名と重なると指摘され、2026年8月10日に改名
 2. 「SU Blocks - Media Link Cards」（slug: `su-blocks-media-link-cards`）— 2026年8月11日、こちらも識別性が足りないと指摘された。「SU」は短い頭字語にすぎず「Blocks」は一般的な記述だという理由で、既存プラグイン「SU Blocks - Blogcard」で同じパターンを使っている点は理由として認められなかった
+
+承認時の表示名は「yuiamijp Media Link Cards」。2026年10月1日、yuiami.jp Hidden Blocksと揃えるため表示名だけ「yuiami.jp Media Link Cards」に変えた。slugと識別子はドットを使えないので`yuiamijp`のまま。
 
 `Applink`と`SU Blocks`はコードにもドキュメントにも戻さない。readme.txtに書いていた「SU Blocksは作者のシリーズ名である」という主張も、名指しで否決されたため削除済み。
 
@@ -97,7 +99,7 @@ slugが変わるとディレクトリ名も変わり、WordPressからは別プ�
 - CSSクラス: フロント`yuiamijp-`（ベースクラスは`.yuiamijp`）、エディター専用`yuiamijp-editor-`
 - テキストドメイン: `yuiamijp-media-link-cards`。i18n対応済みなので表示文字列は必ず`__()`系に通す
 - ブロック名: `yuiamijp/media-link-cards`（フロントのラッパークラスは`wp-block-yuiamijp-media-link-cards`）
-- ブロックカテゴリー: slug・タイトルとも`yuiamijp`
+- ブロックカテゴリー: slugは`yuiamijp`、タイトルは`yuiami.jp`
 - JSへ渡すグローバル: ブロックエディター向けの`yuiamijpAjaxValues`、設定ページ向けの`yuiamijpScan`
 - 接頭辞はすべて`yuiamijp`で統一した。旧名由来の`sual_`は残していない
 
