@@ -88,6 +88,7 @@ Run the link check from Settings -> Media Link Cards. Cards for items that are n
 = 1.1.0 =
 * Added a link check on the settings page that finds cards whose items are no longer available on Apple's stores.
 * Cards for unavailable items are shown without links and with a "No longer available" label, on the front end and in the editor.
+* The plugin's display name is now "yuiami.jp Media Link Cards", and its block category is now titled "yuiami.jp". The slug and existing blocks are unchanged.
 
 = 1.0.0 =
 Initial release.
