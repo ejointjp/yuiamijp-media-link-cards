@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- 地（作者のほかのプラグインのアイコンと同じ色） -->
+  <rect width="256" height="256" fill="#f4f4f5"/>
+  <!-- 横長のリンクカード。枠線は引かず、白い面だけで形を作る -->
+  <rect x="28" y="76" width="200" height="104" rx="20" fill="#fff"/>
+  <!-- 左にアプリのアイコン（角丸の正方形）。差し色（yuiami.jpの#0094bc） -->
+  <rect x="48" y="100" width="56" height="56" rx="16" fill="#0094bc"/>
+  <!-- 右にタイトルと説明文の線 -->
+  <rect x="120" y="106" width="80" height="14" rx="7" fill="#52525b"/>
+  <rect x="120" y="134" width="52" height="12" rx="6" fill="#d4d4d8"/>
+</svg>

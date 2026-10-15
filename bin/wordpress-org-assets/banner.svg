@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1544 500" width="1544" height="500">
+  <!-- 地 -->
+  <rect width="1544" height="500" fill="#f4f4f5"/>
+  <!-- icon.svgを1.75倍にして左に置く（地の色はアイコンと同じ。位置はobento-admin-packのバナーと同じ） -->
+  <image href="icon.svg" x="124" y="26" width="448" height="448"/>
+  <!-- 名前とサブタイトル。フォントはNoto Sans JP（render.shで確かめる）。
+       名前の「yuiami.jp」は1行に収まらないので、小見出しとして上に分ける -->
+  <g font-family="'Noto Sans JP', sans-serif">
+    <text x="580" y="175" font-size="36" font-weight="700" fill="#52525b">yuiami.jp</text>
+    <text x="576" y="267" font-size="76" font-weight="700" fill="#27272a">Media Link Cards</text>
+    <text x="579" y="335" font-size="36" fill="#52525b">Rich links for apps, books, and music</text>
+  </g>
+</svg>

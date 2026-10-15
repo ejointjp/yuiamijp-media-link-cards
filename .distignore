@@ -28,6 +28,10 @@ CLAUDE.md
 docs
 .superpowers
 
+# wordpress.orgのプラグインページ用の画像と、その原本（bin/wordpress-org-assets/）
+.wordpress-org
+bin
+
 # 翻訳ファイル。wordpress.org でホストされるプラグインの翻訳は
 # translate.wordpress.org が言語パックとして配信するため同梱しない。
 # 原本の languages/*.pot だけを残す。
