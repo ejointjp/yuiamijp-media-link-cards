@@ -144,7 +144,7 @@ msgfmt --statistics -o /dev/null languages/yuiamijp-media-link-cards-ja.po   # �
 
 workflowは`SLUG: yuiamijp-media-link-cards`を明示している。リポジトリ名に依存させていないので、リポジトリ名を変えてもデプロイ先はズレない。
 
-プラグインページのアイコンとバナーは`.wordpress-org/`に置き、タグのpushでSVNの`assets/`へ同期される。原本は`bin/wordpress-org-assets/`のSVGで、`bash bin/wordpress-org-assets/render.sh`がPNGを作る。どちらも配布物には含めない。
+プラグインページのアイコンとバナーは`.wordpress-org/`に置き、タグのpushでSVNの`assets/`へ同期される。原本は`bin/wordpress-org-assets/`のSVGで、`bash bin/wordpress-org-assets/render.sh`がPNGを作る。どちらも配布物には含めない。リリースせずに画像だけ反映するときは`gh workflow run assets.yml`（手動実行のworkflow。readme.txtは最後に公開したタグのものに戻してから送る）。
 
 **`wp-scripts plugin-zip`は使わない。** `.distignore`を一切読まず、`admin/** build/** includes/** languages/** public/**`という固定のglobで拾う。このプラグインは`inc/`と`assets/`を使っているのでどちらも欠落し、読み込むと`require_once`で致命的エラーになるZIPができる。ZIPが要るとき（初回審査への提出など）はCIと同じrsyncで作る。
 
