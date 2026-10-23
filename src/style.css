@@ -2,6 +2,9 @@
    yuiami.jp Media Link Cards | Front-end styles
    -----------------------------------------------------------------------------
    haku2 の design-system tokens.css のセマンティックトークンに準拠。
+   テーマのトークンは、nuno-css（haku2のdesign-system）の新しい名前（--nuno-）を先に読み、
+   なければ旧い名前（--color-textなど）を読む。テーマとプラグインのどちらを先に更新しても
+   ダークに追従するようにするため。旧い名前を読む部分は、テーマの更新が行き渡ったら消してよい。
    --_ プレフィックスはコンポーネント内部エイリアス。
    :where() で fallback 付きで解決し、以降は --_ を参照するだけ。
    dark モードは theme 側 (:root[data-theme='dark']) で切り替わるため
@@ -10,30 +13,30 @@
 
 :where(.wp-block-yuiamijp-media-link-cards),
 :where(.yuiamijp-editor-wrapper) {
-	--_color-text: var(--color-text, oklch(21% 0.006 285.885));
-	--_color-text-muted: var(--color-text-muted, oklch(46% 0.01 232));
-	--_color-bg: var(--color-bg, oklch(100% 0 0deg));
-	--_color-bg-subtle: var(--color-bg-subtle, oklch(98.5% 0.003 232));
-	--_color-border: var(--color-border, oklch(92% 0.006 232));
-	--_border-thin: var(--border-thin, 1px);
-	--_radius-md: var(--radius-md, 0.5rem);
-	--_radius-lg: var(--radius-lg, 0.75rem);
-	--_radius-full: var(--radius-full, 9999px);
-	--_space-4: var(--space-4, 0.25rem);
-	--_space-8: var(--space-8, 0.5rem);
-	--_space-12: var(--space-12, 0.75rem);
-	--_space-16: var(--space-16, 1rem);
-	--_space-20: var(--space-20, 1.25rem);
-	--_space-24: var(--space-24, 1.5rem);
-	--_text-xs: var(--text-xs, 0.75rem);
-	--_text-sm: var(--text-sm, 0.875rem);
-	--_text-base: var(--text-base, 1rem);
-	--_leading-snug: var(--leading-snug, 1.5);
-	--_weight-medium: var(--weight-medium, 500);
-	--_weight-semibold: var(--weight-semibold, 600);
-	--_weight-bold: var(--weight-bold, 700);
-	--_duration-base: var(--duration-base, 250ms);
-	--_ease-out: var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+	--_color-text: var(--nuno-color-text, var(--color-text, oklch(21% 0.006 285.885)));
+	--_color-text-muted: var(--nuno-color-text-muted, var(--color-text-muted, oklch(46% 0.01 232)));
+	--_color-bg: var(--nuno-color-bg, var(--color-bg, oklch(100% 0 0deg)));
+	--_color-bg-subtle: var(--nuno-color-bg-subtle, var(--color-bg-subtle, oklch(98.5% 0.003 232)));
+	--_color-border: var(--nuno-color-border, var(--color-border, oklch(92% 0.006 232)));
+	--_border-thin: var(--nuno-border-thin, var(--border-thin, 1px));
+	--_radius-md: var(--nuno-radius-md, var(--radius-md, 0.5rem));
+	--_radius-lg: var(--nuno-radius-lg, var(--radius-lg, 0.75rem));
+	--_radius-full: var(--nuno-radius-full, var(--radius-full, 9999px));
+	--_space-4: var(--nuno-space-4, var(--space-4, 0.25rem));
+	--_space-8: var(--nuno-space-8, var(--space-8, 0.5rem));
+	--_space-12: var(--nuno-space-12, var(--space-12, 0.75rem));
+	--_space-16: var(--nuno-space-16, var(--space-16, 1rem));
+	--_space-20: var(--nuno-space-20, var(--space-20, 1.25rem));
+	--_space-24: var(--nuno-space-24, var(--space-24, 1.5rem));
+	--_text-xs: var(--nuno-text-xs, var(--text-xs, 0.75rem));
+	--_text-sm: var(--nuno-text-sm, var(--text-sm, 0.875rem));
+	--_text-base: var(--nuno-text-base, var(--text-base, 1rem));
+	--_leading-snug: var(--nuno-leading-snug, var(--leading-snug, 1.5));
+	--_weight-medium: var(--nuno-weight-medium, var(--weight-medium, 500));
+	--_weight-semibold: var(--nuno-weight-semibold, var(--weight-semibold, 600));
+	--_weight-bold: var(--nuno-weight-bold, var(--weight-bold, 700));
+	--_duration-base: var(--nuno-duration-base, var(--duration-base, 250ms));
+	--_ease-out: var(--nuno-ease-out, var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)));
 
 	/* component-scoped (haku2 トークンにないカード固有の値) */
 	--border-radius: var(--_radius-lg);
