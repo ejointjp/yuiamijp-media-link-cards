@@ -33,7 +33,6 @@
 	--_text-base: var(--nuno-text-base, var(--text-base, 1rem));
 	--_leading-snug: var(--nuno-leading-snug, var(--leading-snug, 1.5));
 	--_weight-medium: var(--nuno-weight-medium, var(--weight-medium, 500));
-	--_weight-semibold: var(--nuno-weight-semibold, var(--weight-semibold, 600));
 	--_weight-bold: var(--nuno-weight-bold, var(--weight-bold, 700));
 	--_duration-base: var(--nuno-duration-base, var(--duration-base, 250ms));
 	--_ease-out: var(--nuno-ease-out, var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)));
@@ -104,7 +103,7 @@
 	display: block;
 
 	font-size: var(--_text-sm);
-	font-weight: var(--_weight-semibold);
+	font-weight: var(--_weight-bold);
 	color: var(--_color-text) !important;
 	text-decoration: none !important;
 }
