@@ -345,6 +345,24 @@ msgstr ""
 
 #. Found in changelog list item.
 msgid ""
+"Card titles are now bold (weight 700) instead of semibold (600), so they "
+"look the same on every site, including sites that load a variable font."
+msgstr ""
+"カードのタイトルをセミボールド (600) から太字 (太さ700) に変え、可変フォント"
+"を読み込むサイトを含め、どのサイトでも同じ見た目になるようにした。"
+
+#. Found in changelog list item.
+msgid ""
+"Card colors now also pick up design tokens with the <code>--nuno-</code> "
+"prefix (used by the nuno-css design system), falling back to the previous "
+"token names. Sites that do not define these tokens are unaffected."
+msgstr ""
+"カードの色で、<code>--nuno-</code> 接頭辞のデザイントークン (nuno-css デザイ"
+"ンシステムで使用) も参照するようにした。ない場合は従来の名前のトークンを使"
+"う。これらのトークンを定義していないサイトには影響しない。"
+
+#. Found in changelog list item.
+msgid ""
 "The plugin's display name is now \"yuiami.jp Media Link Cards\", and its "
 "block category is now titled \"yuiami.jp\". The slug and existing blocks are "
 "unchanged."
