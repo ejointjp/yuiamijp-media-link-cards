@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: yuiami.jp Media Link Cards 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yuiamijp-media-"
 "link-cards\n"
-"POT-Creation-Date: 2026-09-30T15:04:41+00:00\n"
+"POT-Creation-Date: 2026-10-31T06:50:57+00:00\n"
 "PO-Revision-Date: 2024-10-29 12:00+0000\n"
 "Last-Translator: Takashi Fujisaki\n"
 "Language-Team: Japanese\n"
@@ -35,6 +35,11 @@ msgstr ""
 #: yuiamijp-media-link-cards.php
 msgid "Takashi Fujisaki"
 msgstr "Takashi Fujisaki"
+
+#. Author URI of the plugin
+#: yuiamijp-media-link-cards.php
+msgid "https://yuiami.jp"
+msgstr "https://yuiami.jp"
 
 #: build/render.php:69 src/render.php:69 build/index.js:1
 #: src/components/MediaLinkCard.js:60
@@ -249,7 +254,7 @@ msgstr "ブラジル"
 msgid "The scan data has expired. Start the scan again."
 msgstr "スキャンのデータが失効しました。もう一度スキャンを開始してください。"
 
-#: yuiamijp-media-link-cards.php:181
+#: yuiamijp-media-link-cards.php:182
 msgid "Settings"
 msgstr "設定"
 

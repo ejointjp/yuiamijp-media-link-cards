@@ -7,6 +7,7 @@
  * Requires PHP:      7.4
  * Version:           1.1.2
  * Author:            Takashi Fujisaki
+ * Author URI:        https://yuiami.jp
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       yuiamijp-media-link-cards
