@@ -67,7 +67,7 @@ Apple, App Store, Mac App Store, Apple Books, Apple Music, Apple Podcasts and iT
 1. Upload the plugin files to the `/wp-content/plugins/yuiamijp-media-link-cards` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. (Optional) Open Settings -> Media Link Cards and set default values (PHG token, country, language, results count).
-4. In the block editor, insert the "Media Link Card" block and search for content.
+4. In the block editor, insert the block for the content you want, such as "iPhone App" or "Music Album" (type `/iphone` or `/album`), and search for content.
 
 == Frequently Asked Questions ==
 

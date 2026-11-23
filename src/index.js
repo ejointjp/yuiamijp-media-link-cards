@@ -1,6 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import edit from './edit';
 import save from './save';
+import variations from './variations';
 import metadata from './block.json';
 
 import './style.css';
@@ -9,4 +10,5 @@ import './editor.css';
 registerBlockType( metadata.name, {
 	edit,
 	save,
+	variations,
 } );

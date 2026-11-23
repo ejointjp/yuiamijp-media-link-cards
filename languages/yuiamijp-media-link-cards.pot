@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-31T06:50:57+00:00\n"
+"POT-Creation-Date: 2026-11-23T07:03:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: yuiamijp-media-link-cards\n"
@@ -69,7 +69,7 @@ msgid "Select the country of the App Store to search."
 msgstr ""
 
 #: inc/admin-page.php:163
-#: build/index.js:1
+#: build/index.js:19
 #: src/edit.js:312
 msgid "Display cards in English"
 msgstr ""
@@ -250,99 +250,209 @@ msgid "Settings"
 msgstr ""
 
 #: build/index.js:1
-#: src/entity-options.js:6
+#: src/entity-options.js:15
 msgid "iPhone App"
 msgstr ""
 
 #: build/index.js:1
-#: src/entity-options.js:10
+#: src/entity-options.js:16
+msgid "Search for an iPhone app and embed it as a card."
+msgstr ""
+
+#. translators: Comma-separated search terms for the block inserter. Never displayed. Add synonyms freely.
+#: build/index.js:3
+#: src/entity-options.js:23
+msgctxt "block search terms"
+msgid "iPhone, app"
+msgstr ""
+
+#: build/index.js:3
+#: src/entity-options.js:31
 msgid "iPad App"
 msgstr ""
 
-#: build/index.js:1
-#: src/entity-options.js:14
+#: build/index.js:3
+#: src/entity-options.js:32
+msgid "Search for an iPad app and embed it as a card."
+msgstr ""
+
+#. translators: Comma-separated search terms for the block inserter. Never displayed. Add synonyms freely.
+#: build/index.js:5
+#: src/entity-options.js:39
+msgctxt "block search terms"
+msgid "iPad, app"
+msgstr ""
+
+#: build/index.js:5
+#: src/entity-options.js:47
 msgid "Mac App"
 msgstr ""
 
-#: build/index.js:1
-#: src/entity-options.js:22
+#: build/index.js:5
+#: src/entity-options.js:48
+msgid "Search for a Mac app and embed it as a card."
+msgstr ""
+
+#. translators: Comma-separated search terms for the block inserter. Never displayed. Add synonyms freely.
+#: build/index.js:7
+#: src/entity-options.js:55
+msgctxt "block search terms"
+msgid "Mac, app"
+msgstr ""
+
+#: build/index.js:7
+#: src/entity-options.js:67
 msgid "Book"
 msgstr ""
 
-#: build/index.js:1
-#: src/entity-options.js:26
+#: build/index.js:7
+#: src/entity-options.js:68
+msgid "Search for a book and embed it as a card."
+msgstr ""
+
+#. translators: Comma-separated search terms for the block inserter. Never displayed. Add synonyms freely.
+#: build/index.js:9
+#: src/entity-options.js:75
+msgctxt "block search terms"
+msgid "books, ebooks"
+msgstr ""
+
+#: build/index.js:9
+#: src/entity-options.js:83
 msgid "Audiobook"
 msgstr ""
 
-#: build/index.js:1
-#: src/entity-options.js:30
+#: build/index.js:9
+#: src/entity-options.js:84
+msgid "Search for an audiobook and embed it as a card."
+msgstr ""
+
+#. translators: Comma-separated search terms for the block inserter. Never displayed. Add synonyms freely.
+#: build/index.js:11
+#: src/entity-options.js:91
+msgctxt "block search terms"
+msgid "audiobooks"
+msgstr ""
+
+#: build/index.js:11
+#: src/entity-options.js:99
 msgid "Podcast"
 msgstr ""
 
-#: build/index.js:1
-#: src/entity-options.js:34
+#: build/index.js:11
+#: src/entity-options.js:100
+msgid "Search for a podcast and embed it as a card."
+msgstr ""
+
+#. translators: Comma-separated search terms for the block inserter. Never displayed. Add synonyms freely.
+#: build/index.js:13
+#: src/entity-options.js:107
+msgctxt "block search terms"
+msgid "podcasts"
+msgstr ""
+
+#: build/index.js:13
+#: src/entity-options.js:115
 msgid "Music Track"
 msgstr ""
 
-#: build/index.js:1
-#: src/entity-options.js:38
+#: build/index.js:13
+#: src/entity-options.js:116
+msgid "Search for a music track and embed it as a card."
+msgstr ""
+
+#. translators: Comma-separated search terms for the block inserter. Never displayed. Add synonyms freely.
+#: build/index.js:15
+#: src/entity-options.js:123
+msgctxt "block search terms"
+msgid "music, tracks, songs"
+msgstr ""
+
+#: build/index.js:15
+#: src/entity-options.js:131
 msgid "Music Album"
 msgstr ""
 
-#: build/index.js:1
-#: src/entity-options.js:42
+#: build/index.js:15
+#: src/entity-options.js:132
+msgid "Search for a music album and embed it as a card."
+msgstr ""
+
+#. translators: Comma-separated search terms for the block inserter. Never displayed. Add synonyms freely.
+#: build/index.js:17
+#: src/entity-options.js:139
+msgctxt "block search terms"
+msgid "music, albums"
+msgstr ""
+
+#: build/index.js:17
+#: src/entity-options.js:147
 msgid "Music Video"
 msgstr ""
 
-#: build/index.js:1
-#: src/edit.js:191
-msgid "Search Results"
+#: build/index.js:17
+#: src/entity-options.js:148
+msgid "Search for a music video and embed it as a card."
 msgstr ""
 
-#: build/index.js:1
-#: src/edit.js:206
-msgid "Cached"
+#. translators: Comma-separated search terms for the block inserter. Never displayed. Add synonyms freely.
+#: build/index.js:19
+#: src/entity-options.js:155
+msgctxt "block search terms"
+msgid "music, videos"
 msgstr ""
 
-#: build/index.js:1
-#: src/edit.js:237
-msgid "Failed to retrieve data"
-msgstr ""
-
-#: build/index.js:1
-#: src/edit.js:281
-msgid "Search Settings"
-msgstr ""
-
-#: build/index.js:1
-#: src/edit.js:288
-msgid "Number of Results"
-msgstr ""
-
-#: build/index.js:1
-#: src/edit.js:300
-msgid "Store Country"
-msgstr ""
-
-#: build/index.js:1
-#: src/edit.js:320
-msgid "If turned off, the language will be determined automatically."
-msgstr ""
-
-#: build/index.js:1
-#: src/edit.js:334
-msgid "Set default values on settings page"
-msgstr ""
-
-#: build/index.js:1
-#: src/edit.js:363
-msgid "Enter search term and press Enter"
-msgstr ""
-
+#: build/index.js:19
+#: src/variations.js:32
 #: build/block.json
 #: src/block.json
 msgctxt "block title"
 msgid "Media Link Card"
+msgstr ""
+
+#: build/index.js:19
+#: src/edit.js:191
+msgid "Search Results"
+msgstr ""
+
+#: build/index.js:19
+#: src/edit.js:206
+msgid "Cached"
+msgstr ""
+
+#: build/index.js:19
+#: src/edit.js:237
+msgid "Failed to retrieve data"
+msgstr ""
+
+#: build/index.js:19
+#: src/edit.js:281
+msgid "Search Settings"
+msgstr ""
+
+#: build/index.js:19
+#: src/edit.js:288
+msgid "Number of Results"
+msgstr ""
+
+#: build/index.js:19
+#: src/edit.js:300
+msgid "Store Country"
+msgstr ""
+
+#: build/index.js:19
+#: src/edit.js:320
+msgid "If turned off, the language will be determined automatically."
+msgstr ""
+
+#: build/index.js:19
+#: src/edit.js:334
+msgid "Set default values on settings page"
+msgstr ""
+
+#: build/index.js:19
+#: src/edit.js:366
+msgid "Enter search term and press Enter"
 msgstr ""
 
 #: build/block.json

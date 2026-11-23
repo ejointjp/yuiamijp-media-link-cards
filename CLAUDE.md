@@ -68,6 +68,15 @@ CSS（`src/style.css`）は共通で、`.yuiamijp-btn svg`のような子孫セ�
 
 APIリクエストの`entity`（検索条件。`src/entity-options.js`）とレスポンスの`kind` / `wrapperType`（`edit.js`の`itemAtts()`が判定）は別物。そこから決まる`type`（`app` / `mac-app` / `ebook` / `podcast` / `music-track`…）が、`render.php`・`StoreIcon.js`・CSSクラス`yuiamijp-{type}`の分岐キーになる。種別を増やすときはこの3箇所と`app-attributes.js`が対象。
 
+### スラッシュメニューの項目
+
+`src/entity-options.js`の各種別を、`src/variations.js`がblock variationとして登録する。選んだ項目の`entity`が検索条件の初期値になる。種別を足すときは`entity-options.js`に1件足せば、選択欄とスラッシュメニューの両方に出る。
+
+- **`description`・`aliases`・`searchTerms`は種別ごとに必ず書く。** variationで省略した説明文とキーワードはブロック本体の値に差し替わり、そこには全種別の名前が入っているため、`/iphone`で関係のない種別まで当たる
+- `aliases`は訳さない英語の検索語で、日本語環境の`/music`や`/books`を当てるためにある。`searchTerms`は訳す検索語で、訳文には読点区切りで同義語を並べてよい。どちらも画面には出ない
+- 既定の`software`は`isDefault`なので、ブロック本体の「Media Link Card」は一覧に出ない。ブロック名でも探せるよう、全項目のキーワードに入れてある
+- `SelectControl`は`options`の余分なキーを`<option>`の属性として出力するので、`src/edit.js`で`value`と`label`だけに絞って渡す
+
 ### 配信終了の判定
 
 設定ページの「Link check」から管理者が手動で実行する一括スキャンで、カードのアイテムがストアから消えていないかを確かめる。定期実行はない。フロントから外部へ接続することもない。

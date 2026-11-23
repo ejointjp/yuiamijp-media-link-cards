@@ -351,7 +351,10 @@ const Edit = ( props ) => {
 							setAttributes( { entity: value } );
 							setTermIfChanged();
 						} }
-						options={ entityOptions }
+						options={ entityOptions.map( ( { value, label } ) => ( {
+							value,
+							label,
+						} ) ) }
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>
