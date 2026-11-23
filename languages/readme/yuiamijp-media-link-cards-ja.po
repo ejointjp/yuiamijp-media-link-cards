@@ -24,6 +24,16 @@ msgstr ""
 msgid "yuiami.jp Media Link Cards"
 msgstr "yuiami.jp Media Link Cards"
 
+#. Found in installation list item.
+msgid ""
+"In the block editor, insert the block for the content you want, such as "
+"\"iPhone App\" or \"Music Album\" (type <code>/iphone</code> or <code>/"
+"album</code>), and search for content."
+msgstr ""
+"ブロックエディターで「iPhone アプリ」や「アルバム」など、目的のコンテンツのブ"
+"ロックを挿入し (<code>/iphone</code> や <code>/album</code> と入力)、コンテン"
+"ツを検索します。"
+
 #. Found in faq paragraph.
 msgid ""
 "Run the link check from Settings -&gt; Media Link Cards. Cards for items "
@@ -176,14 +186,6 @@ msgstr "第三者に情報を送信しますか ?"
 #. Found in faq header.
 msgid "Does this support affiliate links?"
 msgstr "アフィリエイトリンクに対応していますか ?"
-
-#. Found in installation list item.
-msgid ""
-"In the block editor, insert the \"Media Link Card\" block and search for "
-"content."
-msgstr ""
-"ブロックエディターで「Media Link Card」ブロックを挿入し、コンテンツを検索しま"
-"す。"
 
 #. Found in installation list item.
 msgid ""
@@ -342,6 +344,28 @@ msgid ""
 msgstr ""
 "コンテンツのカテゴリーを選び、検索語を入力して候補からアイテムを選ぶと、その"
 "リンクウィジェットを埋め込めます。"
+
+#. Found in changelog list item.
+msgid ""
+"The single \"Media Link Card\" item is replaced by these items. Searching "
+"for its name still finds them, and existing cards are unchanged."
+msgstr ""
+"1つだけだった「メディアリンクカード」の項目を、これらの項目に置き換えた。この"
+"名前で検索しても見つかり、既存のカードは変わらない。"
+
+#. Found in changelog list item.
+msgid ""
+"Each content type (iPhone App, iPad App, Mac App, Book, Audiobook, Podcast, "
+"Music Track, Music Album, Music Video) is now its own item in the slash menu "
+"and the block inserter. Type <code>/iphone</code>, <code>/album</code> or "
+"<code>/books</code>, for example, and the block opens with that type already "
+"selected."
+msgstr ""
+"コンテンツの種類 (iPhone アプリ、iPad アプリ、Mac アプリ、ブック、オーディオ"
+"ブック、ポッドキャスト、曲、アルバム、ミュージックビデオ) ごとに、スラッシュ"
+"メニューとブロックインサーターへ項目を追加した。たとえば <code>/iphone</"
+"code>、<code>/album</code>、<code>/books</code> と入力すると、その種類を選択"
+"した状態でブロックが開く。"
 
 #. Found in changelog list item.
 msgid ""
