@@ -3,7 +3,7 @@ Contributors: ejointjp
 Tags: block, apple, itunes, app store, affiliate
 Requires at least: 6.3
 Tested up to: 7.1
-Stable tag: 1.1.2
+Stable tag: 1.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -84,6 +84,10 @@ Common countries are available (JP, US, GB, CA, AU, SG, TH, IN, DE, FR, BR, etc.
 Run the link check from Settings -> Media Link Cards. Cards for items that are no longer available keep their title and artwork but lose their links and show a "No longer available" label, both on the front end and in the editor. Nothing is changed in your post content, and no automatic checks run in the background.
 
 == Changelog ==
+
+= 1.2.0 =
+* Each content type (iPhone App, iPad App, Mac App, Book, Audiobook, Podcast, Music Track, Music Album, Music Video) is now its own item in the slash menu and the block inserter. Type `/iphone`, `/album` or `/books`, for example, and the block opens with that type already selected.
+* The single "Media Link Card" item is replaced by these items. Searching for its name still finds them, and existing cards are unchanged.
 
 = 1.1.2 =
 * Card titles are now bold (weight 700) instead of semibold (600), so they look the same on every site, including sites that load a variable font.
